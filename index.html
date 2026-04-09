@@ -202,7 +202,7 @@
       max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { height: 88px; }
+    .nav-logo { height: 110px; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-link {
       font-size: 0.88rem; font-weight: 500; color: var(--gray-600);
@@ -410,10 +410,11 @@
       display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
     }
     .service-card {
-      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
-      border-radius: 20px; padding: 28px 18px; text-align: center;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px; padding: 22px 16px; text-align: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .service-card::before {
       content: ''; position: absolute; inset: 0;
@@ -427,9 +428,9 @@
       border-color: rgba(134,22,176,0.1);
     }
     .service-icon {
-      width: 48px; height: 48px; margin: 0 auto 16px;
+      width: 40px; height: 40px; margin: 0 auto 12px;
       background: linear-gradient(135deg, var(--purple-mid), var(--purple-main));
-      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .service-card:hover .service-icon {
@@ -517,15 +518,12 @@
     .pricing-sub {
       text-align: center; color: var(--gray-600); font-size: 1.05rem; margin-bottom: 72px;
     }
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start;
-      position: relative; z-index: 1;
-    }
     .price-card {
-      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
-      border-radius: 22px; padding: 32px 22px;
+      background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px; padding: 24px 20px;
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .price-card:hover {
       transform: translateY(-6px);
@@ -603,10 +601,6 @@
     .differentials h2 {
       font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
       text-align: center; margin-bottom: 72px; position: relative; z-index: 1;
-    }
-    .diff-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
-      position: relative; z-index: 1;
     }
     .diff-item { text-align: center; padding: 24px; }
     .diff-icon {
@@ -712,8 +706,6 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-      .diff-grid { grid-template-columns: repeat(2, 1fr); }
       .physical-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(3, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -721,24 +713,65 @@
     @media (max-width: 768px) {
       body, a, button { cursor: auto; }
       .cursor-dot, .cursor-ring { display: none; }
-      .section { padding: 100px 0; }
-      .hero { padding: 130px 24px 80px; min-height: auto; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .section { padding: 72px 0; }
+      .hero { padding: 120px 20px 72px; min-height: auto; }
+      .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+      .hero-sub { font-size: 1rem; }
+      .hero-cta-group { flex-direction: column; align-items: center; gap: 12px; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 320px; justify-content: center; padding: 16px 28px; }
+
+      /* Nav */
+      .nav-logo { height: 72px; }
+      .nav-links { display: none; }
+      .nav { padding: 16px 0; }
+
+      /* Services */
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .service-card { padding: 20px 14px; }
+
+      /* Physical */
+      .physical-grid { grid-template-columns: 1fr; gap: 36px; }
+      .physical-visual { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .physical-visual-card:nth-child(2) { margin-top: 16px; }
+      .physical-visual-card:nth-child(3) { margin-top: -8px; }
+      .physical-visual-card { padding: 20px 14px; }
+
+      .price-card { padding: 20px 16px; }
       .price-card.featured { transform: scale(1); }
-      .price-card.featured:hover { transform: translateY(-6px); }
-      .diff-grid { grid-template-columns: 1fr 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      .physical-visual { display: none; }
+      .price-card.featured:hover { transform: translateY(-4px); }
+
+      /* Stats */
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+
+
+      /* Slide-in cards */
+      .stack-cards { padding: 32px 16px 60px; gap: 16px; }
+      .stack-card { padding: 32px 20px; border-radius: 18px; }
+      .stack-card h3 { font-size: clamp(1.4rem, 5vw, 2rem); }
+      .stack-card p { font-size: 0.95rem; }
+
+      /* Bella */
+      .bella-card { max-width: 100% !important; padding: 32px 24px !important; }
+
+      /* Hscroll */
+      .hscroll-card { width: 280px; min-width: 280px; padding: 24px 18px; }
+      .hscroll-header { padding: 72px 20px 40px; }
+
+      /* Footer */
       .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
       .footer-brand { flex-direction: column; gap: 8px; }
       .footer-divider { display: none; }
-      .nav-links { display: none; }
+
+      /* Scrub section */
+      .scrub-section { padding: 80px 20px; min-height: 40vh; }
+      .scrub-text { font-size: clamp(1.6rem, 6vw, 2.5rem); }
     }
     @media (max-width: 480px) {
-      .services-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .diff-grid { grid-template-columns: 1fr; }
       .hero-cta-group { flex-direction: column; align-items: center; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .nav-logo { height: 60px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -853,11 +886,12 @@
       width: max-content;
     }
     .hscroll-card {
-      width: 330px; min-width: 330px; flex-shrink: 0;
-      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
-      border-radius: 22px; padding: 36px 24px;
+      width: 300px; min-width: 300px; flex-shrink: 0;
+      background: var(--white); border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px; padding: 28px 22px;
       transition: box-shadow 0.4s, border-color 0.4s;
       position: relative;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .hscroll-card:hover {
       box-shadow: 0 24px 64px rgba(83,47,179,0.12);
@@ -874,16 +908,18 @@
     }
     .hscroll-footer p { color: var(--gray-600); font-size: 1rem; margin-bottom: 20px; }
 
-    /* ===== STACKING CARDS (DIFFERENTIALS) ===== */
-    .stack-cards { padding: 0; }
+    /* ===== SLIDE-IN CARDS (DIFFERENTIALS) ===== */
+    .stack-cards { padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 24px; }
     .stack-card {
-      width: 90%; max-width: 1000px; margin: 0 auto;
-      min-height: 40vh; border-radius: 24px;
+      width: 100%; max-width: 900px; margin: 0 auto;
+      border-radius: 24px;
       display: flex; align-items: center; justify-content: center;
-      padding: 48px 36px; color: white; text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-      will-change: transform;
+      padding: 48px 40px; color: white; text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
       position: relative; overflow: hidden;
+      /* initial hidden state */
+      opacity: 0; transform: translateX(-80px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1);
     }
     .stack-card::before {
       content: ''; position: absolute; inset: 0;
@@ -1233,9 +1269,9 @@
           </a>
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <div class="bella-card" style="background: linear-gradient(135deg, var(--purple-main), var(--purple-mid)); border-radius: 32px; padding: 60px 40px; text-align: center; color: white; max-width: 340px; width: 100%; position: relative; overflow: hidden;">
+          <div class="bella-card" style="background: linear-gradient(135deg, var(--purple-main), var(--purple-mid)); border-radius: 32px; padding: 40px 32px; text-align: center; color: white; max-width: 340px; width: 100%; position: relative; overflow: hidden;">
             <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(46,251,41,0.15), transparent 50%); pointer-events: none;"></div>
-            <div style="font-size: 4rem; margin-bottom: 20px; position: relative; z-index: 1;">🤖</div>
+            <img src="Bella Vitto AI.png" alt="Bella Vitto — IA Consultiva da Vine Marketing" style="width: 200px; height: 200px; object-fit: cover; object-position: center 15%; border-radius: 50%; margin: 0 auto 20px; display: block; border: 4px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.3); position: relative; z-index: 1;">
             <div style="font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1;">Bella Vitto</div>
             <div style="font-size: 0.85rem; opacity: 0.7; position: relative; z-index: 1;">IA Consultiva &bull; Serra Gaúcha</div>
             <div style="margin-top: 24px; padding: 12px 20px; background: rgba(255,255,255,0.1); border-radius: 14px; font-size: 0.82rem; position: relative; z-index: 1;">
@@ -1341,17 +1377,25 @@
     const loaderCount = document.getElementById('loaderCount');
     const loaderLogo = document.querySelector('.loader-logo');
 
-    const loaderTl = gsap.timeline({
-      onComplete: () => {
-        // Wipe loader away and start page
-        gsap.to(loader, {
-          clipPath: 'inset(0 0 100% 0)',
-          duration: 1,
-          ease: 'power4.inOut',
-          onComplete: () => { loader.remove(); initPage(); }
-        });
-      }
-    });
+    let pageInitialized = false;
+    function safeInitPage() {
+      if (pageInitialized) return;
+      pageInitialized = true;
+      if (loader && loader.parentNode) loader.remove();
+      initPage();
+    }
+
+    function finishLoader() {
+      gsap.to(loader, {
+        clipPath: 'inset(0 0 100% 0)',
+        duration: 0.8,
+        ease: 'power4.inOut',
+        onComplete: safeInitPage
+      });
+      setTimeout(safeInitPage, 1500);
+    }
+
+    const loaderTl = gsap.timeline({ onComplete: finishLoader });
 
     loaderTl
       .to(loaderLogo, { opacity: 1, duration: 0.4, ease: 'power2.out' })
@@ -1360,6 +1404,9 @@
         val: 100, duration: 2, ease: 'power1.inOut',
         onUpdate: function() { loaderCount.textContent = Math.floor(this.targets()[0].val); }
       }, 0.2);
+
+    // Fallback absoluto — garante que a página sempre inicializa
+    setTimeout(safeInitPage, 5000);
 
     /* ===========================
        LENIS SMOOTH SCROLL
@@ -1514,34 +1561,7 @@
         });
       }
 
-      // --- STACKING CARDS ---
-      const stackCards = gsap.utils.toArray('.stack-card');
-      const SPACER = 12;
-      stackCards.forEach((card, index) => {
-        gsap.to(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: () => 'top top+=' + (SPACER * index),
-            end: () => {
-              const lastTop = stackCards[stackCards.length - 1].offsetTop;
-              return '+=' + (lastTop - card.offsetTop);
-            },
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-          ease: 'none',
-          scale: () => 1 - (stackCards.length - index) * 0.03,
-        });
-        ScrollTrigger.create({
-          trigger: card,
-          start: () => 'top top+=' + (SPACER * index),
-          endTrigger: '.stack-cards',
-          end: 'bottom top+=200',
-          pin: true,
-          pinSpacing: false,
-          invalidateOnRefresh: true,
-        });
-      });
+      // Slide-in dos stack cards é feito via Motion One (inView) no bloco de module abaixo
 
       // --- TEXT SCRUB REVEAL (SplitText) ---
       document.querySelectorAll('.scrub-reveal').forEach(el => {
@@ -1711,7 +1731,25 @@
       );
     }, { amount: 0.25 });
 
-    // Stack card icons — individual spring pop as each card pins
+    // Stack cards — slide lateral com IntersectionObserver nativo
+    const stackObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateX(0)';
+          stackObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.stack-card').forEach((card, index) => {
+      const fromLeft = index % 2 === 0;
+      card.style.transform = `translateX(${fromLeft ? -80 : 80}px)`;
+      card.style.opacity = '0';
+      stackObserver.observe(card);
+    });
+
+    // Stack card icons — spring pop
     inView('.stack-card-icon', (info) => {
       animate(info.target,
         { opacity: 1, scale: 1 },
