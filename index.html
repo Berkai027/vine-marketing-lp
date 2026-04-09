@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vine Marketing — O Marketing da Serra Gaúcha</title>
+  <meta name="description" content="Estratégia, conteúdo e posicionamento para marcas que querem crescer com identidade. Vine Marketing, Serra Gaúcha.">
+  <meta name="theme-color" content="#532fb3">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / WhatsApp / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vinemarketing.com.br/">
+  <meta property="og:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
+  <meta property="og:description" content="Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.">
+  <meta property="og:image" content="https://vinemarketing.com.br/og-image.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Vine Marketing">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
+  <meta name="twitter:description" content="Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.">
+  <meta name="twitter:image" content="https://vinemarketing.com.br/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23532fb3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='18' fill='%232efb29'%3EV%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="logo.png">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Vine Marketing">
+
+  <!-- Preconnect para performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" as="image" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lenis Smooth Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.20/dist/lenis.css">
+
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #2d2d2d;
+      background: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+      cursor: none;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; cursor: none; }
+    button { cursor: none; }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --purple-dark: #532fb3;
+      --purple-main: #8616b0;
+      --purple-mid: #6c39c9;
+      --purple-light: #9f5de0;
+      --purple-glow: rgba(134,22,176,0.15);
+      --green: #2efb29;
+      --green-dark: #22c51f;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --radius: 14px;
+      --max-width: 1200px;
+    }
+
+    /* ===== LOADING SCREEN ===== */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: var(--gray-900);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .loader-logo {
+      height: 48px;
+      opacity: 0;
+      filter: brightness(0) invert(1);
+    }
+    .loader-bar-track {
+      width: 200px;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .loader-bar {
+      width: 0%;
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+    }
+    .loader-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== CUSTOM CURSOR ===== */
+    .cursor-dot {
+      width: 8px; height: 8px;
+      background: var(--purple-main);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background 0.3s;
+    }
+    .cursor-ring {
+      width: 40px; height: 40px;
+      border: 1.5px solid rgba(134,22,176,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    }
+    .cursor-ring.hovering {
+      width: 60px; height: 60px;
+      border-color: var(--green);
+      background: rgba(46,251,41,0.06);
+    }
+    .cursor-dot.hovering {
+      width: 4px; height: 4px;
+      background: var(--green);
+    }
+
+    /* ===== GRAIN OVERLAY ===== */
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9990;
+      opacity: 0.035;
+      mix-blend-mode: overlay;
+    }
+    .grain::after {
+      content: "";
+      position: absolute;
+      top: -200%; left: -100%;
+      width: 400%; height: 400%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 8s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%, 100% { transform: translate(0,0); }
+      10% { transform: translate(-5%,-10%); }
+      20% { transform: translate(-15%,5%); }
+      30% { transform: translate(7%,-25%); }
+      40% { transform: translate(-5%,25%); }
+      50% { transform: translate(-15%,10%); }
+      60% { transform: translate(15%,0%); }
+      70% { transform: translate(0%,15%); }
+      80% { transform: translate(3%,35%); }
+      90% { transform: translate(-10%,10%); }
+    }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .section { padding: 140px 0; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 0;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 16px 0;
+      box-shadow: 0 1px 30px rgba(83,47,179,0.06);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { height: 88px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-link {
+      font-size: 0.88rem; font-weight: 500; color: var(--gray-600);
+      transition: color 0.3s; position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--green);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover { color: var(--purple-main); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--purple-main); color: white;
+      padding: 10px 28px; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.88rem;
+      transition: all 0.3s; border: none;
+    }
+    .nav-cta:hover {
+      background: var(--purple-dark);
+      box-shadow: 0 8px 24px rgba(134,22,176,0.3);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 160px 24px 120px; position: relative; overflow: hidden;
+    }
+
+    /* Vídeo de fundo — coloque hero-bg.mp4 e hero-bg.webm na pasta do projeto */
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+      opacity: 0; transition: opacity 1.2s ease;
+    }
+    .hero-video.loaded { opacity: 1; }
+    .hero-video-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(8,4,24,0.60) 0%,
+        rgba(8,4,24,0.40) 50%,
+        rgba(8,4,24,0.70) 100%
+      );
+      opacity: 0; transition: opacity 1.2s ease; pointer-events: none;
+    }
+
+    /* Quando vídeo carrega: adapta cores do hero para branco */
+    .hero.has-video .hero-video-overlay { opacity: 1; }
+    .hero.has-video h1 { color: #ffffff; }
+    .hero.has-video .hero-sub { color: rgba(255,255,255,0.82); }
+    .hero.has-video .hero-badge {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.20);
+      color: rgba(255,255,255,0.90);
+    }
+    .hero.has-video .hero-scroll { color: rgba(255,255,255,0.45); }
+    .hero.has-video .btn-secondary {
+      border-color: rgba(255,255,255,0.35);
+      color: #ffffff;
+    }
+    .hero.has-video .btn-secondary:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: #ffffff;
+    }
+
+    /* Conteúdo do hero fica acima do vídeo */
+    .hero > div:not(.hero-mesh):not(.hero-scroll) {
+      position: relative; z-index: 2;
+    }
+    .hero-scroll { position: absolute; z-index: 2; }
+
+    .hero-mesh {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+      z-index: 1; /* fica acima do vídeo mas abaixo do overlay quando vídeo existe */
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.15;
+    }
+    .hero-blob--1 {
+      width: 700px; height: 700px; background: var(--purple-main);
+      top: -200px; right: -150px;
+      animation: blobFloat1 20s ease-in-out infinite;
+    }
+    .hero-blob--2 {
+      width: 500px; height: 500px; background: var(--green);
+      bottom: -150px; left: -100px;
+      animation: blobFloat2 25s ease-in-out infinite;
+    }
+    .hero-blob--3 {
+      width: 400px; height: 400px; background: var(--purple-mid);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: blobFloat3 18s ease-in-out infinite;
+    }
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(40px,-60px) scale(1.1); }
+      66% { transform: translate(-30px,30px) scale(0.9); }
+    }
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(-40px,50px) scale(1.15); }
+      66% { transform: translate(50px,-20px) scale(0.85); }
+    }
+    @keyframes blobFloat3 {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); }
+      50% { transform: translate(-50%,-50%) scale(1.2); }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(134,22,176,0.06); border: 1px solid rgba(134,22,176,0.12);
+      padding: 8px 20px; border-radius: 100px;
+      font-size: 0.82rem; font-weight: 500; color: var(--purple-main);
+      margin-bottom: 36px; opacity: 0;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800;
+      line-height: 1.05; color: var(--purple-dark);
+      margin-bottom: 28px; max-width: 800px;
+      margin-left: auto; margin-right: auto;
+      overflow: hidden;
+    }
+    .hero h1 .line { display: block; overflow: hidden; }
+    .hero h1 .line-inner { display: block; transform: translateY(110%); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--gray-600);
+      max-width: 520px; margin: 0 auto 52px; line-height: 1.8; opacity: 0;
+    }
+    .hero-cta-group {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: var(--gray-800);
+      padding: 18px 40px; border-radius: var(--radius);
+      font-weight: 700; font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none; position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    .btn-primary:hover::before { transform: translateX(100%); }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(46,251,41,0.4);
+    }
+    .btn-primary:active { transform: scale(0.97) translateY(1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: var(--purple-main);
+      padding: 18px 40px; border-radius: var(--radius);
+      font-weight: 600; font-size: 1rem;
+      border: 2px solid rgba(134,22,176,0.2);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      background: rgba(134,22,176,0.04);
+      border-color: var(--purple-main);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--gray-400); font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; opacity: 0;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--purple-light), transparent);
+      animation: scroll-line 2s ease-in-out infinite;
+    }
+    @keyframes scroll-line {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.4); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* (territory section removed — replaced by scrub text) */
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--gray-50);
+      background-image: radial-gradient(circle, rgba(83,47,179,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .services h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
+      text-align: center; color: var(--gray-800); margin-bottom: 12px;
+    }
+    .services-sub {
+      text-align: center; color: var(--gray-600);
+      font-size: 1.05rem; margin-bottom: 56px;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+    }
+    .service-card {
+      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 20px; padding: 28px 18px; text-align: center;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(134,22,176,0.03), transparent);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(83,47,179,0.1);
+      border-color: rgba(134,22,176,0.1);
+    }
+    .service-icon {
+      width: 48px; height: 48px; margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-main));
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-6deg);
+      box-shadow: 0 8px 24px rgba(134,22,176,0.3);
+    }
+    .service-card h3 { font-size: 0.88rem; font-weight: 600; color: var(--gray-800); }
+
+    /* ===== PHYSICAL ===== */
+    .physical {
+      position: relative; overflow: hidden;
+    }
+    .physical-deco {
+      position: absolute; pointer-events: none; inset: 0; overflow: hidden;
+    }
+    .physical-deco::before {
+      content: ''; position: absolute; width: 600px; height: 600px;
+      top: -120px; right: -180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(134,22,176,0.07) 0%, transparent 70%);
+    }
+    .physical-deco::after {
+      content: ''; position: absolute; width: 400px; height: 400px;
+      bottom: -80px; left: -100px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,251,41,0.05) 0%, transparent 70%);
+    }
+    .physical-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .physical-label {
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--purple-light); margin-bottom: 16px;
+    }
+    .physical h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
+      color: var(--purple-dark); line-height: 1.15; margin-bottom: 24px;
+    }
+    .physical-text {
+      color: var(--gray-600); font-size: 1.05rem; line-height: 1.8; margin-bottom: 36px;
+    }
+    .physical-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .physical-list li {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.95rem; color: var(--gray-600); font-weight: 500;
+    }
+    .physical-list-check {
+      width: 28px; height: 28px; min-width: 28px;
+      background: var(--green); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--gray-800); font-weight: 700;
+    }
+    .physical-quote {
+      font-size: 1.15rem; font-weight: 700; color: var(--purple-main);
+      padding-left: 24px; border-left: 3px solid var(--green);
+      margin-bottom: 36px;
+    }
+    .physical-visual {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .physical-visual-card {
+      background: var(--gray-50); border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 20px; padding: 28px 18px; text-align: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .physical-visual-card:nth-child(2) { margin-top: 32px; }
+    .physical-visual-card:nth-child(3) { margin-top: -16px; }
+    .physical-visual-card:hover {
+      border-color: rgba(134,22,176,0.15);
+      box-shadow: 0 16px 48px rgba(83,47,179,0.08);
+    }
+    .physical-visual-card .icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .physical-visual-card span { font-size: 0.85rem; font-weight: 600; color: var(--gray-600); }
+
+    /* ===== PRICING ===== */
+    .pricing { background: var(--gray-50); position: relative; overflow: hidden; }
+    .pricing::before {
+      content: ''; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%); width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(134,22,176,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pricing h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
+      text-align: center; color: var(--gray-800); margin-bottom: 8px;
+    }
+    .pricing-sub {
+      text-align: center; color: var(--gray-600); font-size: 1.05rem; margin-bottom: 72px;
+    }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start;
+      position: relative; z-index: 1;
+    }
+    .price-card {
+      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 22px; padding: 32px 22px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .price-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(83,47,179,0.1);
+    }
+    .price-card.featured {
+      border: 2px solid var(--purple-main);
+      transform: scale(1.03);
+      box-shadow: 0 24px 64px rgba(83,47,179,0.12);
+      background: linear-gradient(180deg, rgba(134,22,176,0.02), white 40%);
+    }
+    .price-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+      box-shadow: 0 32px 80px rgba(83,47,179,0.18);
+    }
+    .price-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--purple-main), var(--purple-mid));
+      color: white; padding: 6px 24px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .price-card-name {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--purple-light); margin-bottom: 8px;
+    }
+    .price-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--gray-800); margin-bottom: 12px; }
+    .price-card-desc {
+      font-size: 0.9rem; color: var(--gray-600); line-height: 1.6;
+      margin-bottom: 28px; min-height: 48px;
+    }
+    .price-card-features {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 12px; margin-bottom: 32px;
+    }
+    .price-card-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.88rem; color: var(--gray-600);
+    }
+    .price-card-features li::before {
+      content: '✓'; color: var(--green-dark); font-weight: 700; font-size: 0.85rem;
+    }
+    .price-card-price {
+      font-size: 1.15rem; font-weight: 700; color: var(--purple-dark); margin-bottom: 24px;
+    }
+    .price-card-price small { font-weight: 400; font-size: 0.8rem; color: var(--gray-400); }
+    .price-card-btn {
+      width: 100%; padding: 15px; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.9rem; text-align: center;
+      display: block; border: none; transition: all 0.3s;
+    }
+    .price-card-btn--outline {
+      background: transparent; color: var(--purple-main); border: 2px solid var(--gray-200);
+    }
+    .price-card-btn--outline:hover { border-color: var(--purple-main); background: rgba(134,22,176,0.03); }
+    .price-card-btn--fill { background: var(--purple-main); color: white; }
+    .price-card-btn--fill:hover { background: var(--purple-dark); box-shadow: 0 8px 24px rgba(134,22,176,0.3); }
+    .pricing-footer { text-align: center; margin-top: 56px; position: relative; z-index: 1; }
+    .pricing-footer p { color: var(--gray-600); font-size: 1rem; margin-bottom: 20px; }
+
+    /* ===== DIFFERENTIALS ===== */
+    .differentials {
+      background: var(--gray-900); color: white;
+      position: relative; overflow: hidden;
+    }
+    .differentials .mesh-dark {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .mesh-dark .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); opacity: 0.2; mix-blend-mode: screen;
+    }
+    .mesh-dark .blob-1 { width: 500px; height: 500px; background: var(--purple-main); top: -100px; right: -100px; }
+    .mesh-dark .blob-2 { width: 400px; height: 400px; background: var(--purple-mid); bottom: -100px; left: -50px; }
+    .differentials h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
+      text-align: center; margin-bottom: 72px; position: relative; z-index: 1;
+    }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+      position: relative; z-index: 1;
+    }
+    .diff-item { text-align: center; padding: 24px; }
+    .diff-icon {
+      width: 72px; height: 72px; margin: 0 auto 24px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .diff-item:hover .diff-icon {
+      background: rgba(46,251,41,0.08); border-color: rgba(46,251,41,0.3);
+      transform: translateY(-6px); box-shadow: 0 12px 40px rgba(46,251,41,0.1);
+    }
+    .diff-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+    .diff-item p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .diff-quote {
+      text-align: center; margin-top: 80px; position: relative; z-index: 1;
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem); font-weight: 700;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .diff-quote .green { color: var(--green); }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      position: relative; overflow: hidden;
+      background-image:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(134,22,176,0.05) 0%, transparent 70%),
+        radial-gradient(circle, rgba(83,47,179,0.04) 1px, transparent 1px);
+      background-size: auto, 32px 32px;
+    }
+    .cta-final-content { text-align: center; max-width: 640px; margin: 0 auto; }
+    .cta-final h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
+      color: var(--gray-800); line-height: 1.15; margin-bottom: 20px;
+    }
+    .cta-final h2 em { font-style: normal; color: var(--purple-main); }
+    .cta-final p {
+      font-size: 1.1rem; color: var(--gray-600); margin-bottom: 48px; line-height: 1.8;
+    }
+    .cta-final .btn-primary { font-size: 1.1rem; padding: 20px 52px; }
+
+    /* ===== FOOTER ===== */
+    .footer { padding: 48px 0; border-top: 1px solid var(--gray-200); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-brand { display: flex; align-items: center; gap: 16px; }
+    .footer-logo { height: 28px; }
+    .footer-divider { width: 1px; height: 20px; background: var(--gray-200); }
+    .footer-location { font-size: 0.85rem; color: var(--gray-400); }
+    .footer-copy { font-size: 0.8rem; color: var(--gray-400); }
+
+    /* ===== SKIP LINK (acessibilidade) ===== */
+    .skip-link {
+      position: fixed; top: -100%; left: 16px; z-index: 99999;
+      background: var(--purple-main); color: white;
+      padding: 12px 24px; border-radius: var(--radius);
+      font-weight: 600; font-size: 0.9rem;
+      transition: top 0.2s; cursor: auto;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 8px; cursor: pointer;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gray-800); border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 40px; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: 1.6rem; font-weight: 700; color: var(--gray-800);
+      font-family: 'Space Grotesk', sans-serif;
+      transition: color 0.2s; cursor: auto;
+    }
+    .mobile-menu a:hover { color: var(--purple-main); }
+    .mobile-menu .mobile-cta {
+      background: var(--purple-main); color: white !important;
+      padding: 16px 40px; border-radius: var(--radius);
+      font-size: 1.1rem !important;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal { clip-path: inset(0 0 100% 0); opacity: 0; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-grid { grid-template-columns: repeat(2, 1fr); }
+      .physical-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      body, a, button { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
+      .section { padding: 100px 0; }
+      .hero { padding: 130px 24px 80px; min-height: auto; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .price-card.featured { transform: scale(1); }
+      .price-card.featured:hover { transform: translateY(-6px); }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .physical-visual { display: none; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-brand { flex-direction: column; gap: 8px; }
+      .footer-divider { display: none; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .hero-cta-group { flex-direction: column; align-items: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ===== SCROLL PROGRESS BAR ===== */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--purple-main));
+      transform: scaleX(0); transform-origin: left;
+    }
+
+    /* ===== MARQUEE ===== */
+    .marquee-section { padding: 48px 0; overflow: hidden; border-bottom: 1px solid var(--gray-200); }
+    .marquee-label {
+      text-align: center; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 28px;
+    }
+    .marquee-track {
+      display: flex; gap: 64px; white-space: nowrap;
+      animation: marquee-scroll 25s linear infinite;
+    }
+    .marquee-item {
+      font-size: 1.1rem; font-weight: 600; color: var(--gray-300);
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+      transition: color 0.3s;
+    }
+    .marquee-item:hover { color: var(--purple-main); }
+    .marquee-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+      position: relative;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+      text-align: center;
+    }
+    .stat-item { padding: 24px; }
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
+      color: var(--purple-dark); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-number .stat-suffix { font-size: 0.6em; color: var(--green); }
+    .stat-label { font-size: 0.88rem; color: var(--gray-600); font-weight: 500; }
+
+    /* ===== SPOTLIGHT CARD EFFECT ===== */
+    .spotlight-card {
+      position: relative; overflow: hidden;
+    }
+    .spotlight-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(134,22,176,0.08), transparent 60%);
+      pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    .spotlight-card:hover::after { opacity: 1; }
+
+    /* ===== HEADLINE FONT ===== */
+    .hero h1, .territory h2, .services h2, .pricing h2, .differentials h2, .cta-final h2, .diff-quote {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+
+    /* ===== TEXT SCRUB REVEAL ===== */
+    .scrub-text {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 700; line-height: 1.25;
+      color: var(--gray-800); max-width: 800px;
+      margin: 0 auto; text-align: center;
+    }
+    .scrub-text em { font-style: normal; color: var(--purple-main); }
+    .scrub-section {
+      min-height: 60vh; display: flex; align-items: center;
+      justify-content: center; padding: 120px 24px;
+      position: relative;
+      background-image: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(134,22,176,0.04) 0%, transparent 70%);
+    }
+
+    /* ===== HORIZONTAL SCROLL PRICING ===== */
+    .hscroll-section {
+      overflow: hidden; position: relative;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(134,22,176,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(83,47,179,0.05) 0%, transparent 60%);
+    }
+    .hscroll-header {
+      text-align: center; padding: 100px 24px 60px;
+      position: relative; z-index: 2;
+    }
+    .hscroll-header h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 700;
+      color: var(--gray-800); margin-bottom: 8px;
+    }
+    .hscroll-header p { color: var(--gray-600); font-size: 1.05rem; }
+    .hscroll-track {
+      display: flex; gap: 32px; padding: 0 max(24px, calc((100vw - 1200px) / 2));
+      width: max-content;
+    }
+    .hscroll-card {
+      width: 330px; min-width: 330px; flex-shrink: 0;
+      background: var(--white); border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 22px; padding: 36px 24px;
+      transition: box-shadow 0.4s, border-color 0.4s;
+      position: relative;
+    }
+    .hscroll-card:hover {
+      box-shadow: 0 24px 64px rgba(83,47,179,0.12);
+      border-color: rgba(134,22,176,0.12);
+    }
+    .hscroll-card.featured {
+      border: 2px solid var(--purple-main);
+      box-shadow: 0 24px 64px rgba(83,47,179,0.12);
+      background: linear-gradient(180deg, rgba(134,22,176,0.03), white 40%);
+    }
+    .hscroll-footer {
+      text-align: center; padding: 60px 24px 100px;
+      position: relative; z-index: 2;
+    }
+    .hscroll-footer p { color: var(--gray-600); font-size: 1rem; margin-bottom: 20px; }
+
+    /* ===== STACKING CARDS (DIFFERENTIALS) ===== */
+    .stack-cards { padding: 0; }
+    .stack-card {
+      width: 90%; max-width: 1000px; margin: 0 auto;
+      min-height: 40vh; border-radius: 24px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px 36px; color: white; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      will-change: transform;
+      position: relative; overflow: hidden;
+    }
+    .stack-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(46,251,41,0.08), transparent 60%);
+      pointer-events: none;
+    }
+    .stack-card-inner { position: relative; z-index: 1; max-width: 600px; }
+    .stack-card-icon {
+      font-size: 2.2rem; margin-bottom: 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 18px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .stack-card h3 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700; margin-bottom: 16px;
+    }
+    .stack-card p {
+      font-size: 1.1rem; opacity: 0.6; line-height: 1.7; max-width: 440px; margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .hscroll-card { width: 290px; min-width: 290px; padding: 28px 20px; }
+      .stack-card { min-height: 35vh; width: 95%; padding: 36px 20px; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--purple-light); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--purple-main); }
+  </style>
+</head>
+<body>
+  <!-- SKIP LINK -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <!-- NOSCRIPT FALLBACK -->
+  <noscript>
+    <style>
+      .loader { display: none !important; }
+      body { cursor: auto !important; }
+      .cursor-dot, .cursor-ring, .grain, .scroll-progress { display: none !important; }
+    </style>
+  </noscript>
+
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader">
+    <img src="logo.png" alt="Vine" class="loader-logo">
+    <div class="loader-bar-track"><div class="loader-bar" id="loaderBar"></div></div>
+    <span class="loader-count" id="loaderCount">0</span>
+  </div>
+
+  <!-- GRAIN OVERLAY -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Progresso de leitura"></div>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação" aria-modal="true">
+    <a href="#servicos" class="hoverable">Serviços</a>
+    <a href="#planos" class="hoverable">Planos</a>
+    <a href="#diferenciais" class="hoverable">Diferenciais</a>
+    <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="mobile-cta hoverable">Fale com a Vine</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
+    <div class="nav-inner">
+      <img src="logo.png" alt="Vine Marketing" class="nav-logo">
+      <div class="nav-links">
+        <a href="#servicos" class="nav-link hoverable">Serviços</a>
+        <a href="#planos" class="nav-link hoverable">Planos</a>
+        <a href="#diferenciais" class="nav-link hoverable">Diferenciais</a>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="nav-cta hoverable">Fale com a Vine</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Vídeo de fundo: coloque hero-bg.mp4 (e hero-bg.webm) na pasta raiz do projeto -->
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="none" aria-hidden="true">
+      <source src="hero-bg.webm" type="video/webm">
+      <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" aria-hidden="true"></div>
+
+    <div class="hero-mesh">
+      <div class="hero-blob hero-blob--1"></div>
+      <div class="hero-blob hero-blob--2"></div>
+      <div class="hero-blob hero-blob--3"></div>
+    </div>
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Serra Gaúcha
+      </div>
+      <h1>
+        <span class="line"><span class="line-inner">Somos o marketing</span></span>
+        <span class="line"><span class="line-inner">da Serra Gaúcha.</span></span>
+      </h1>
+      <p class="hero-sub">Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.</p>
+      <div class="hero-cta-group">
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable">
+          Fale com a Vine
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#planos" class="btn-secondary magnetic hoverable">Ver planos</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE SOCIAL PROOF -->
+  <section class="marquee-section">
+    <div class="marquee-label">Segmentos que atendemos</div>
+    <div style="overflow: hidden;">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot"></span>Vinícolas</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Restaurantes</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Hotéis & Pousadas</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Cafés & Bistrôs</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Eventos Culturais</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Turismo de Vivência</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia Local</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Enoturismo</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item"><span class="marquee-dot"></span>Vinícolas</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Restaurantes</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Hotéis & Pousadas</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Cafés & Bistrôs</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Eventos Culturais</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Turismo de Vivência</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia Local</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Enoturismo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERRITORY — TEXT SCRUB REVEAL -->
+  <section class="scrub-section" id="territorio">
+    <div class="container">
+      <p class="scrub-text scrub-reveal" aria-label="A Serra Gaúcha vive seu maior crescimento em anos — enoturismo, gastronomia e a Festa Nacional da Uva colocam a região no mapa do Brasil. Nosso foco: vinícolas, restaurantes, hotéis e experiências que são o coração da Serra.">A Serra Gaúcha vive seu maior crescimento em anos — enoturismo, gastronomia e a Festa Nacional da Uva colocam a região no mapa do Brasil. Nosso foco: vinícolas, restaurantes, hotéis e experiências que são o <em>coração da Serra</em>.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services section" id="servicos">
+    <div class="container">
+      <h2 class="reveal">O que fazemos</h2>
+      <p class="services-sub reveal">Do branding à IA, soluções completas para posicionar sua marca com consistência.</p>
+      <div class="services-grid">
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Estratégia de marca</h3>
+        </div>
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Gestão de redes sociais</h3>
+        </div>
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+          </div>
+          <h3>Produção de conteúdo</h3>
+        </div>
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Campanhas e lançamentos</h3>
+        </div>
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3>Bella IA — Consultoria inteligente</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHYSICAL -->
+  <section class="physical section" id="fisico">
+    <div class="physical-deco" aria-hidden="true"></div>
+    <div class="container">
+      <div class="physical-grid">
+        <div>
+          <div class="physical-label reveal">Além do digital</div>
+          <h2 class="reveal">Sua marca também vive fora do digital.</h2>
+          <p class="physical-text reveal">Acreditamos que posicionamento não acontece apenas nas redes sociais. Cartões, panfletos, cardápios e materiais físicos também constroem autoridade e impulsionam vendas.</p>
+          <ul class="physical-list">
+            <li class="reveal"><span class="physical-list-check">✓</span> Cartões de visita premium</li>
+            <li class="reveal"><span class="physical-list-check">✓</span> Panfletos e materiais promocionais</li>
+            <li class="reveal"><span class="physical-list-check">✓</span> Cardápios e papelaria corporativa</li>
+            <li class="reveal"><span class="physical-list-check">✓</span> Embalagens personalizadas</li>
+            <li class="reveal"><span class="physical-list-check">✓</span> Banners e materiais de ponto de venda</li>
+          </ul>
+          <p class="physical-quote reveal">Do digital ao físico, sua marca precisa ser consistente.</p>
+          <div style="margin-top: 8px;">
+            <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+              Solicitar material
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="physical-visual">
+          <div class="physical-visual-card hoverable reveal"><div class="icon">🃏</div><span>Cartões de visita</span></div>
+          <div class="physical-visual-card hoverable reveal"><div class="icon">📋</div><span>Cardápios</span></div>
+          <div class="physical-visual-card hoverable reveal"><div class="icon">📦</div><span>Embalagens</span></div>
+          <div class="physical-visual-card hoverable reveal"><div class="icon">🎯</div><span>Banners & PDV</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING — HORIZONTAL SCROLL -->
+  <section class="hscroll-section" id="planos" style="background: var(--gray-50);">
+    <div class="hscroll-header">
+      <h2 class="reveal">Carta de Vinhos</h2>
+      <p class="reveal">Escolha o plano ideal para o momento da sua marca.</p>
+    </div>
+    <div class="hscroll-track" id="hscrollTrack">
+      <div class="hscroll-card spotlight-card hoverable">
+        <div class="price-card-name">Carménère</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--gray-800);margin-bottom:12px;">Leve, versátil e acolhedor</h3>
+        <p class="price-card-desc">Para negócios locais que estão começando sua presença digital.</p>
+        <ul class="price-card-features">
+          <li>Gestão de até 2 plataformas</li>
+          <li>4 posts semanais (imagem ou carrossel)</li>
+          <li>Identidade visual ou capa e destaques</li>
+          <li>1 vídeo editado/mês</li>
+          <li>Relatório bimestral de desempenho</li>
+          <li>Suporte leve de design</li>
+        </ul>
+        <div class="price-card-price">R$ 1.500 – 2.200 <small>/mês</small></div>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
+      </div>
+      <div class="hscroll-card featured spotlight-card hoverable">
+        <div class="price-badge">Mais escolhido</div>
+        <div class="price-card-name">Merlot</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--gray-800);margin-bottom:12px;">Equilibrado e criativo</h3>
+        <p class="price-card-desc">Para marcas que já têm presença online e querem elevar a experiência.</p>
+        <ul class="price-card-features">
+          <li>Gestão completa de até 3 redes</li>
+          <li>6 posts semanais (feed, reels, stories)</li>
+          <li>Calendário temático e estratégico</li>
+          <li>1 vídeo captado ou 2 editados/mês</li>
+          <li>Cardápio digital ou arte personalizada</li>
+          <li>Relatório mensal + reuniões</li>
+        </ul>
+        <div class="price-card-price">R$ 2.500 – 3.800 <small>/mês</small></div>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--fill hoverable">Quero este plano</a>
+      </div>
+      <div class="hscroll-card spotlight-card hoverable">
+        <div class="price-card-name">Cabernet Sauvignon</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--gray-800);margin-bottom:12px;">Encorpado e estratégico</h3>
+        <p class="price-card-desc">Para marcas que buscam consistência e diferenciação real.</p>
+        <ul class="price-card-features">
+          <li>Gestão completa + planejamento de marca</li>
+          <li>Produção audiovisual mensal profissional</li>
+          <li>Campanhas e lançamentos sazonais</li>
+          <li>Business Plan personalizado</li>
+          <li>Copywriting e storytelling de marca</li>
+          <li>Relatórios detalhados + reuniões quinzenais</li>
+        </ul>
+        <div class="price-card-price">R$ 4.200 – 6.000 <small>/mês</small></div>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
+      </div>
+      <div class="hscroll-card spotlight-card hoverable">
+        <div class="price-card-name">Tannat</div>
+        <h3 style="font-size:1.4rem;font-weight:700;color:var(--gray-800);margin-bottom:12px;">Intenso, exclusivo e memorável</h3>
+        <p class="price-card-desc">Nosso rótulo premium — marketing autoral de alto impacto.</p>
+        <ul class="price-card-features">
+          <li>Estratégia 360° (branding + AV + mídia paga)</li>
+          <li>Vídeos institucionais e campanhas completas</li>
+          <li>Consultoria de posicionamento + SEO local</li>
+          <li>Identidade visual completa</li>
+          <li>Acesso à Bella IA Premium</li>
+          <li>Coordenação de eventos (Festa da Uva, feiras)</li>
+        </ul>
+        <div class="price-card-price">A partir de R$ 7.500 <small>/mês</small></div>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Falar com a Vine</a>
+      </div>
+    </div>
+    <div class="hscroll-footer reveal">
+      <p>Não sabe qual plano escolher?</p>
+      <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable">Quero entender qual plano é ideal para mim</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="4">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Cidades atendidas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="20">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Parcerias ativas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Vinícolas com campanhas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="360">0</span><span class="stat-suffix">°</span></div>
+          <div class="stat-label">Estratégia completa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BELLA IA -->
+  <section class="bella section" id="bella" style="background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%); position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="physical-grid">
+        <div>
+          <div class="physical-label reveal">Inovação</div>
+          <h2 class="reveal" style="color: var(--purple-dark);">Conheça a Bella Vitto.</h2>
+          <p class="physical-text reveal">A primeira avatar de IA da Serra Gaúcha. Em 2026, a Vine se posiciona como a primeira agência da região com inteligência artificial integrada.</p>
+          <p class="physical-text reveal">No nosso site, empresários poderão conversar com a Bella e receber consultoria gratuita em marketing, branding e redes sociais.</p>
+          <p class="physical-quote reveal">Inovar sem perder o coração. E fazer da Serra o centro da criatividade digital.</p>
+          <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+            Quero conhecer a Bella
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <div class="bella-card" style="background: linear-gradient(135deg, var(--purple-main), var(--purple-mid)); border-radius: 32px; padding: 60px 40px; text-align: center; color: white; max-width: 340px; width: 100%; position: relative; overflow: hidden;">
+            <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(46,251,41,0.15), transparent 50%); pointer-events: none;"></div>
+            <div style="font-size: 4rem; margin-bottom: 20px; position: relative; z-index: 1;">🤖</div>
+            <div style="font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1;">Bella Vitto</div>
+            <div style="font-size: 0.85rem; opacity: 0.7; position: relative; z-index: 1;">IA Consultiva &bull; Serra Gaúcha</div>
+            <div style="margin-top: 24px; padding: 12px 20px; background: rgba(255,255,255,0.1); border-radius: 14px; font-size: 0.82rem; position: relative; z-index: 1;">
+              <span style="color: var(--green);">●</span> Consultoria gratuita por tempo limitado
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIALS — STACKING CARDS -->
+  <section style="padding: 80px 0 0; text-align: center;">
+    <div class="container">
+      <h2 class="reveal" style="font-family:'Space Grotesk','Inter',sans-serif; font-size:clamp(2.2rem,4.5vw,3.5rem); font-weight:700; color:var(--gray-800); margin-bottom: 16px;">Por que a Vine?</h2>
+      <p class="reveal" style="color:var(--gray-600); font-size:1.05rem; margin-bottom:40px;">Cada detalhe foi pensado para entregar resultado real.</p>
+    </div>
+  </section>
+  <div class="stack-cards" id="diferenciais">
+    <div class="stack-card" style="background: linear-gradient(135deg, #1a1035, #2d1b69);">
+      <div class="stack-card-inner">
+        <div class="stack-card-icon">🎨</div>
+        <h3>Criatividade local</h3>
+        <p>Identidade que conversa com o território da Serra Gaúcha. De Galópolis a Gramado, criamos para quem vive e respira a serra.</p>
+      </div>
+    </div>
+    <div class="stack-card" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
+      <div class="stack-card-inner">
+        <div class="stack-card-icon">📊</div>
+        <h3>Estratégia profissional</h3>
+        <p>Planejamento com dados, não achismos. Business plans personalizados, relatórios detalhados e reuniões de acompanhamento.</p>
+      </div>
+    </div>
+    <div class="stack-card" style="background: linear-gradient(135deg, #0d0221, #341a60, #6c39c9);">
+      <div class="stack-card-inner">
+        <div class="stack-card-icon">🤖</div>
+        <h3>Bella IA integrada</h3>
+        <p>Primeira agência da Serra com avatar de IA para consultoria gratuita. Inovação com sotaque e propósito.</p>
+      </div>
+    </div>
+    <div class="stack-card" style="background: linear-gradient(135deg, #111827, #1f2937, #532fb3);">
+      <div class="stack-card-inner">
+        <div class="stack-card-icon">🎯</div>
+        <h3>Foco em resultado</h3>
+        <p>Do digital ao físico, execução orientada a crescimento. Campanhas sazonais, lançamentos e ativações na Festa da Uva.</p>
+      </div>
+    </div>
+  </div>
+  <section style="padding: 60px 0 80px; text-align: center; background: var(--gray-900);">
+    <p class="diff-quote" style="font-family:'Space Grotesk','Inter',sans-serif; font-size:clamp(1.3rem,2.8vw,1.8rem); font-weight:700; color:white; max-width:600px; margin:0 auto;">A Vine não é apenas uma agência.<br><span style="color:var(--green);">É a agência do território.</span></p>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final section" id="contato">
+    <div class="container">
+      <div class="cta-final-content">
+        <h2 class="scrub-text scrub-reveal" style="margin-bottom:28px;" aria-label="Seu negócio não precisa apenas aparecer. Precisa ser percebido.">Seu negócio não precisa apenas aparecer. <em>Precisa ser percebido.</em></h2>
+        <p class="reveal" style="margin-bottom:48px;">Vamos conversar sobre como posicionar sua marca com estratégia, identidade e resultado.</p>
+        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+          Fale com a Vine
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main><!-- /#main-content -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="logo.png" alt="Vine Marketing" class="footer-logo" loading="lazy">
+          <div class="footer-divider"></div>
+          <span class="footer-location">Serra Gaúcha</span>
+        </div>
+        <span class="footer-copy">&copy; 2026 Vine Marketing. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <!-- Lenis -->
+  <script src="https://unpkg.com/lenis@1.3.20/dist/lenis.min.js"></script>
+  <!-- GSAP + Plugins (all free since Webflow acquisition) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14/dist/CustomEase.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
+
+    // Custom eases
+    CustomEase.create("smooth", "M0,0 C0.16,1 0.3,1 1,1");
+
+    /* ===========================
+       LOADING SCREEN
+    =========================== */
+    const loader = document.getElementById('loader');
+    const loaderBar = document.getElementById('loaderBar');
+    const loaderCount = document.getElementById('loaderCount');
+    const loaderLogo = document.querySelector('.loader-logo');
+
+    const loaderTl = gsap.timeline({
+      onComplete: () => {
+        // Wipe loader away and start page
+        gsap.to(loader, {
+          clipPath: 'inset(0 0 100% 0)',
+          duration: 1,
+          ease: 'power4.inOut',
+          onComplete: () => { loader.remove(); initPage(); }
+        });
+      }
+    });
+
+    loaderTl
+      .to(loaderLogo, { opacity: 1, duration: 0.4, ease: 'power2.out' })
+      .to(loaderBar, { width: '100%', duration: 2, ease: 'power1.inOut' }, 0.2)
+      .to({ val: 0 }, {
+        val: 100, duration: 2, ease: 'power1.inOut',
+        onUpdate: function() { loaderCount.textContent = Math.floor(this.targets()[0].val); }
+      }, 0.2);
+
+    /* ===========================
+       LENIS SMOOTH SCROLL
+    =========================== */
+    const lenis = new Lenis({
+      lerp: 0.08,
+      smoothWheel: true,
+    });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    /* ===========================
+       CUSTOM CURSOR
+    =========================== */
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0;
+
+    if (window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        gsap.to(dot, { left: mouseX, top: mouseY, duration: 0.1, ease: 'power2.out' });
+        gsap.to(ring, { left: mouseX, top: mouseY, duration: 0.35, ease: 'power2.out' });
+      });
+
+      document.querySelectorAll('.hoverable, a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          ring.classList.add('hovering');
+          dot.classList.add('hovering');
+        });
+        el.addEventListener('mouseleave', () => {
+          ring.classList.remove('hovering');
+          dot.classList.remove('hovering');
+        });
+      });
+    }
+
+    /* ===========================
+       NAV SCROLL (via Lenis — evita conflito com smooth scroll)
+    =========================== */
+    lenis.on('scroll', ({ scroll }) => {
+      document.getElementById('nav').classList.toggle('scrolled', scroll > 80);
+    });
+
+    /* ===========================
+       HERO VIDEO BACKGROUND
+    =========================== */
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+      const heroSection = document.querySelector('.hero');
+      heroVideo.addEventListener('canplay', () => {
+        heroVideo.classList.add('loaded');
+        heroSection.classList.add('has-video');
+        // Suprime os blobs quando vídeo está ativo (evita mistura visual)
+        heroSection.querySelectorAll('.hero-blob').forEach(b => b.style.opacity = '0');
+      }, { once: true });
+      // Se vídeo falhar (arquivo não encontrado), não faz nada — blobs ficam visíveis
+      heroVideo.addEventListener('error', () => {}, { once: true });
+    }
+
+    /* ===========================
+       HAMBURGER MENU
+    =========================== */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu(open) {
+      hamburger.classList.toggle('open', open);
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) lenis.stop(); else lenis.start();
+    }
+
+    hamburger.addEventListener('click', () => {
+      toggleMenu(!hamburger.classList.contains('open'));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) toggleMenu(false);
+    });
+
+    /* ===========================
+       MAIN PAGE ANIMATIONS
+    =========================== */
+    function initPage() {
+
+      // --- HERO ENTRANCE ---
+      const heroTl = gsap.timeline({ defaults: { ease: 'smooth' } });
+
+      heroTl
+        .to('.hero-badge', { opacity: 1, duration: 0.6, y: 0 })
+        .to('.hero h1 .line-inner', {
+          y: '0%',
+          duration: 1.2,
+          stagger: 0.15,
+          ease: 'power4.out'
+        }, '-=0.3')
+        .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
+        .to('.hero-cta-group', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+        .to('.hero-scroll', { opacity: 1, duration: 0.6 }, '-=0.3');
+
+      // --- PARALLAX BLOBS ---
+      gsap.to('.hero-blob--1', {
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+        y: 250, x: -60, ease: 'none'
+      });
+      gsap.to('.hero-blob--2', {
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+        y: -180, x: 40, ease: 'none'
+      });
+
+      // --- REVEAL ANIMATIONS (clip-path) ---
+      gsap.utils.toArray('.reveal').forEach((el, i) => {
+        gsap.to(el, {
+          clipPath: 'inset(0 0 0% 0)',
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+
+      // (territory highlight removed — replaced by scrub text)
+
+      // SERVICE CARDS — handed to Motion One (spring physics)
+
+      // --- HORIZONTAL SCROLL PRICING ---
+      const hTrack = document.getElementById('hscrollTrack');
+      if (hTrack && window.innerWidth > 768) {
+        gsap.to(hTrack, {
+          x: () => -(hTrack.scrollWidth - window.innerWidth),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.hscroll-section',
+            pin: true,
+            scrub: 1,
+            end: () => '+=' + (hTrack.scrollWidth - window.innerWidth),
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          }
+        });
+      }
+
+      // --- STACKING CARDS ---
+      const stackCards = gsap.utils.toArray('.stack-card');
+      const SPACER = 12;
+      stackCards.forEach((card, index) => {
+        gsap.to(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: () => 'top top+=' + (SPACER * index),
+            end: () => {
+              const lastTop = stackCards[stackCards.length - 1].offsetTop;
+              return '+=' + (lastTop - card.offsetTop);
+            },
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+          ease: 'none',
+          scale: () => 1 - (stackCards.length - index) * 0.03,
+        });
+        ScrollTrigger.create({
+          trigger: card,
+          start: () => 'top top+=' + (SPACER * index),
+          endTrigger: '.stack-cards',
+          end: 'bottom top+=200',
+          pin: true,
+          pinSpacing: false,
+          invalidateOnRefresh: true,
+        });
+      });
+
+      // --- TEXT SCRUB REVEAL (SplitText) ---
+      document.querySelectorAll('.scrub-reveal').forEach(el => {
+        SplitText.create(el, {
+          type: 'words, chars',
+          autoSplit: true,
+          onSplit(self) {
+            return gsap.from(self.chars, {
+              opacity: 0.1,
+              stagger: 0.3,
+              scrollTrigger: {
+                trigger: self.elements[0],
+                start: 'top 75%',
+                end: 'bottom 40%',
+                scrub: 1,
+              },
+            });
+          },
+        });
+      });
+
+      // PHYSICAL LIST + VISUAL CARDS — handed to Motion One (spring physics)
+
+      // --- CARD 3D TILT (horizontal scroll cards) ---
+      document.querySelectorAll('.hscroll-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // --- MAGNETIC BUTTONS ---
+      document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(btn, { x: x * 0.25, y: y * 0.25, duration: 0.3, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', () => {
+          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+        });
+      });
+
+      // --- SERVICE CARD TILT ---
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(600px) rotateY(${x * 12}deg) rotateX(${-y * 8}deg) translateY(-8px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      // --- SCROLL PROGRESS BAR ---
+      gsap.to('#scrollProgress', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.3,
+        }
+      });
+
+      // --- COUNTER ANIMATION ---
+      document.querySelectorAll('.counter').forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        gsap.to(el, {
+          innerText: target,
+          duration: 2,
+          snap: { innerText: 1 },
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+
+      // --- SPOTLIGHT EFFECT ON CARDS ---
+      document.querySelectorAll('.spotlight-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+          card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+        });
+      });
+
+      // STATS — handed to Motion One (spring physics)
+
+      // --- SMOOTH ANCHOR LINKS ---
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) lenis.scrollTo(target, { offset: -80 });
+        });
+      });
+    }
+  </script>
+
+  <!-- ===== SERVICE WORKER ===== -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+
+  <!-- ===== MOTION ONE — Spring Physics (Framer Motion for vanilla JS) ===== -->
+  <script type="module">
+    import { animate, inView, stagger, spring } from 'https://cdn.jsdelivr.net/npm/motion@10.18.0/+esm';
+
+    /* ── INITIAL HIDDEN STATES ──────────────────────────────────────── */
+    animate('.service-card',        { opacity: 0, y: 60  }, { duration: 0 });
+    animate('.physical-list li',    { opacity: 0, x: -28 }, { duration: 0 });
+    animate('.physical-visual-card',{ opacity: 0, scale: 0.82 }, { duration: 0 });
+    animate('.stat-item',           { opacity: 0, y: 36  }, { duration: 0 });
+    animate('.stack-card-icon',     { opacity: 0, scale: 0 }, { duration: 0 });
+    animate('.footer-brand',        { opacity: 0, y: 20  }, { duration: 0 });
+    animate('.footer-copy',         { opacity: 0, y: 20  }, { duration: 0 });
+    animate('.diff-quote',          { opacity: 0, y: 28  }, { duration: 0 });
+
+    /* ── SPRING ENTRANCES ───────────────────────────────────────────── */
+
+    // Service cards — spring bounce stagger
+    inView('.services-grid', () => {
+      animate('.service-card',
+        { opacity: 1, y: 0 },
+        { delay: stagger(0.08), easing: spring({ stiffness: 280, damping: 24, mass: 1 }) }
+      );
+    }, { amount: 0.15 });
+
+    // Physical list items — spring slide from left
+    inView('.physical-list', () => {
+      animate('.physical-list li',
+        { opacity: 1, x: 0 },
+        { delay: stagger(0.07), easing: spring({ stiffness: 360, damping: 28 }) }
+      );
+    }, { amount: 0.2 });
+
+    // Physical visual cards — spring scale pop
+    inView('.physical-visual', () => {
+      animate('.physical-visual-card',
+        { opacity: 1, scale: 1 },
+        { delay: stagger(0.09), easing: spring({ stiffness: 420, damping: 22, mass: 0.8 }) }
+      );
+    }, { amount: 0.3 });
+
+    // Stats — spring rise stagger
+    inView('.stats-grid', () => {
+      animate('.stat-item',
+        { opacity: 1, y: 0 },
+        { delay: stagger(0.1), easing: spring({ stiffness: 320, damping: 24 }) }
+      );
+    }, { amount: 0.25 });
+
+    // Stack card icons — individual spring pop as each card pins
+    inView('.stack-card-icon', (info) => {
+      animate(info.target,
+        { opacity: 1, scale: 1 },
+        { easing: spring({ stiffness: 600, damping: 22, mass: 0.6 }) }
+      );
+    }, { amount: 0.5 });
+
+    // Footer — spring rise
+    inView('footer', () => {
+      animate('.footer-brand',
+        { opacity: 1, y: 0 },
+        { easing: spring({ stiffness: 300, damping: 26 }) }
+      );
+      animate('.footer-copy',
+        { opacity: 1, y: 0 },
+        { delay: 0.15, easing: spring({ stiffness: 300, damping: 26 }) }
+      );
+    }, { amount: 0.4 });
+
+    // "A Vine não é apenas uma agência" quote
+    inView('.diff-quote', (info) => {
+      animate(info.target,
+        { opacity: 1, y: 0 },
+        { easing: spring({ stiffness: 240, damping: 22 }) }
+      );
+    }, { amount: 0.5 });
+
+    /* ── CONTINUOUS ANIMATIONS ──────────────────────────────────────── */
+
+    // Bella IA card — gentle spring float loop
+    const bellaCard = document.querySelector('.bella-card');
+    if (bellaCard) {
+      animate(bellaCard,
+        { y: ['0px', '-16px', '0px'] },
+        { duration: 4, repeat: Infinity, easing: 'ease-in-out' }
+      );
+    }
+
+    /* ── INTERACTIONS ───────────────────────────────────────────────── */
+
+    // Button press — spring scale feedback
+    document.querySelectorAll('.btn-primary, .btn-secondary, .price-card-btn').forEach(btn => {
+      btn.addEventListener('pointerdown', () => {
+        animate(btn, { scale: 0.95 }, { easing: spring({ stiffness: 700, damping: 30 }) });
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(evt => {
+        btn.addEventListener(evt, () => {
+          animate(btn, { scale: 1 }, { easing: spring({ stiffness: 420, damping: 18 }) });
+        });
+      });
+    });
+
+    // Physical visual cards — spring scale hover
+    document.querySelectorAll('.physical-visual-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        animate(card, { scale: 1.07, y: -6 }, { easing: spring({ stiffness: 400, damping: 20 }) });
+      });
+      card.addEventListener('mouseleave', () => {
+        animate(card, { scale: 1, y: 0 }, { easing: spring({ stiffness: 360, damping: 26 }) });
+      });
+    });
+
+    // Nav logo — spring hover nudge
+    const navLogo = document.querySelector('.nav-logo');
+    if (navLogo) {
+      navLogo.style.willChange = 'transform';
+      navLogo.addEventListener('mouseenter', () => {
+        animate(navLogo, { scale: 1.06 }, { easing: spring({ stiffness: 400, damping: 20 }) });
+      });
+      navLogo.addEventListener('mouseleave', () => {
+        animate(navLogo, { scale: 1 }, { easing: spring({ stiffness: 380, damping: 24 }) });
+      });
+    }
+  </script>
+</body>
+</html>
