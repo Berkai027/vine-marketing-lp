@@ -10,10 +10,10 @@
 
   <!-- Open Graph / WhatsApp / LinkedIn -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vinemarketing.com.br/">
+  <meta property="og:url" content="https://vinemarketing.digital/">
   <meta property="og:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
   <meta property="og:description" content="Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.">
-  <meta property="og:image" content="https://vinemarketing.com.br/og-image.jpg">
+  <meta property="og:image" content="https://vinemarketing.digital/og-image.jpg">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Vine Marketing">
 
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
   <meta name="twitter:description" content="Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.">
-  <meta name="twitter:image" content="https://vinemarketing.com.br/og-image.jpg">
+  <meta name="twitter:image" content="https://vinemarketing.digital/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23532fb3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='18' fill='%232efb29'%3EV%3C/text%3E%3C/svg%3E">
@@ -202,7 +202,7 @@
       max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { height: 110px; }
+    .nav-logo { height: 72px; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-link {
       font-size: 0.88rem; font-weight: 500; color: var(--gray-600);
@@ -709,11 +709,14 @@
       .physical-grid { grid-template-columns: 1fr; gap: 48px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .bella-3col { grid-template-columns: 1fr !important; }
+      .bella-3col { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .bella-3col > div:last-child { padding-top: 0 !important; text-align: left !important; }
+      .bella-3col > div:last-child p { text-align: left !important; }
+      .bella-3col > div:nth-child(2) { order: -1; }
     }
     @media (max-width: 768px) {
       .bella-3col { gap: 32px !important; }
-      .bella-3col > div:last-child p { text-align: left !important; margin-top: 0 !important; }
+      .footer-grid-3col { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 768px) {
       body, a, button { cursor: auto; }
@@ -849,25 +852,25 @@
     }
     .spotlight-card:hover::after { opacity: 1; }
 
-    /* ===== HEADLINE FONT ===== */
-    .hero h1, .territory h2, .services h2, .pricing h2, .differentials h2, .cta-final h2, .diff-quote {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-    }
-
     /* ===== BRAND TYPOGRAPHY — Inter ===== */
-    /* Títulos: Regular, -0.07em, line-height 0.95 */
-    h1, h2, h3 {
+    /* Títulos de seção: Inter Regular, -0.07em, lh 0.95 */
+    .section-title {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
       letter-spacing: -0.07em;
       line-height: 0.95;
     }
-    /* Textos: ExtraLight/Light, -0.022em, line-height 1.13 */
-    p, li, .physical-text, .price-card-desc, .hscroll-header p, .pricing-sub, .services-sub {
+    /* Textos corpo: Inter Light, -0.022em, lh 1.13 */
+    .body-text {
       font-family: 'Inter', sans-serif;
-      font-weight: 200;
+      font-weight: 300;
       letter-spacing: -0.022em;
       line-height: 1.13;
+    }
+    /* Aplicar nos textos de parágrafo principais */
+    .services-sub, .hscroll-header > p, .hscroll-footer > p {
+      font-weight: 300;
+      letter-spacing: -0.022em;
     }
 
     /* ===== TEXT SCRUB REVEAL ===== */
@@ -1108,7 +1111,7 @@
       <p style="font-family:'Inter',sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 200; letter-spacing: -0.022em; line-height: 1.13; color: var(--gray-800);">
         Crescer pode ser leve. Esse é o <strong style="font-weight:700;">nosso</strong> jeito de fazer <em style="font-style:italic;">marketing.</em>
       </p>
-      <p style="margin-top: 28px; font-family:'Inter',sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: -0.022em; color: var(--gray-400); opacity: 0.37;">@Bellavitto</p>
+      <p style="margin-top: 28px; font-family:'Inter',sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: -0.022em; color: var(--gray-400);">@Bellavitto</p>
     </div>
   </section>
 
@@ -1146,7 +1149,7 @@
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
-          <h3>Bella IA — Consultoria inteligente</h3>
+          <h3>Bella IA</h3>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
@@ -1179,7 +1182,7 @@
         <div>
           <div class="physical-label reveal">Além do digital</div>
           <h2 class="reveal" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">Sua marca também vive fora do digital.</h2>
-          <p class="physical-text reveal" style="font-weight:200;letter-spacing:-0.022em;line-height:1.13;">Imprima sua autoridade</p>
+          <p class="physical-text reveal" style="font-weight:300;letter-spacing:-0.022em;line-height:1.13;margin-bottom:24px;">Imprima sua autoridade.</p>
           <ul class="physical-list">
             <li class="reveal"><span class="physical-list-check">✓</span> Cartões de visita premium</li>
             <li class="reveal"><span class="physical-list-check">✓</span> Panfletos e materiais promocionais</li>
