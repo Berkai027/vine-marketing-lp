@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preload" as="image" href="logo.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Lenis Smooth Scroll -->
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.20/dist/lenis.css">
@@ -407,7 +407,7 @@
       font-size: 1.05rem; margin-bottom: 56px;
     }
     .services-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
     .service-card {
       background: var(--white); border: 1px solid rgba(0,0,0,0.06);
@@ -707,8 +707,13 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .physical-grid { grid-template-columns: 1fr; gap: 48px; }
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .bella-3col { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .bella-3col { gap: 32px !important; }
+      .bella-3col > div:last-child p { text-align: left !important; margin-top: 0 !important; }
     }
     @media (max-width: 768px) {
       body, a, button { cursor: auto; }
@@ -761,6 +766,7 @@
       .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
       .footer-brand { flex-direction: column; gap: 8px; }
       .footer-divider { display: none; }
+      .footer-grid-3col { grid-template-columns: 1fr !important; gap: 32px !important; }
 
       /* Scrub section */
       .scrub-section { padding: 80px 20px; min-height: 40vh; }
@@ -846,6 +852,22 @@
     /* ===== HEADLINE FONT ===== */
     .hero h1, .territory h2, .services h2, .pricing h2, .differentials h2, .cta-final h2, .diff-quote {
       font-family: 'Space Grotesk', 'Inter', sans-serif;
+    }
+
+    /* ===== BRAND TYPOGRAPHY — Inter ===== */
+    /* Títulos: Regular, -0.07em, line-height 0.95 */
+    h1, h2, h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.07em;
+      line-height: 0.95;
+    }
+    /* Textos: ExtraLight/Light, -0.022em, line-height 1.13 */
+    p, li, .physical-text, .price-card-desc, .hscroll-header p, .pricing-sub, .services-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 200;
+      letter-spacing: -0.022em;
+      line-height: 1.13;
     }
 
     /* ===== TEXT SCRUB REVEAL ===== */
@@ -988,7 +1010,10 @@
     <a href="#servicos" class="hoverable">Serviços</a>
     <a href="#planos" class="hoverable">Planos</a>
     <a href="#diferenciais" class="hoverable">Diferenciais</a>
-    <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="mobile-cta hoverable">Fale com a Vine</a>
+    <a href="#hub-tecnologico" class="hoverable">Hub Tecnológico</a>
+    <a href="#bella" class="hoverable">Bella IA</a>
+    <a href="#trabalhe-conosco" class="hoverable">Trabalhe Conosco</a>
+    <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="mobile-cta hoverable">Fale com a Vine</a>
   </div>
 
   <!-- NAV -->
@@ -999,7 +1024,7 @@
         <a href="#servicos" class="nav-link hoverable">Serviços</a>
         <a href="#planos" class="nav-link hoverable">Planos</a>
         <a href="#diferenciais" class="nav-link hoverable">Diferenciais</a>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="nav-cta hoverable">Fale com a Vine</a>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="nav-cta hoverable">Fale com a Vine</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -1028,13 +1053,13 @@
         <span class="hero-badge-dot"></span>
         Serra Gaúcha
       </div>
-      <h1>
+      <h1 style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">
         <span class="line"><span class="line-inner">Somos o marketing</span></span>
-        <span class="line"><span class="line-inner">da Serra Gaúcha.</span></span>
+        <span class="line"><span class="line-inner">da Serra Gaúcha</span></span>
       </h1>
-      <p class="hero-sub">Estratégia, conteúdo e posicionamento para vinícolas, restaurantes e negócios que fazem a Serra acontecer.</p>
+      <p class="hero-sub" style="font-weight:300;letter-spacing:-0.022em;line-height:1.13;">Estratégia, conteúdo e posicionamento para negócios que movimentam a Serra.</p>
       <div class="hero-cta-group">
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable">
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable">
           Fale com a Vine
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1052,31 +1077,38 @@
     <div class="marquee-label">Segmentos que atendemos</div>
     <div style="overflow: hidden;">
       <div class="marquee-track">
-        <span class="marquee-item"><span class="marquee-dot"></span>Vinícolas</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Restaurantes</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Hotéis & Pousadas</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Cafés & Bistrôs</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Eventos Culturais</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Turismo de Vivência</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia Local</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Enoturismo</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Comércio local</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Empresas de serviços</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Clínicas e saúde</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Estética e bem-estar</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Turismo e hospitalidade</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Eventos e cultura</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Marcas e negócios locais</span>
         <!-- Duplicate for seamless loop -->
-        <span class="marquee-item"><span class="marquee-dot"></span>Vinícolas</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Restaurantes</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Hotéis & Pousadas</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Cafés & Bistrôs</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Eventos Culturais</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Turismo de Vivência</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia Local</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Enoturismo</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Comércio local</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Empresas de serviços</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Clínicas e saúde</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Estética e bem-estar</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Turismo e hospitalidade</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Eventos e cultura</span>
+        <span class="marquee-item"><span class="marquee-dot"></span>Marcas e negócios locais</span>
       </div>
     </div>
   </section>
 
-  <!-- TERRITORY — TEXT SCRUB REVEAL -->
-  <section class="scrub-section" id="territorio">
-    <div class="container">
-      <p class="scrub-text scrub-reveal" aria-label="A Serra Gaúcha vive seu maior crescimento em anos — enoturismo, gastronomia e a Festa Nacional da Uva colocam a região no mapa do Brasil. Nosso foco: vinícolas, restaurantes, hotéis e experiências que são o coração da Serra.">A Serra Gaúcha vive seu maior crescimento em anos — enoturismo, gastronomia e a Festa Nacional da Uva colocam a região no mapa do Brasil. Nosso foco: vinícolas, restaurantes, hotéis e experiências que são o <em>coração da Serra</em>.</p>
+  <!-- A SERRA — BELLA QUOTE -->
+  <section id="a-serra" style="padding: 120px 24px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--white);">
+    <div style="position: absolute; inset: 0; pointer-events: none;">
+      <div style="position: absolute; width: 500px; height: 500px; top: -100px; right: -100px; border-radius: 50%; background: radial-gradient(circle, rgba(134,22,176,0.05) 0%, transparent 70%);"></div>
+      <div style="position: absolute; width: 300px; height: 300px; bottom: -60px; left: -80px; border-radius: 50%; background: radial-gradient(circle, rgba(46,251,41,0.04) 0%, transparent 70%);"></div>
+    </div>
+    <div style="max-width: 760px; text-align: center; position: relative; z-index: 1;">
+      <p style="font-family:'Inter',sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 200; letter-spacing: -0.022em; line-height: 1.13; color: var(--gray-800);">
+        Crescer pode ser leve. Esse é o <strong style="font-weight:700;">nosso</strong> jeito de fazer <em style="font-style:italic;">marketing.</em>
+      </p>
+      <p style="margin-top: 28px; font-family:'Inter',sans-serif; font-size: 1rem; font-weight: 400; letter-spacing: -0.022em; color: var(--gray-400); opacity: 0.37;">@Bellavitto</p>
     </div>
   </section>
 
@@ -1116,7 +1148,23 @@
           </div>
           <h3>Bella IA — Consultoria inteligente</h3>
         </div>
+        <div class="service-card spotlight-card hoverable">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>Tecnologia &amp; Automação</h3>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- NOSSA HISTÓRIA -->
+  <section id="historia" style="padding: 120px 0; background: var(--white);">
+    <div class="container">
+      <h2 class="reveal" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2.2rem,4.5vw,3.5rem); color: var(--gray-800); text-align: left; margin-bottom: 40px;">Nossa História</h2>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: clamp(1rem,1.8vw,1.2rem); color: var(--gray-600); max-width: 720px; text-align: left;">
+        A <strong style="font-weight:700;">Vine</strong> nasceu em 2021, na Serra Gaúcha, com um olhar diferente sobre o marketing. Carrega em sua essência uma herança que <em style="font-style:italic;">atravessa gerações</em>, baseada em presença e construção sólida. Hoje, seguimos ao lado dos negócios da Serra, transformando empresas em marcas que <strong style="font-weight:700;">permanecem</strong>.
+      </p>
     </div>
   </section>
 
@@ -1127,8 +1175,8 @@
       <div class="physical-grid">
         <div>
           <div class="physical-label reveal">Além do digital</div>
-          <h2 class="reveal">Sua marca também vive fora do digital.</h2>
-          <p class="physical-text reveal">Acreditamos que posicionamento não acontece apenas nas redes sociais. Cartões, panfletos, cardápios e materiais físicos também constroem autoridade e impulsionam vendas.</p>
+          <h2 class="reveal" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">Sua marca também vive fora do digital.</h2>
+          <p class="physical-text reveal" style="font-weight:200;letter-spacing:-0.022em;line-height:1.13;">Imprima sua autoridade</p>
           <ul class="physical-list">
             <li class="reveal"><span class="physical-list-check">✓</span> Cartões de visita premium</li>
             <li class="reveal"><span class="physical-list-check">✓</span> Panfletos e materiais promocionais</li>
@@ -1138,7 +1186,7 @@
           </ul>
           <p class="physical-quote reveal">Do digital ao físico, sua marca precisa ser consistente.</p>
           <div style="margin-top: 8px;">
-            <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+            <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
               Solicitar material
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -1158,7 +1206,7 @@
   <section class="hscroll-section" id="planos" style="background: var(--gray-50);">
     <div class="hscroll-header">
       <h2 class="reveal">Carta de Vinhos</h2>
-      <p class="reveal">Escolha o plano ideal para o momento da sua marca.</p>
+      <p class="reveal" style="font-weight:200;letter-spacing:-0.022em;">Personalize o plano ideal para o seu negócio</p>
     </div>
     <div class="hscroll-track" id="hscrollTrack">
       <div class="hscroll-card spotlight-card hoverable">
@@ -1174,7 +1222,7 @@
           <li>Suporte leve de design</li>
         </ul>
         <div class="price-card-price">R$ 1.500 – 2.200 <small>/mês</small></div>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
       </div>
       <div class="hscroll-card featured spotlight-card hoverable">
         <div class="price-badge">Mais escolhido</div>
@@ -1190,7 +1238,7 @@
           <li>Relatório mensal + reuniões</li>
         </ul>
         <div class="price-card-price">R$ 2.500 – 3.800 <small>/mês</small></div>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--fill hoverable">Quero este plano</a>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--fill hoverable">Quero este plano</a>
       </div>
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Cabernet Sauvignon</div>
@@ -1205,7 +1253,7 @@
           <li>Relatórios detalhados + reuniões quinzenais</li>
         </ul>
         <div class="price-card-price">R$ 4.200 – 6.000 <small>/mês</small></div>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Quero este plano</a>
       </div>
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Tannat</div>
@@ -1219,13 +1267,13 @@
           <li>Acesso à Bella IA Premium</li>
           <li>Coordenação de eventos (Festa da Uva, feiras)</li>
         </ul>
-        <div class="price-card-price">A partir de R$ 7.500 <small>/mês</small></div>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Falar com a Vine</a>
+        <div class="price-card-price">Preço sob consulta</div>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Falar com a Vine</a>
       </div>
     </div>
     <div class="hscroll-footer reveal">
       <p>Não sabe qual plano escolher?</p>
-      <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable">Quero entender qual plano é ideal para mim</a>
+      <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable">Quero entender qual plano é ideal para mim</a>
     </div>
   </section>
 
@@ -1242,42 +1290,63 @@
           <div class="stat-label">Parcerias ativas</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number"><span class="counter" data-target="10">0</span><span class="stat-suffix">+</span></div>
-          <div class="stat-label">Vinícolas com campanhas</div>
+          <div class="stat-number"><span class="counter" data-target="2">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Países</div>
         </div>
         <div class="stat-item">
           <div class="stat-number"><span class="counter" data-target="360">0</span><span class="stat-suffix">°</span></div>
           <div class="stat-label">Estratégia completa</div>
         </div>
       </div>
+      <div style="text-align: center; margin-top: 56px;">
+        <a href="https://www.instagram.com/vinemarketing.digital" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable">
+          Conheça nosso trabalho
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUB TECNOLÓGICO -->
+  <section id="hub-tecnologico" style="padding: 120px 0; background: var(--gray-900); color: white; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; pointer-events: none;">
+      <div style="position: absolute; width: 600px; height: 600px; top: -150px; right: -150px; border-radius: 50%; background: radial-gradient(circle, rgba(134,22,176,0.12) 0%, transparent 70%);"></div>
+      <div style="position: absolute; width: 400px; height: 400px; bottom: -100px; left: -100px; border-radius: 50%; background: radial-gradient(circle, rgba(46,251,41,0.06) 0%, transparent 70%);"></div>
+    </div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2 class="reveal" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2.2rem,4.5vw,3.5rem); color: white; margin-bottom: 24px;">Hub Tecnológico</h2>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 680px; margin-bottom: 20px;">A Vine evoluiu para além do marketing.</p>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 680px; margin-bottom: 20px;">Atuamos também como um hub tecnológico, desenvolvendo estruturas digitais sob medida para empresas que buscam crescimento com consistência. Projetamos desde sites estratégicos até sistemas personalizados, integrando tecnologia, marketing e operação em uma única solução.</p>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 680px; margin-bottom: 48px;">Integramos tecnologia e estratégia para transformar a operação em expansão.</p>
+      <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+        Faça seu sistema sob medida
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
   </section>
 
   <!-- BELLA IA -->
-  <section class="bella section" id="bella" style="background: linear-gradient(180deg, var(--gray-50) 0%, var(--white) 100%); position: relative; overflow: hidden;">
+  <section class="bella section" id="bella" style="background: var(--white); position: relative; overflow: hidden; padding: 120px 0;">
     <div class="container">
-      <div class="physical-grid">
+      <h2 class="reveal" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2rem,4vw,3rem); color: var(--gray-800); margin-bottom: 80px;">Bella IA — A IA com Alma da Serra</h2>
+      <div class="bella-3col" style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 48px; align-items: center; position: relative;">
+        <!-- Texto esquerda -->
         <div>
-          <div class="physical-label reveal">Inovação</div>
-          <h2 class="reveal" style="color: var(--purple-dark);">Conheça a Bella Vitto.</h2>
-          <p class="physical-text reveal">A primeira avatar de IA da Serra Gaúcha. Em 2026, a Vine se posiciona como a primeira agência da região com inteligência artificial integrada.</p>
-          <p class="physical-text reveal">No nosso site, empresários poderão conversar com a Bella e receber consultoria gratuita em marketing, branding e redes sociais.</p>
-          <p class="physical-quote reveal">Inovar sem perder o coração. E fazer da Serra o centro da criatividade digital.</p>
-          <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
-            Quero conhecer a Bella
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: clamp(0.95rem,1.6vw,1.1rem); color: var(--gray-600); text-align: left;">A primeira avatar de IA da Serra Gaúcha, a Bella foi desenvolvida para atuar como um agente estratégico dentro das empresas, apoiando na criação de campanhas, nas decisões de marketing e na construção de marca.</p>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center;">
-          <div class="bella-card" style="background: linear-gradient(135deg, var(--purple-main), var(--purple-mid)); border-radius: 32px; padding: 40px 32px; text-align: center; color: white; max-width: 340px; width: 100%; position: relative; overflow: hidden;">
-            <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(46,251,41,0.15), transparent 50%); pointer-events: none;"></div>
-            <img src="Bella Vitto AI.png" alt="Bella Vitto — IA Consultiva da Vine Marketing" style="width: 200px; height: 200px; object-fit: cover; object-position: center 15%; border-radius: 50%; margin: 0 auto 20px; display: block; border: 4px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.3); position: relative; z-index: 1;">
-            <div style="font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 1;">Bella Vitto</div>
-            <div style="font-size: 0.85rem; opacity: 0.7; position: relative; z-index: 1;">IA Consultiva &bull; Serra Gaúcha</div>
-            <div style="margin-top: 24px; padding: 12px 20px; background: rgba(255,255,255,0.1); border-radius: 14px; font-size: 0.82rem; position: relative; z-index: 1;">
-              <span style="color: var(--green);">●</span> Consultoria gratuita por tempo limitado
+        <!-- Foto central -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+          <div class="bella-card" style="position: relative; width: 280px; flex-shrink: 0;">
+            <!-- Marca d'água Bella Vitto atrás -->
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none; z-index: 0;">
+              <span style="font-family:'Inter',sans-serif; font-size: 4rem; font-weight:700; color: var(--purple-main); opacity: 0.06; white-space: nowrap; transform: rotate(-15deg); user-select:none;">Bella Vitto</span>
             </div>
+            <img src="bella.PNG" alt="Bella Vitto — IA com Alma da Serra" style="width: 280px; height: 360px; object-fit: cover; object-position: center top; border-radius: 24px; display: block; position: relative; z-index: 1; box-shadow: 0 24px 64px rgba(83,47,179,0.15);">
           </div>
+        </div>
+        <!-- Texto direita -->
+        <div>
+          <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: clamp(0.95rem,1.6vw,1.1rem); color: var(--gray-600); text-align: right; margin-top: 80px;">Mais do que uma ferramenta, representa uma nova forma de pensar e executar marketing — conectando estratégia, criatividade e dados para tornar decisões mais claras, rápidas e alinhadas à expansão dos negócios.</p>
         </div>
       </div>
     </div>
@@ -1321,16 +1390,16 @@
     </div>
   </div>
   <section style="padding: 60px 0 80px; text-align: center; background: var(--gray-900);">
-    <p class="diff-quote" style="font-family:'Space Grotesk','Inter',sans-serif; font-size:clamp(1.3rem,2.8vw,1.8rem); font-weight:700; color:white; max-width:600px; margin:0 auto;">A Vine não é apenas uma agência.<br><span style="color:var(--green);">É a agência do território.</span></p>
+    <p class="diff-quote" style="font-family:'Inter',sans-serif; font-size:clamp(1.3rem,2.8vw,1.8rem); font-weight:400; letter-spacing:-0.07em; line-height:0.95; color:white; max-width:600px; margin:0 auto;"><span style="color:var(--green);">É a agência do território.</span></p>
   </section>
 
   <!-- CTA FINAL -->
   <section class="cta-final section" id="contato">
     <div class="container">
       <div class="cta-final-content">
-        <h2 class="scrub-text scrub-reveal" style="margin-bottom:28px;" aria-label="Seu negócio não precisa apenas aparecer. Precisa ser percebido.">Seu negócio não precisa apenas aparecer. <em>Precisa ser percebido.</em></h2>
+        <h2 class="scrub-text scrub-reveal" style="margin-bottom:28px; font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95;" aria-label="Seu negócio não precisa apenas aparecer. Precisa ser percebido.">Seu negócio não precisa apenas aparecer. <em style="font-style:normal; color:var(--purple-main);">Precisa ser percebido.</em></h2>
         <p class="reveal" style="margin-bottom:48px;">Vamos conversar sobre como posicionar sua marca com estratégia, identidade e resultado.</p>
-        <a href="https://wa.me/555499651901" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
           Fale com a Vine
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1338,18 +1407,63 @@
     </div>
   </section>
 
+  <!-- TRABALHE CONOSCO -->
+  <section id="trabalhe-conosco" style="padding: 120px 0; background: #7625bf; color: white; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <span style="font-family:'Inter',sans-serif; font-size: clamp(6rem,14vw,12rem); font-weight:700; color: rgba(255,255,255,0.04); white-space: nowrap; user-select:none; letter-spacing:-0.07em;">We are Vine</span>
+    </div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <h2 class="reveal" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2rem,4vw,3rem); color: white; margin-bottom: 40px;">Trabalhe Conosco</h2>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 640px; margin-bottom: 20px;">Se você tem interesse em atuar nas áreas de marketing, criatividade e tecnologia, a Vine está sempre aberta a novos talentos. Buscamos pessoas comprometidas, com visão de crescimento, iniciativa e vontade de evoluir junto com a empresa.</p>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 640px; margin-bottom: 20px;">Acreditamos no desenvolvimento contínuo e incentivamos novos talentos, oferecendo oportunidades reais para atuarem no mercado e adquirirem experiência prática dentro de projetos estratégicos. Mais do que formar profissionais, queremos construir trajetórias alinhadas com propósito, aprendizado e evolução constante.</p>
+      <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:200; letter-spacing:-0.022em; line-height:1.13; font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 640px; margin-bottom: 48px;">Está pronto para dar o próximo passo na sua trajetória profissional? Encaminhe sua mensagem ou portfólio para <strong style="font-weight:400;"><a href="mailto:info@vinemarketing.digital" style="color:white; text-decoration:underline;">info@vinemarketing.digital</a></strong></p>
+      <a href="mailto:info@vinemarketing.digital" class="btn-primary magnetic hoverable reveal" style="background: white; color: #7625bf;">
+        Enviar currículo
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
   </main><!-- /#main-content -->
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
+  <footer class="footer" style="background: var(--gray-900); border-top: none; padding: 64px 0 40px; position: relative; overflow: hidden;">
+    <!-- We are Vine watermark -->
+    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; overflow: hidden;">
+      <span style="font-family:'Inter',sans-serif; font-size: clamp(4rem,10vw,8rem); font-weight:700; color: rgba(255,255,255,0.025); white-space: nowrap; user-select:none; letter-spacing:-0.07em;">We are Vine</span>
+    </div>
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="footer-grid-3col" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px;">
+        <!-- Brand -->
         <div class="footer-brand">
-          <img src="logo.png" alt="Vine Marketing" class="footer-logo" loading="lazy">
-          <div class="footer-divider"></div>
-          <span class="footer-location">Serra Gaúcha</span>
+          <img src="logo.png" alt="Vine Marketing" class="footer-logo" loading="lazy" style="height:36px; filter: brightness(0) invert(1); margin-bottom: 16px;">
+          <span class="footer-location" style="color: rgba(255,255,255,0.4); font-size:0.85rem; display:block; margin-bottom: 8px;">Serra Gaúcha</span>
+          <span style="color: rgba(255,255,255,0.4); font-size:0.82rem;">+55 (54) 9 9683-7209</span>
         </div>
-        <span class="footer-copy">&copy; 2026 Vine Marketing. Todos os direitos reservados.</span>
+        <!-- Links -->
+        <div>
+          <p style="font-family:'Inter',sans-serif; font-weight:400; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px;">Menu</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <a href="#servicos" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em; transition:color 0.2s;" class="hoverable">Serviços</a>
+            <a href="#planos" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em; transition:color 0.2s;" class="hoverable">Planos</a>
+            <a href="https://www.instagram.com/vinemarketing.digital" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em; transition:color 0.2s;" class="hoverable">Conheça nosso trabalho</a>
+            <a href="#trabalhe-conosco" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em; transition:color 0.2s;" class="hoverable">Trabalhe conosco</a>
+          </div>
+        </div>
+        <!-- Redes sociais e contato -->
+        <div>
+          <p style="font-family:'Inter',sans-serif; font-weight:400; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px;">Redes sociais &amp; Contato</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <a href="https://www.instagram.com/vinemarketing.digital" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em;" class="hoverable">Instagram — IDVs, sites, logos &amp; cartões</a>
+            <a href="https://www.linkedin.com/company/vinemarketing" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em;" class="hoverable">LinkedIn</a>
+            <a href="mailto:info@vinemarketing.digital" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em;" class="hoverable">info@vinemarketing.digital</a>
+            <a href="mailto:comercial@vinemarketing.digital" style="color:rgba(255,255,255,0.6); font-size:0.9rem; font-weight:200; letter-spacing:-0.022em;" class="hoverable">comercial@vinemarketing.digital</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <span class="footer-copy" style="color: rgba(255,255,255,0.25); font-size:0.8rem;">&copy; 2026 Vine Marketing. Todos os direitos reservados.</span>
+        <span style="color: rgba(255,255,255,0.25); font-size:0.8rem; font-weight:200; letter-spacing:-0.022em;">vinemarketing.digital</span>
       </div>
     </div>
   </footer>
