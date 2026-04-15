@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio — Vine Marketing</title>
+  <meta name="description" content="Conheça os projetos que a Vine Marketing já entregou — sites, landing pages e identidades para negócios da Serra Gaúcha.">
+  <meta name="theme-color" content="#532fb3">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vinemarketing.digital/portfolio.html">
+  <meta property="og:title" content="Portfólio — Vine Marketing">
+  <meta property="og:description" content="Projetos entregues pela Vine Marketing para negócios da Serra Gaúcha.">
+  <meta property="og:image" content="https://vinemarketing.digital/logo.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Vine Marketing">
+
+  <link rel="canonical" href="https://vinemarketing.digital/portfolio.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23532fb3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Inter,sans-serif' font-weight='700' font-size='18' fill='%232efb29'%3EV%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; background: #000; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #ffffff;
+      background: transparent;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; }
+
+    :root {
+      --purple-dark: #532fb3;
+      --purple-main: #8616b0;
+      --purple-mid: #6c39c9;
+      --purple-light: #9f5de0;
+      --green: #2efb29;
+      --gray-900: #111827;
+      --radius: 14px;
+      --max-width: 1200px;
+      --gradient-brand: linear-gradient(90deg, #8305ad, #7625bf, #94b9ff);
+      --gradient-brand-d: linear-gradient(135deg, #8305ad, #7625bf, #94b9ff);
+    }
+
+    /* Background preto sólido + canvas com particles conectadas (igual Hub Tecnológico) */
+    #site-bg {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: -2;
+      pointer-events: none;
+    }
+    #site-particles {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #site-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 25% 35%, rgba(131,5,173,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(118,37,191,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9990;
+      mix-blend-mode: overlay;
+    }
+
+    /* Brand wordmark */
+    .brand-wordmark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.32em;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: #ffffff;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .brand-wordmark-main {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+    .brand-wordmark-sub {
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.88);
+    }
+    .brand-wordmark--nav { font-size: 1.5rem; }
+    .brand-wordmark--footer { font-size: 1.25rem; }
+    @media (max-width: 768px) {
+      .brand-wordmark--nav { font-size: 1.3rem; }
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.88rem; font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.3s, transform 0.3s;
+    }
+    .nav-back:hover { color: var(--green); transform: translateX(-4px); }
+    .nav-back svg { transition: transform 0.3s; }
+
+    /* HERO da página */
+    .portfolio-hero {
+      padding: 200px 24px 80px;
+      text-align: center;
+      position: relative;
+    }
+    .portfolio-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 8px 20px; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+    }
+    .portfolio-hero-badge-dot {
+      width: 7px; height: 7px; background: var(--green); border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+    .portfolio-hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+      font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+      color: #ffffff;
+      margin-bottom: 24px;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .portfolio-hero h1 em {
+      font-style: italic;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .portfolio-hero p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      letter-spacing: -0.022em;
+      line-height: 1.5;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.68);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* PORTFOLIO GRID */
+    .portfolio-section {
+      padding: 40px 0 120px;
+    }
+    .portfolio-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .portfolio-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .portfolio-card {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      min-height: 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .portfolio-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .portfolio-card:hover {
+      border-color: rgba(131, 5, 173, 0.4);
+      box-shadow: 0 20px 60px rgba(131, 5, 173, 0.2);
+      transform: translateY(-6px);
+    }
+
+    .portfolio-card--branding {
+      background: linear-gradient(180deg, #0a0510 0%, #2d0845 35%, #8305ad 70%, #7625bf 100%);
+    }
+    .portfolio-card--lp {
+      background: linear-gradient(90deg, #1a0a2e 0%, #7625bf 40%, #94b9ff 100%);
+    }
+    .portfolio-card--campaign {
+      background:
+        radial-gradient(ellipse at 30% 70%, #8305ad 0%, #3d0d5c 40%, #0f0a18 70%),
+        linear-gradient(135deg, #0a0510 0%, #1a0a2e 100%);
+    }
+    .portfolio-card--tech {
+      background: linear-gradient(145deg, #050a05 0%, #0a1a0a 30%, rgba(0, 255, 0, 0.15) 60%, #0a0a12 80%, #7625bf 100%);
+    }
+
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+      border-radius: inherit;
+    }
+
+    .portfolio-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: rgba(255,255,255,0.14);
+      transition: opacity 0.4s, transform 0.4s;
+      pointer-events: none;
+    }
+    .portfolio-card:hover .portfolio-icon {
+      opacity: 0;
+      transform: translate(-50%, -60%) scale(0.9);
+    }
+
+    .portfolio-external {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(10, 5, 15, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 0.6;
+      transition: opacity 0.35s, background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .portfolio-card:hover .portfolio-external {
+      opacity: 1;
+      background: var(--green);
+      color: #0a0510;
+      border-color: var(--green);
+      transform: scale(1.08);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      background: linear-gradient(180deg, transparent 0%, transparent 35%, rgba(10, 5, 15, 0.85) 80%, rgba(10, 5, 15, 0.96) 100%);
+      opacity: 0.92;
+      transition: opacity 0.4s;
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .portfolio-overlay h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.45rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .portfolio-overlay p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+    .portfolio-url {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .portfolio-url::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(46,251,41,0.6);
+    }
+
+    /* CTA bar */
+    .portfolio-cta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px 0;
+      text-align: center;
+    }
+    .portfolio-cta h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+    .portfolio-cta p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+      font-weight: 300;
+      letter-spacing: -0.022em;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--green); color: #1f2937;
+      padding: 18px 40px; border-radius: var(--radius);
+      font-weight: 700; font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(46,251,41,0.4);
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 80px 0 40px;
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 80px;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.82rem;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .portfolio-hero { padding: 140px 20px 60px; }
+      .portfolio-hero h1 { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+      }
+      .portfolio-card {
+        aspect-ratio: 16 / 10;
+        min-height: 220px;
+      }
+      .portfolio-card .portfolio-overlay { opacity: 1; }
+      .portfolio-card .portfolio-icon { opacity: 0.55; }
+      .portfolio-card:hover { transform: none; }
+      .nav-inner { padding: 0 20px; }
+      .portfolio-cta { padding: 60px 20px 0; }
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .portfolio-card { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-bg" aria-hidden="true"></div>
+  <canvas id="site-particles" aria-hidden="true"></canvas>
+
+  <nav class="nav" role="navigation" aria-label="Navegação">
+    <div class="nav-inner">
+      <a href="index.html" aria-label="Vine Marketing — voltar para a home" class="brand-wordmark brand-wordmark--nav">
+        <span class="brand-wordmark-main">Vine</span><span class="brand-wordmark-sub">Marketing</span>
+      </a>
+      <a href="index.html" class="nav-back" aria-label="Voltar para a home">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Voltar</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="portfolio-hero">
+      <div class="portfolio-hero-badge">
+        <span class="portfolio-hero-badge-dot"></span>
+        Portfólio
+      </div>
+      <h1>Projetos que a Vine <em>construiu</em>.</h1>
+      <p>Uma seleção dos sites, landing pages e sistemas que desenvolvemos para negócios que querem escalar com identidade e estratégia.</p>
+    </section>
+
+    <section class="portfolio-section">
+      <div class="portfolio-grid">
+        <!-- Morais Capital Group -->
+        <a href="https://www.moraiscapitalgroup.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
+          <article class="portfolio-card portfolio-card--branding" aria-label="Morais Capital Group — site desenvolvido pela Vine">
+            <div class="portfolio-icon" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M13 9h.01"/><path d="M9 13h.01"/><path d="M13 13h.01"/><path d="M9 17h.01"/><path d="M13 17h.01"/></svg>
+            </div>
+            <div class="portfolio-external" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-type">Site Institucional</span>
+              <h3>Morais Capital Group</h3>
+              <p>Presença digital para grupo de investimentos e capital.</p>
+              <span class="portfolio-url">moraiscapitalgroup.com</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- PV Imperiale -->
+        <a href="https://pvimperiale.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
+          <article class="portfolio-card portfolio-card--lp" aria-label="PV Imperiale — site desenvolvido pela Vine">
+            <div class="portfolio-icon" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20V14h6v6"/></svg>
+            </div>
+            <div class="portfolio-external" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-type">Landing Page</span>
+              <h3>PV Imperiale</h3>
+              <p>Página de conversão para operação imobiliária premium.</p>
+              <span class="portfolio-url">pvimperiale.com</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- PV Credit -->
+        <a href="https://pvcredit.com.br/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
+          <article class="portfolio-card portfolio-card--tech" aria-label="PV Credit — site desenvolvido pela Vine">
+            <div class="portfolio-icon" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
+            </div>
+            <div class="portfolio-external" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-type">Plataforma de Crédito</span>
+              <h3>PV Credit</h3>
+              <p>Site institucional para plataforma de soluções de crédito.</p>
+              <span class="portfolio-url">pvcredit.com.br</span>
+            </div>
+          </article>
+        </a>
+
+        <!-- PV Fomento -->
+        <a href="https://pvfomento.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
+          <article class="portfolio-card portfolio-card--campaign" aria-label="PV Fomento — site desenvolvido pela Vine">
+            <div class="portfolio-icon" aria-hidden="true">
+              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+            <div class="portfolio-external" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </div>
+            <div class="portfolio-overlay">
+              <span class="portfolio-type">Site Institucional</span>
+              <h3>PV Fomento</h3>
+              <p>Identidade digital para operação de fomento mercantil.</p>
+              <span class="portfolio-url">pvfomento.com</span>
+            </div>
+          </article>
+        </a>
+      </div>
+
+      <div class="portfolio-cta">
+        <h2>Quer que a Vine construa o próximo?</h2>
+        <p>Converse com a gente sobre seu projeto — seja um site, uma LP ou uma plataforma sob medida.</p>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Fale com a Vine
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="brand-wordmark brand-wordmark--footer" aria-label="Vine Marketing">
+        <span class="brand-wordmark-main">Vine</span><span class="brand-wordmark-sub">Marketing</span>
+      </span>
+      <span class="footer-copy">&copy; 2026 Vine Marketing — Caxias do Sul, RS.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal com stagger
+    const cards = document.querySelectorAll('.portfolio-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('visible'), index * 120);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    cards.forEach(card => observer.observe(card));
+
+    // Particle constellation — fundo preto com partículas roxas conectadas
+    (function initParticles() {
+      const canvas = document.getElementById('site-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const isMobile = window.innerWidth < 768;
+      const PARTICLE_COUNT = isMobile ? 50 : 100;
+      const LINK_DISTANCE = isMobile ? 110 : 150;
+      const COLOR = 'rgba(131, 5, 173,';
+      const SPEED = 0.4;
+
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+
+      function makeParticle() {
+        return {
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * SPEED,
+          vy: (Math.random() - 0.5) * SPEED,
+          size: Math.random() * 1.8 + 0.8,
+          alpha: Math.random() * 0.5 + 0.25,
+        };
+      }
+      let particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
+
+      let rafId;
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = COLOR + (p.alpha + 0.15) + ')';
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const dx = p.x - q.x;
+            const dy = p.y - q.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < LINK_DISTANCE) {
+              const lineAlpha = (1 - dist / LINK_DISTANCE) * 0.32;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = COLOR + lineAlpha + ')';
+              ctx.lineWidth = 0.9;
+              ctx.stroke();
+            }
+          }
+        }
+        if (!reduced) rafId = requestAnimationFrame(draw);
+      }
+      draw();
+      window.addEventListener('resize', () => {
+        resize();
+        particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
+      });
+    })();
+  </script>
+</body>
+</html>
