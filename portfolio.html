@@ -54,19 +54,11 @@
       --gradient-brand-d: linear-gradient(135deg, #8305ad, #7625bf, #94b9ff);
     }
 
-    /* Background preto sólido + canvas com particles conectadas (igual Hub Tecnológico) */
+    /* Mesmo fundo do trabalhe-conosco: preto + 2 glows roxos sutis + noise */
     #site-bg {
       position: fixed;
       inset: 0;
       background: #000000;
-      z-index: -2;
-      pointer-events: none;
-    }
-    #site-particles {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
       z-index: -1;
       pointer-events: none;
     }
@@ -78,6 +70,15 @@
         radial-gradient(ellipse 70% 55% at 25% 35%, rgba(131,5,173,0.14) 0%, transparent 65%),
         radial-gradient(ellipse 60% 50% at 80% 70%, rgba(118,37,191,0.1) 0%, transparent 65%);
       pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9990;
+      mix-blend-mode: overlay;
     }
 
     /* Grain */
@@ -105,16 +106,13 @@
       user-select: none;
     }
     .brand-wordmark-main {
-      background: var(--gradient-brand);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #ffffff;
       font-weight: 800;
     }
     .brand-wordmark-sub {
       font-weight: 300;
       letter-spacing: -0.02em;
-      color: rgba(255,255,255,0.88);
+      color: #ffffff;
     }
     .brand-wordmark--nav { font-size: 1.5rem; }
     .brand-wordmark--footer { font-size: 1.25rem; }
@@ -260,19 +258,93 @@
       border-radius: inherit;
     }
 
-    .portfolio-icon {
+    .portfolio-icon { display: none; } /* substituído por .portfolio-mockup */
+
+    /* Browser-frame mockup do site */
+    .portfolio-mockup {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -52%);
+      width: 78%;
+      max-width: 360px;
+      aspect-ratio: 16 / 10;
+      background: #0a0510;
+      border-radius: 10px;
+      overflow: hidden;
       z-index: 2;
-      color: rgba(255,255,255,0.14);
-      transition: opacity 0.4s, transform 0.4s;
-      pointer-events: none;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .portfolio-card:hover .portfolio-icon {
-      opacity: 0;
-      transform: translate(-50%, -60%) scale(0.9);
+    .portfolio-card:hover .portfolio-mockup {
+      transform: translate(-50%, -56%) scale(1.04);
+    }
+    .portfolio-mockup-bar {
+      height: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+    }
+    .portfolio-mockup-bar i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .portfolio-mockup-bar i:first-child { background: #ff5f57; }
+    .portfolio-mockup-bar i:nth-child(2) { background: #febc2e; }
+    .portfolio-mockup-bar i:nth-child(3) { background: #28c840; }
+    .portfolio-mockup-bar span {
+      margin-left: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .portfolio-mockup-content {
+      padding: 14px 16px;
+      height: calc(100% - 22px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pm-line {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .pm-line.pm-l1 { width: 70%; height: 9px; background: rgba(255, 255, 255, 0.85); }
+    .pm-line.pm-l2 { width: 90%; height: 5px; background: rgba(255, 255, 255, 0.42); }
+    .pm-line.pm-l3 { width: 60%; height: 5px; background: rgba(255, 255, 255, 0.32); }
+    .pm-cta {
+      margin-top: 6px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.58rem;
+      font-weight: 700;
+      width: fit-content;
+      letter-spacing: 0.02em;
+    }
+    .pm-cta--purple { background: var(--purple-main, #8305ad); color: #ffffff; }
+    .pm-cta--green { background: var(--green, #2efb29); color: #14091f; }
+    .pm-cta--white { background: #ffffff; color: #14091f; }
+    .pm-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.55;
+      pointer-events: none;
     }
 
     .portfolio-external {
@@ -455,7 +527,6 @@
 </head>
 <body>
   <div id="site-bg" aria-hidden="true"></div>
-  <canvas id="site-particles" aria-hidden="true"></canvas>
 
   <nav class="nav" role="navigation" aria-label="Navegação">
     <div class="nav-inner">
@@ -484,8 +555,18 @@
         <!-- Morais Capital Group -->
         <a href="https://www.moraiscapitalgroup.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
           <article class="portfolio-card portfolio-card--branding" aria-label="Morais Capital Group — site desenvolvido pela Vine">
-            <div class="portfolio-icon" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01"/><path d="M13 9h.01"/><path d="M9 13h.01"/><path d="M13 13h.01"/><path d="M9 17h.01"/><path d="M13 17h.01"/></svg>
+            <div class="portfolio-mockup" aria-hidden="true">
+              <div class="portfolio-mockup-bar">
+                <i></i><i></i><i></i>
+                <span>moraiscapitalgroup.com</span>
+              </div>
+              <div class="portfolio-mockup-content" style="background: linear-gradient(135deg, #1a1035 0%, #2d1b69 100%);">
+                <span class="pm-blob" style="width:80px;height:80px;background:#8305ad;top:-20px;right:-20px;"></span>
+                <div class="pm-line pm-l1"></div>
+                <div class="pm-line pm-l2"></div>
+                <div class="pm-line pm-l3"></div>
+                <div class="pm-cta pm-cta--white">CAPITAL & INVESTIMENTOS</div>
+              </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -502,8 +583,18 @@
         <!-- PV Imperiale -->
         <a href="https://pvimperiale.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
           <article class="portfolio-card portfolio-card--lp" aria-label="PV Imperiale — site desenvolvido pela Vine">
-            <div class="portfolio-icon" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9 20V14h6v6"/></svg>
+            <div class="portfolio-mockup" aria-hidden="true">
+              <div class="portfolio-mockup-bar">
+                <i></i><i></i><i></i>
+                <span>pvimperiale.com</span>
+              </div>
+              <div class="portfolio-mockup-content" style="background: linear-gradient(135deg, #2d0845 0%, #7625bf 60%, #94b9ff 100%);">
+                <span class="pm-blob" style="width:60px;height:60px;background:#94b9ff;bottom:-15px;left:-15px;"></span>
+                <div class="pm-line pm-l1"></div>
+                <div class="pm-line pm-l2"></div>
+                <div class="pm-line pm-l3"></div>
+                <div class="pm-cta pm-cta--green">FALAR COM CONSULTOR →</div>
+              </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -520,8 +611,18 @@
         <!-- PV Credit -->
         <a href="https://pvcredit.com.br/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
           <article class="portfolio-card portfolio-card--tech" aria-label="PV Credit — site desenvolvido pela Vine">
-            <div class="portfolio-icon" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
+            <div class="portfolio-mockup" aria-hidden="true">
+              <div class="portfolio-mockup-bar">
+                <i></i><i></i><i></i>
+                <span>pvcredit.com.br</span>
+              </div>
+              <div class="portfolio-mockup-content" style="background: linear-gradient(135deg, #050a05 0%, #0a1a0a 50%, #14091f 100%);">
+                <span class="pm-blob" style="width:70px;height:70px;background:rgba(46,251,41,0.4);top:-15px;right:-15px;"></span>
+                <div class="pm-line pm-l1"></div>
+                <div class="pm-line pm-l2"></div>
+                <div class="pm-line pm-l3"></div>
+                <div class="pm-cta pm-cta--green">SIMULAR CRÉDITO</div>
+              </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -538,8 +639,18 @@
         <!-- PV Fomento -->
         <a href="https://pvfomento.com/" target="_blank" rel="noopener noreferrer" class="portfolio-card-link">
           <article class="portfolio-card portfolio-card--campaign" aria-label="PV Fomento — site desenvolvido pela Vine">
-            <div class="portfolio-icon" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            <div class="portfolio-mockup" aria-hidden="true">
+              <div class="portfolio-mockup-bar">
+                <i></i><i></i><i></i>
+                <span>pvfomento.com</span>
+              </div>
+              <div class="portfolio-mockup-content" style="background: linear-gradient(135deg, #0a0510 0%, #3d0d5c 50%, #8305ad 100%);">
+                <span class="pm-blob" style="width:90px;height:90px;background:#8305ad;bottom:-20px;right:-20px;"></span>
+                <div class="pm-line pm-l1"></div>
+                <div class="pm-line pm-l2"></div>
+                <div class="pm-line pm-l3"></div>
+                <div class="pm-cta pm-cta--purple">FOMENTO MERCANTIL</div>
+              </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -588,85 +699,7 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     cards.forEach(card => observer.observe(card));
 
-    // Particle constellation — fundo preto com partículas roxas conectadas
-    (function initParticles() {
-      const canvas = document.getElementById('site-particles');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      const isMobile = window.innerWidth < 768;
-      const PARTICLE_COUNT = isMobile ? 50 : 100;
-      const LINK_DISTANCE = isMobile ? 110 : 150;
-      const COLOR = 'rgba(131, 5, 173,';
-      const SPEED = 0.4;
-
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-      function resize() {
-        w = window.innerWidth;
-        h = window.innerHeight;
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-      resize();
-
-      function makeParticle() {
-        return {
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * SPEED,
-          vy: (Math.random() - 0.5) * SPEED,
-          size: Math.random() * 1.8 + 0.8,
-          alpha: Math.random() * 0.5 + 0.25,
-        };
-      }
-      let particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
-
-      let rafId;
-      function draw() {
-        ctx.clearRect(0, 0, w, h);
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = COLOR + (p.alpha + 0.15) + ')';
-          ctx.fill();
-
-          for (let j = i + 1; j < particles.length; j++) {
-            const q = particles[j];
-            const dx = p.x - q.x;
-            const dy = p.y - q.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < LINK_DISTANCE) {
-              const lineAlpha = (1 - dist / LINK_DISTANCE) * 0.32;
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(q.x, q.y);
-              ctx.strokeStyle = COLOR + lineAlpha + ')';
-              ctx.lineWidth = 0.9;
-              ctx.stroke();
-            }
-          }
-        }
-        if (!reduced) rafId = requestAnimationFrame(draw);
-      }
-      draw();
-      window.addEventListener('resize', () => {
-        resize();
-        particles = Array.from({ length: PARTICLE_COUNT }, makeParticle);
-      });
-    })();
+    // Portfolio agora usa o mesmo fundo do trabalhe-conosco (sem particles)
   </script>
 </body>
 </html>
