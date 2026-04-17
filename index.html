@@ -142,7 +142,15 @@
       --gradient-full: linear-gradient(90deg, #8305ad, #7625bf, #94b9ff, #2efb29);
       --gradient-ink: linear-gradient(180deg, var(--ink-100) 0%, var(--ink-200) 50%, var(--ink-100) 100%);
     }
-    /* ===== GRADIENT TEXT UTILITY ===== */
+    /* ===== GRADIENT TEXT UTILITY — gradientes CONTRÁRIOS ao tema =====
+       Dark theme: gradiente CLARO (claro → roxo claro) para contraste
+       Light theme: gradiente ESCURO (escuro → roxo escuro) para contraste */
+    :root {
+      --gradient-title: linear-gradient(90deg, #ffffff 0%, #c5a8f5 45%, #94b9ff 100%);
+    }
+    [data-theme="light"] {
+      --gradient-title: linear-gradient(90deg, #1a1035 0%, #5a0d7a 50%, #8305ad 100%);
+    }
     .grad-text,
     .physical h2,
     .hscroll-header h2,
@@ -153,10 +161,18 @@
     .portfolio-hero h1,
     #historia h2,
     .services h2 {
-      background: var(--gradient-brand);
+      background: var(--gradient-title);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+    /* Hero accent (palavras "lembrada" e "existe?") também seguem o contrário */
+    .hero h1 .hero-accent {
+      background: var(--gradient-title);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
     }
     /* H2 final CTA tem "Serra?" em verde — trocar por gradiente roxo também */
     .cta-final h2 em {
@@ -1066,28 +1082,35 @@
     .serra-quote {
       font-family: 'Inter', sans-serif;
       font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-      font-weight: 200;
+      font-weight: 500;
       letter-spacing: -0.022em;
       line-height: 1.25;
       color: #ffffff;
       margin: 0;
     }
-    .serra-quote strong { font-weight: 700; }
+    .serra-quote strong {
+      font-weight: 800;
+      background: linear-gradient(90deg, #94b9ff 0%, #c5a8f5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .serra-quote em {
       font-style: italic;
-      background: var(--gradient-brand);
+      font-weight: 800;
+      background: linear-gradient(90deg, #c5a8f5 0%, #2efb29 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .serra-tagline {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-      font-weight: 300;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 400;
       letter-spacing: -0.015em;
-      line-height: 1.5;
-      color: var(--text-300);
-      max-width: 560px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 620px;
       margin: 0;
     }
     @media (max-width: 768px) {
@@ -1735,35 +1758,47 @@
     /* Mobile: scroll horizontal nativo com touch nos cards de planos */
     @media (max-width: 768px) {
       .hscroll-section {
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
+        overflow: visible !important;
+        overflow-x: visible !important;
       }
-      .hscroll-section::-webkit-scrollbar { display: none; }
-      .hscroll-track {
-        gap: 16px !important;
-        padding: 0 20px !important;
-        width: max-content !important;
-      }
-      .hscroll-card {
-        scroll-snap-align: center;
-      }
-      .hscroll-header { padding: 60px 20px 32px !important; }
-      .hscroll-footer { padding: 32px 20px 80px !important; }
-      /* Indicador visual: mostra que pode arrastar */
+      .hscroll-header { padding: 60px 20px 20px !important; text-align: center; }
       .hscroll-header::after {
         content: '← arraste para os lados →';
         display: block;
-        margin-top: 16px;
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
+        margin-top: 18px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.4);
       }
+      /* O container real do scroll é um wrapper ao redor do track */
+      .hscroll-scrollwrap {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        padding: 12px 0 20px;
+      }
+      .hscroll-scrollwrap::-webkit-scrollbar { display: none; }
+      .hscroll-track {
+        display: flex !important;
+        gap: 14px !important;
+        padding: 0 20px !important;
+        width: max-content !important;
+        transform: none !important;
+      }
+      .hscroll-card {
+        scroll-snap-align: center;
+        width: 86vw !important;
+        min-width: 86vw !important;
+        max-width: 340px;
+        flex-shrink: 0;
+      }
+      .hscroll-footer { padding: 24px 20px 60px !important; text-align: center; }
     }
+    [data-theme="light"] .hscroll-header::after { color: rgba(26,16,53,0.55) !important; }
     .hscroll-header {
       text-align: center; padding: 100px 24px 60px;
       position: relative; z-index: 2;
@@ -2894,9 +2929,9 @@
     }
     .anchor-quote-text {
       font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      letter-spacing: -0.05em;
-      line-height: 1.05;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
       font-size: clamp(2rem, 4.5vw, 3.6rem);
       color: #ffffff;
       margin: 0;
@@ -3688,6 +3723,7 @@
       <h2 class="reveal" data-i18n="plans.title">Carta de Vinhos</h2>
       <p class="reveal" data-i18n="plans.sub" style="font-weight:200;letter-spacing:-0.022em;">Escolha o rótulo ideal para o seu momento.</p>
     </div>
+    <div class="hscroll-scrollwrap">
     <div class="hscroll-track" id="hscrollTrack">
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Carménère</div>
@@ -3750,6 +3786,7 @@
         <div class="price-card-price">Projeto sob medida</div>
         <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Solicitar proposta</a>
       </div>
+    </div>
     </div>
     <div class="hscroll-footer reveal">
       <p data-i18n="plans.help.q">Ainda não sabe qual rótulo combina com seu negócio?</p>
@@ -4133,7 +4170,7 @@
           'hero.cta.portfolio': 'Ver nosso portfólio',
           'marquee.label': 'Segmentos que atendemos',
           'serra.kicker': 'O nosso combinado',
-          'serra.quote': 'Você cuida do seu negócio. A gente cuida da sua marca.',
+          'serra.quote': 'Você cuida do seu <strong>negócio</strong>. A gente cuida da sua <em>marca</em>.',
           'serra.tagline': 'Foco no que você faz melhor — a gente cuida do que a marca precisa.',
           'services.title': 'O que fazemos',
           'services.sub': 'Cada serviço é uma camada do seu posicionamento. Juntos, constroem uma marca completa.',
@@ -4192,7 +4229,7 @@
           'hero.cta.portfolio': 'See our portfolio',
           'marquee.label': 'Segments we serve',
           'serra.kicker': 'Our agreement',
-          'serra.quote': 'You take care of your business. We take care of your brand.',
+          'serra.quote': 'You take care of your <strong>business</strong>. We take care of your <em>brand</em>.',
           'serra.tagline': 'Focus on what you do best — we take care of what your brand needs.',
           'services.title': 'What we do',
           'services.sub': 'Each service is a layer of your positioning. Together, they build a complete brand.',
@@ -4251,7 +4288,7 @@
           'hero.cta.portfolio': 'Ver nuestro portafolio',
           'marquee.label': 'Segmentos que atendemos',
           'serra.kicker': 'Nuestro acuerdo',
-          'serra.quote': 'Tú cuidas de tu negocio. Nosotros cuidamos de tu marca.',
+          'serra.quote': 'Tú cuidas de tu <strong>negocio</strong>. Nosotros cuidamos de tu <em>marca</em>.',
           'serra.tagline': 'Enfócate en lo que haces mejor — nosotros cuidamos de lo que tu marca necesita.',
           'services.title': 'Lo que hacemos',
           'services.sub': 'Cada servicio es una capa de tu posicionamiento. Juntos, construyen una marca completa.',
@@ -4301,7 +4338,7 @@
         const dict = I18N[lang] || I18N.pt;
         document.querySelectorAll('[data-i18n]').forEach(el => {
           const key = el.getAttribute('data-i18n');
-          if (dict[key] !== undefined) el.textContent = dict[key];
+          if (dict[key] !== undefined) el.innerHTML = dict[key];
         });
         document.documentElement.setAttribute('data-lang', lang);
         document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-BR' : (lang === 'en' ? 'en' : 'es'));
