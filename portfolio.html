@@ -398,17 +398,22 @@
       position: relative;
       overflow: hidden;
     }
-    /* Screenshot real do site */
+    /* Screenshot real do site — mostra o topo do hero */
     .portfolio-mockup-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top center;
       display: block;
-      transition: transform 8s linear;
+      position: relative;
+      z-index: 1;
+      transition: transform 10s linear, opacity 0.5s ease;
+      opacity: 0;
     }
+    .portfolio-mockup-img.loaded { opacity: 1; }
+    /* Ken Burns effect no hover — desliza a imagem revelando mais do site */
     .portfolio-card:hover .portfolio-mockup-img {
-      transform: translateY(-40%);
+      transform: translateY(-35%) scale(1.02);
     }
     /* Fallback quando imagem não carrega */
     .portfolio-mockup-fallback {
@@ -833,6 +838,7 @@
                   src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://www.moraiscapitalgroup.com/"
                   alt="Screenshot do site Morais Capital Group"
                   loading="lazy" decoding="async"
+                  onload="this.classList.add('loaded');"
                   onerror="this.style.display='none';" />
               </div>
             </div>
@@ -862,6 +868,7 @@
                   src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvimperiale.com/"
                   alt="Screenshot do site PV Imperiale"
                   loading="lazy" decoding="async"
+                  onload="this.classList.add('loaded');"
                   onerror="this.style.display='none';" />
               </div>
             </div>
@@ -891,6 +898,7 @@
                   src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvcredit.com.br/"
                   alt="Screenshot do site PV Credit"
                   loading="lazy" decoding="async"
+                  onload="this.classList.add('loaded');"
                   onerror="this.style.display='none';" />
               </div>
             </div>
@@ -920,6 +928,7 @@
                   src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvfomento.com/"
                   alt="Screenshot do site PV Fomento"
                   loading="lazy" decoding="async"
+                  onload="this.classList.add('loaded');"
                   onerror="this.style.display='none';" />
               </div>
             </div>
