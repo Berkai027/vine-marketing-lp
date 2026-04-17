@@ -2881,22 +2881,31 @@
       letter-spacing: -0.015em;
       max-width: 580px;
     }
-    /* Stack vertical de cards grandes */
+    /* Stack vertical de cards grandes — STICKY com efeito empilhamento */
     .diff-stack {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 24px 40px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 0;
+      position: relative;
     }
     .diff-row {
-      position: relative;
+      position: sticky;
       border-radius: 28px;
       overflow: hidden;
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
       cursor: none;
+      margin-bottom: 16px;
+      will-change: transform;
     }
+    /* Top progressivo: cada card para 18px mais abaixo que o anterior,
+       revelando essa pequena borda do card de cima conforme rolamos */
+    .diff-row:nth-child(1) { top: 96px; }
+    .diff-row:nth-child(2) { top: 114px; }
+    .diff-row:nth-child(3) { top: 132px; }
+    .diff-row:nth-child(4) { top: 150px; }
     .diff-row::before {
       content: '';
       position: absolute;
@@ -3024,7 +3033,12 @@
     @media (max-width: 900px) {
       .differentials-section { padding: 80px 0 40px; }
       .differentials-header { margin-bottom: 40px; padding: 0 20px; }
-      .diff-stack { padding: 0 20px; gap: 12px; }
+      .diff-stack { padding: 0 20px 30px; gap: 0; }
+      .diff-row { margin-bottom: 14px; }
+      .diff-row:nth-child(1) { top: 76px; }
+      .diff-row:nth-child(2) { top: 90px; }
+      .diff-row:nth-child(3) { top: 104px; }
+      .diff-row:nth-child(4) { top: 118px; }
       .diff-row-inner {
         grid-template-columns: 1fr;
         gap: 32px;
