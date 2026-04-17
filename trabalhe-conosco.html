@@ -56,7 +56,83 @@
       background: #000000;
       z-index: -1;
       pointer-events: none;
+      transition: background 0.6s ease;
     }
+    [data-theme="light"] #site-bg {
+      background: linear-gradient(135deg, #ffffff 0%, #f4f0fb 35%, #d2b3eb 75%, #8305ad 100%);
+    }
+    [data-theme="light"] body { color: #1a1035; }
+    [data-theme="light"] #site-bg::after {
+      background:
+        radial-gradient(ellipse 70% 55% at 25% 35%, rgba(131,5,173,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(118,37,191,0.06) 0%, transparent 65%);
+    }
+    [data-theme="light"] body::after { display: none; }
+    [data-theme="light"] .brand-wordmark-main,
+    [data-theme="light"] .brand-wordmark-sub { color: #1a1035 !important; }
+    [data-theme="light"] .nav {
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom-color: rgba(26, 16, 53, 0.06);
+    }
+    [data-theme="light"] .nav-back { color: rgba(26, 16, 53, 0.7); }
+    [data-theme="light"] .nav-back:hover { color: var(--purple-main); }
+    [data-theme="light"] .careers-hero h1 { color: #1a1035; }
+    [data-theme="light"] .careers-hero p { color: rgba(26, 16, 53, 0.72); }
+    [data-theme="light"] .careers-hero-badge {
+      background: rgba(26, 16, 53, 0.06);
+      border-color: rgba(26, 16, 53, 0.15);
+      color: #1a1035;
+    }
+    [data-theme="light"] .careers-skill {
+      background: rgba(26, 16, 53, 0.04);
+      border-color: rgba(26, 16, 53, 0.08);
+    }
+    [data-theme="light"] .careers-skill h3 { color: #1a1035; }
+    [data-theme="light"] .careers-skill p { color: rgba(26, 16, 53, 0.65); }
+    [data-theme="light"] .careers-body p { color: rgba(26, 16, 53, 0.78); }
+    [data-theme="light"] .careers-body strong { color: #1a1035; }
+    [data-theme="light"] .careers-body a { color: #1a1035; }
+    [data-theme="light"] .footer { border-top-color: rgba(26, 16, 53, 0.08); }
+    [data-theme="light"] .footer-copy { color: rgba(26, 16, 53, 0.6); }
+
+    /* SETTINGS WIDGET */
+    .settings-widget {
+      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+      z-index: 95; display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 6px;
+      background: rgba(10, 5, 20, 0.55);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 100px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0.6; transition: opacity 0.3s ease;
+    }
+    .settings-widget:hover { opacity: 1; }
+    [data-theme="light"] .settings-widget {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(26, 16, 53, 0.08);
+      box-shadow: 0 6px 20px rgba(26, 16, 53, 0.08);
+    }
+    .settings-sep { width: 1px; height: 16px; background: rgba(255, 255, 255, 0.12); }
+    [data-theme="light"] .settings-sep { background: rgba(26, 16, 53, 0.12); }
+    .settings-row { display: inline-flex; align-items: center; gap: 2px; }
+    .settings-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 24px; padding: 0 8px; border: none;
+      background: transparent; color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em; border-radius: 100px;
+      cursor: pointer; transition: background 0.25s ease, color 0.25s ease;
+    }
+    [data-theme="light"] .settings-btn { color: rgba(26, 16, 53, 0.5); }
+    .settings-btn:hover { color: var(--green); }
+    .settings-btn.is-active {
+      background: var(--purple-main);
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(131, 5, 173, 0.3);
+    }
+    .settings-btn svg { width: 12px; height: 12px; }
     #site-bg::after {
       content: '';
       position: absolute;
@@ -339,6 +415,20 @@
 <body>
   <div id="site-bg" aria-hidden="true"></div>
 
+  <!-- SETTINGS WIDGET -->
+  <div class="settings-widget" role="region" aria-label="Configurações">
+    <div class="settings-row">
+      <button class="settings-btn" data-theme-btn="dark" aria-label="Tema escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="settings-btn" data-theme-btn="light" aria-label="Tema claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+    </div>
+    <span class="settings-sep"></span>
+    <div class="settings-row">
+      <button class="settings-btn" data-lang-btn="pt">PT</button>
+      <button class="settings-btn" data-lang-btn="en">EN</button>
+      <button class="settings-btn" data-lang-btn="es">ES</button>
+    </div>
+  </div>
+
   <nav class="nav" role="navigation" aria-label="Navegação">
     <div class="nav-inner">
       <a href="index.html" aria-label="Vine Marketing — voltar para a home" class="brand-wordmark brand-wordmark--nav">
@@ -346,7 +436,7 @@
       </a>
       <a href="index.html" class="nav-back" aria-label="Voltar para a home">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>Voltar</span>
+        <span data-i18n="back">Voltar</span>
       </a>
     </div>
   </nav>
@@ -355,10 +445,10 @@
     <section class="careers-hero">
       <div class="careers-hero-badge">
         <span class="careers-hero-badge-dot"></span>
-        Carreiras
+        <span data-i18n="careers.badge">Carreiras</span>
       </div>
-      <h1>Quer fazer parte de quem <em>constrói marca</em>?</h1>
-      <p>A Vine tem espaço para gente que faz acontecer — com mentoria, projetos reais e ambiente que valoriza quem entrega.</p>
+      <h1><span data-i18n="careers.title.main">Quer fazer parte de quem</span> <em data-i18n="careers.title.accent">constrói marca</em>?</h1>
+      <p data-i18n="careers.sub">A Vine tem espaço para gente que faz acontecer — com mentoria, projetos reais e ambiente que valoriza quem entrega.</p>
     </section>
 
     <section class="careers-content">
@@ -406,7 +496,7 @@
       </div>
 
       <a href="mailto:info@vinemarketing.digital?subject=Candidatura%20Vine%20Marketing" class="careers-cta">
-        Enviar portfólio
+        <span data-i18n="careers.cta">Enviar portfólio</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </section>
@@ -420,6 +510,37 @@
       <span class="footer-copy">&copy; 2026 Vine Marketing — Caxias do Sul, RS.</span>
     </div>
   </footer>
+
+  <!-- SETTINGS: theme + i18n -->
+  <script>
+    (function() {
+      const I18N = {
+        pt: { 'back': 'Voltar', 'careers.badge': 'Carreiras', 'careers.title.main': 'Quer fazer parte de quem', 'careers.title.accent': 'constrói marca', 'careers.sub': 'A Vine tem espaço para gente que faz acontecer — com mentoria, projetos reais e ambiente que valoriza quem entrega.', 'careers.cta': 'Enviar portfólio' },
+        en: { 'back': 'Back', 'careers.badge': 'Careers', 'careers.title.main': 'Want to be part of those who', 'careers.title.accent': 'build brands', 'careers.sub': 'Vine has space for people who make things happen — with mentorship, real projects and an environment that values delivery.', 'careers.cta': 'Send portfolio' },
+        es: { 'back': 'Volver', 'careers.badge': 'Carreras', 'careers.title.main': '¿Quieres ser parte de quien', 'careers.title.accent': 'construye marca', 'careers.sub': 'Vine tiene espacio para gente que hace que las cosas pasen — con mentoría, proyectos reales y un entorno que valora a quien entrega.', 'careers.cta': 'Enviar portafolio' },
+      };
+      function apply(lang) {
+        const d = I18N[lang] || I18N.pt;
+        document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k] !== undefined) el.textContent = d[k]; });
+        document.documentElement.setAttribute('data-lang', lang);
+        try { localStorage.setItem('vine_lang', lang); } catch(e) {}
+        document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang));
+      }
+      function theme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('vine_theme', t); } catch(e) {}
+        document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-theme-btn') === t));
+      }
+      let sL = 'pt', sT = 'dark';
+      try { sL = localStorage.getItem('vine_lang') || 'pt'; sT = localStorage.getItem('vine_theme') || 'dark'; } catch(e) {}
+      theme(sT); apply(sL);
+      document.addEventListener('click', e => {
+        const t = e.target.closest('[data-theme-btn]'); const l = e.target.closest('[data-lang-btn]');
+        if (t) theme(t.getAttribute('data-theme-btn'));
+        if (l) apply(l.getAttribute('data-lang-btn'));
+      });
+    })();
+  </script>
 
   <script>
     // Scroll reveal dos skill cards

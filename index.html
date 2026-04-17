@@ -56,7 +56,8 @@
     html {
       background: #000; /* fallback sólido */
     }
-    /* Fundo gradiente fixo — cobre o viewport em qualquer posição de scroll */
+    /* Fundo gradiente fixo — cobre o viewport em qualquer posição de scroll
+       DARK: preto → roxo  |  LIGHT: branco → roxo (override abaixo) */
     #site-bg {
       position: fixed;
       inset: 0;
@@ -65,6 +66,7 @@
       background: linear-gradient(135deg, #000000 0%, #7625bf 100%);
       z-index: -1;
       pointer-events: none;
+      transition: background 0.6s ease;
     }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -2207,6 +2209,386 @@
         height: 115%;
       }
     }
+    /* ===== SETTINGS WIDGET (theme + language) — discreto, inferior ===== */
+    .settings-widget {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 95;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 6px;
+      background: rgba(10, 5, 20, 0.55);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 100px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+    .settings-widget:hover { opacity: 1; }
+    [data-theme="light"] .settings-widget {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(26, 16, 53, 0.08);
+      box-shadow: 0 6px 20px rgba(26, 16, 53, 0.08);
+    }
+    .settings-sep {
+      width: 1px;
+      height: 16px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    [data-theme="light"] .settings-sep { background: rgba(26, 16, 53, 0.12); }
+    .settings-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .settings-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 26px;
+      height: 24px;
+      padding: 0 8px;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: 100px;
+      cursor: none;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    [data-theme="light"] .settings-btn { color: rgba(26, 16, 53, 0.5); }
+    .settings-btn:hover { color: var(--green); }
+    .settings-btn.is-active {
+      background: var(--purple-main);
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(131, 5, 173, 0.3);
+    }
+    .settings-btn svg { width: 12px; height: 12px; }
+    @media (max-width: 768px) {
+      .settings-widget { bottom: 88px; }
+    }
+
+    /* ===== LIGHT THEME VARIABLES ===== */
+    [data-theme="light"] {
+      --ink-000: #ffffff;
+      --ink-100: #f4f3f8;
+      --ink-200: #ebe9f2;
+      --ink-300: #dfdce8;
+      --ink-400: #c8c2dc;
+      --text-100: rgba(26, 16, 53, 0.96);
+      --text-200: rgba(26, 16, 53, 0.78);
+      --text-300: rgba(26, 16, 53, 0.6);
+      --text-400: rgba(26, 16, 53, 0.42);
+      --text-500: rgba(26, 16, 53, 0.28);
+      --stroke-1: rgba(26, 16, 53, 0.08);
+      --stroke-2: rgba(26, 16, 53, 0.12);
+    }
+    [data-theme="light"] body {
+      color: #1a1035;
+    }
+    [data-theme="light"] #site-bg {
+      background: linear-gradient(135deg, #ffffff 0%, #f4f0fb 35%, #d2b3eb 75%, #8305ad 100%);
+    }
+    [data-theme="light"] .nav.scrolled {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-bottom: 1px solid rgba(26, 16, 53, 0.06);
+    }
+    [data-theme="light"] .nav-link {
+      color: rgba(26, 16, 53, 0.7);
+    }
+    [data-theme="light"] .brand-wordmark-main,
+    [data-theme="light"] .brand-wordmark-sub {
+      color: #1a1035;
+    }
+    [data-theme="light"] .hero-badge {
+      background: rgba(26, 16, 53, 0.06);
+      border-color: rgba(26, 16, 53, 0.12);
+      color: rgba(26, 16, 53, 0.85);
+    }
+    [data-theme="light"] .hero h1 {
+      color: #1a1035;
+    }
+    [data-theme="light"] .hero-sub {
+      color: rgba(26, 16, 53, 0.7);
+    }
+    [data-theme="light"] .services-sub,
+    [data-theme="light"] #historia p,
+    [data-theme="light"] .physical-text {
+      color: rgba(26, 16, 53, 0.7) !important;
+    }
+    [data-theme="light"] .service-card,
+    [data-theme="light"] .stat-item,
+    [data-theme="light"] .physical-visual-card,
+    [data-theme="light"] .hscroll-card {
+      background: rgba(26, 16, 53, 0.04);
+      border-color: rgba(26, 16, 53, 0.08);
+    }
+    [data-theme="light"] .service-card h3,
+    [data-theme="light"] .stat-label {
+      color: #1a1035;
+    }
+    [data-theme="light"] .service-card-desc,
+    [data-theme="light"] .price-card-desc,
+    [data-theme="light"] .price-card-features li {
+      color: rgba(26, 16, 53, 0.65) !important;
+    }
+    [data-theme="light"] .price-card-name {
+      color: var(--purple-main);
+    }
+    [data-theme="light"] .price-card h3,
+    [data-theme="light"] .stat-number {
+      color: #1a1035 !important;
+      background: none !important;
+      -webkit-text-fill-color: #1a1035 !important;
+    }
+    [data-theme="light"] .footer-copy,
+    [data-theme="light"] .site-footer-link,
+    [data-theme="light"] .site-footer-tagline,
+    [data-theme="light"] .site-footer-value {
+      color: rgba(26, 16, 53, 0.7) !important;
+    }
+    [data-theme="light"] .site-footer-col-title,
+    [data-theme="light"] .site-footer-label {
+      color: rgba(26, 16, 53, 0.5) !important;
+    }
+    [data-theme="light"] .site-footer-bottom {
+      border-top-color: rgba(26, 16, 53, 0.08);
+    }
+    [data-theme="light"] .anchor-quote-text {
+      color: #1a1035;
+    }
+    [data-theme="light"] .anchor-quote-sub {
+      color: rgba(26, 16, 53, 0.65) !important;
+    }
+    [data-theme="light"] .differentials-header h2 {
+      color: #1a1035;
+    }
+    [data-theme="light"] .differentials-header p,
+    [data-theme="light"] .diff-h-accent {
+      color: rgba(26, 16, 53, 0.55);
+    }
+    /* Dark sections (Hub, A Serra) stay dark in light mode — feature contrast */
+    [data-theme="light"] .marquee-item {
+      color: rgba(26, 16, 53, 0.7);
+    }
+    [data-theme="light"] .marquee-section {
+      border-bottom-color: rgba(26, 16, 53, 0.08);
+    }
+    [data-theme="light"] .marquee-label {
+      color: rgba(26, 16, 53, 0.5);
+    }
+    [data-theme="light"] .grain { display: none; }
+
+    /* ===== LIGHT THEME — garantir que NENHUMA letra fica branca ===== */
+    [data-theme="light"] body,
+    [data-theme="light"] h1,
+    [data-theme="light"] h2,
+    [data-theme="light"] h3,
+    [data-theme="light"] h4,
+    [data-theme="light"] p,
+    [data-theme="light"] span:not(.brand-wordmark-main):not(.brand-wordmark-sub):not([class*="pm-"]):not([class*="counter"]):not([class*="stat-suffix"]),
+    [data-theme="light"] li,
+    [data-theme="light"] a:not(.btn-primary):not(.btn-secondary):not(.btn-portfolio-cta):not(.hero-text-link):not(.nav-cta):not(.mobile-cta):not(.price-card-btn) {
+      color: #1a1035;
+    }
+    [data-theme="light"] .brand-wordmark-main,
+    [data-theme="light"] .brand-wordmark-sub {
+      color: #1a1035 !important;
+    }
+    [data-theme="light"] .nav-link {
+      color: rgba(26, 16, 53, 0.72) !important;
+    }
+    [data-theme="light"] .nav-link:hover {
+      color: var(--purple-main) !important;
+    }
+    [data-theme="light"] .hamburger span { background: #1a1035; }
+    [data-theme="light"] .hero h1 { color: #1a1035 !important; }
+    [data-theme="light"] .hero h1 .hero-accent {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    [data-theme="light"] .hero-sub { color: rgba(26, 16, 53, 0.72) !important; }
+    [data-theme="light"] .hero-badge {
+      background: rgba(26, 16, 53, 0.06);
+      border-color: rgba(26, 16, 53, 0.14);
+      color: #1a1035 !important;
+    }
+    [data-theme="light"] .hero-badge span { color: #1a1035 !important; }
+    [data-theme="light"] .btn-secondary {
+      color: #1a1035;
+      border-color: rgba(26, 16, 53, 0.3);
+    }
+    [data-theme="light"] .btn-secondary:hover {
+      background: rgba(26, 16, 53, 0.06);
+      border-color: var(--purple-main);
+      color: var(--purple-main);
+    }
+    [data-theme="light"] .hero-text-link {
+      color: rgba(26, 16, 53, 0.6) !important;
+    }
+    [data-theme="light"] .hero-text-link:hover { color: var(--purple-main) !important; }
+    [data-theme="light"] .marquee-item { color: rgba(26, 16, 53, 0.72) !important; }
+    [data-theme="light"] .marquee-label { color: rgba(26, 16, 53, 0.5) !important; }
+    [data-theme="light"] .service-card h3 { color: #1a1035 !important; }
+    [data-theme="light"] .service-card-desc { color: rgba(26, 16, 53, 0.68) !important; }
+    [data-theme="light"] .service-icon {
+      background: linear-gradient(135deg, #8305ad, #7625bf);
+    }
+    [data-theme="light"] .service-icon svg { stroke: #ffffff !important; }
+    [data-theme="light"] .physical-list li { color: #1a1035 !important; }
+    [data-theme="light"] .physical-quote { color: #1a1035 !important; }
+    [data-theme="light"] .physical-visual-card span { color: #1a1035 !important; }
+    [data-theme="light"] .price-card-name { color: var(--purple-main) !important; }
+    [data-theme="light"] .price-card h3 { color: #1a1035 !important; }
+    [data-theme="light"] .price-card-desc { color: rgba(26, 16, 53, 0.65) !important; }
+    [data-theme="light"] .price-card-features li { color: rgba(26, 16, 53, 0.75) !important; }
+    [data-theme="light"] .price-card-price { color: var(--purple-main) !important; }
+    [data-theme="light"] .price-card-price small { color: rgba(26, 16, 53, 0.5) !important; }
+    [data-theme="light"] .price-card-btn--outline {
+      color: #1a1035;
+      border-color: rgba(26, 16, 53, 0.25);
+    }
+    [data-theme="light"] .price-card-btn--outline:hover {
+      border-color: var(--purple-main);
+      background: rgba(131, 5, 173, 0.08);
+      color: var(--purple-main);
+    }
+    [data-theme="light"] .hscroll-header p { color: rgba(26, 16, 53, 0.7) !important; }
+    [data-theme="light"] .hscroll-footer p { color: rgba(26, 16, 53, 0.7) !important; }
+    [data-theme="light"] .hscroll-card.featured .price-card-name { color: #ffffff !important; }
+    [data-theme="light"] .hscroll-card.featured h3 { color: #ffffff !important; }
+    [data-theme="light"] .hscroll-card.featured .price-card-desc { color: rgba(255, 255, 255, 0.82) !important; }
+    [data-theme="light"] .hscroll-card.featured .price-card-features li { color: rgba(255, 255, 255, 0.82) !important; }
+    [data-theme="light"] .stat-number {
+      background: linear-gradient(180deg, #1a1035 0%, rgba(26, 16, 53, 0.72) 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+    [data-theme="light"] .stat-label { color: #1a1035 !important; }
+    [data-theme="light"] .stats { color: #1a1035; }
+    [data-theme="light"] #historia h2,
+    [data-theme="light"] .services h2,
+    [data-theme="light"] .physical h2,
+    [data-theme="light"] .hscroll-header h2 {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    [data-theme="light"] #historia p { color: rgba(26, 16, 53, 0.8) !important; }
+    [data-theme="light"] #historia p strong { color: #1a1035 !important; font-weight: 700; }
+    [data-theme="light"] #historia p em { color: var(--purple-main) !important; }
+    [data-theme="light"] .physical-text { color: rgba(26, 16, 53, 0.7) !important; }
+    /* Anchor quote (transition): stays on a section with purple backdrop, keep readable */
+    [data-theme="light"] .anchor-quote-text { color: #1a1035; }
+    [data-theme="light"] .anchor-quote-sub { color: rgba(26, 16, 53, 0.7) !important; }
+    /* Differentials header on light */
+    [data-theme="light"] .differentials-header h2 { color: #1a1035; }
+    [data-theme="light"] .differentials-header p { color: rgba(26, 16, 53, 0.72); }
+    [data-theme="light"] .diff-h-accent { color: rgba(26, 16, 53, 0.48); }
+    /* Diff rows stay dark-themed internally (fixed colors per card — já definidos) */
+    /* Footer */
+    [data-theme="light"] .site-footer-link { color: rgba(26, 16, 53, 0.72) !important; }
+    [data-theme="light"] .site-footer-link:hover { color: var(--purple-main) !important; }
+    [data-theme="light"] .site-footer-tagline { color: rgba(26, 16, 53, 0.75) !important; }
+    [data-theme="light"] .site-footer-value { color: #1a1035 !important; }
+    [data-theme="light"] .site-footer-label,
+    [data-theme="light"] .site-footer-col-title { color: rgba(26, 16, 53, 0.5) !important; }
+    [data-theme="light"] .footer-copy { color: rgba(26, 16, 53, 0.6) !important; }
+    [data-theme="light"] .site-footer-domain { color: rgba(26, 16, 53, 0.6) !important; }
+    [data-theme="light"] .footer-watermark span {
+      -webkit-text-stroke: 1px rgba(26, 16, 53, 0.05);
+    }
+    /* Hub + A Serra + CTA Final + Trabalhe Conosco stay dark (intentional contrast) */
+    /* Nav scrolled */
+    [data-theme="light"] .nav.scrolled {
+      background: rgba(255, 255, 255, 0.9) !important;
+      box-shadow: 0 1px 20px rgba(26, 16, 53, 0.08);
+    }
+
+    /* ===== CATCH-ALL: inverter TODO texto branco inline pra escuro no tema claro ===== */
+    [data-theme="light"] [style*="color: rgba(255,255,255"],
+    [data-theme="light"] [style*="color:rgba(255,255,255"],
+    [data-theme="light"] [style*="color: #ffffff"],
+    [data-theme="light"] [style*="color:#ffffff"],
+    [data-theme="light"] [style*="color: #fff"],
+    [data-theme="light"] [style*="color:#fff"],
+    [data-theme="light"] [style*="color: white"],
+    [data-theme="light"] [style*="color:white"] {
+      color: #1a1035 !important;
+    }
+
+    /* Preservar texto BRANCO nas seções intencionalmente escuras */
+    [data-theme="light"] .hub-section *,
+    [data-theme="light"] .hub-section,
+    [data-theme="light"] .serra-section *,
+    [data-theme="light"] .serra-section,
+    [data-theme="light"] .cta-final *,
+    [data-theme="light"] .cta-final,
+    [data-theme="light"] .diff-row--purple,
+    [data-theme="light"] .diff-row--purple *,
+    [data-theme="light"] .diff-row--dark,
+    [data-theme="light"] .diff-row--dark *,
+    [data-theme="light"] .diff-row--tech,
+    [data-theme="light"] .diff-row--tech * {
+      color: inherit !important;
+    }
+    [data-theme="light"] .serra-section,
+    [data-theme="light"] .serra-quote { color: #ffffff !important; }
+    [data-theme="light"] .hub-title,
+    [data-theme="light"] .hub-lead,
+    [data-theme="light"] .hub-body { color: #ffffff !important; }
+    [data-theme="light"] .hub-body { color: rgba(255,255,255,0.78) !important; }
+    [data-theme="light"] .cta-final h2,
+    [data-theme="light"] .cta-final p { color: #ffffff !important; }
+    [data-theme="light"] .cta-final p { color: rgba(255,255,255,0.72) !important; }
+    [data-theme="light"] .diff-row--purple h3,
+    [data-theme="light"] .diff-row--dark h3,
+    [data-theme="light"] .diff-row--tech h3 { color: #ffffff !important; }
+    [data-theme="light"] .diff-row--purple p,
+    [data-theme="light"] .diff-row--dark p,
+    [data-theme="light"] .diff-row--tech p { color: rgba(255,255,255,0.78) !important; }
+    /* Botão primary dentro das dark-zones mantém verde */
+    [data-theme="light"] .cta-final .btn-primary,
+    [data-theme="light"] .hub-section .btn-primary {
+      color: var(--green) !important;
+      border-color: var(--green) !important;
+      background: transparent !important;
+    }
+    [data-theme="light"] .cta-final .btn-primary:hover,
+    [data-theme="light"] .hub-section .btn-primary:hover {
+      color: #1a1035 !important;
+      background: var(--green) !important;
+    }
+    /* Merlot card (featured) tem fundo roxo — texto fica branco */
+    [data-theme="light"] .hscroll-card.featured .price-card-name,
+    [data-theme="light"] .hscroll-card.featured h3,
+    [data-theme="light"] .hscroll-card.featured .price-card-desc,
+    [data-theme="light"] .hscroll-card.featured .price-card-features li,
+    [data-theme="light"] .hscroll-card.featured .price-card-price {
+      color: #ffffff !important;
+    }
+    [data-theme="light"] .hscroll-card.featured .price-card-btn--fill {
+      color: var(--green) !important;
+      border-color: var(--green) !important;
+    }
+
+    /* Hide elements only in PT/EN/ES */
+    [data-lang="en"] .lang-pt, [data-lang="en"] .lang-es { display: none !important; }
+    [data-lang="es"] .lang-pt, [data-lang="es"] .lang-en { display: none !important; }
+    [data-lang="pt"] .lang-en, [data-lang="pt"] .lang-es { display: none !important; }
+
     /* ===== ANCHOR QUOTE — frase de transição entre Bella e Diferenciais ===== */
     .anchor-quote {
       position: relative;
@@ -2806,11 +3188,11 @@
         <span class="brand-wordmark-main">Vine</span><span class="brand-wordmark-sub">Marketing</span>
       </a>
       <div class="nav-links">
-        <a href="#servicos" class="nav-link hoverable">Serviços</a>
-        <a href="portfolio.html" class="nav-link hoverable">Portfólio</a>
-        <a href="#planos" class="nav-link hoverable">Planos</a>
-        <a href="#diferenciais" class="nav-link hoverable">Diferenciais</a>
-        <a href="trabalhe-conosco.html" class="nav-link hoverable">Trabalhe conosco</a>
+        <a href="#servicos" class="nav-link hoverable" data-i18n="nav.servicos">Serviços</a>
+        <a href="portfolio.html" class="nav-link hoverable" data-i18n="nav.portfolio">Portfólio</a>
+        <a href="#planos" class="nav-link hoverable" data-i18n="nav.planos">Planos</a>
+        <a href="#diferenciais" class="nav-link hoverable" data-i18n="nav.diferenciais">Diferenciais</a>
+        <a href="trabalhe-conosco.html" class="nav-link hoverable" data-i18n="nav.trabalhe">Trabalhe conosco</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
@@ -2834,23 +3216,23 @@
     <div>
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        Serra Gaúcha, RS
+        <span data-i18n="hero.badge">Serra Gaúcha, RS</span>
       </div>
       <h1 style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.98;">
-        <span class="line"><span class="line-inner">Sua marca é <em class="hero-accent">lembrada</em></span></span>
-        <span class="line"><span class="line-inner">na Serra — ou só <em class="hero-accent">existe?</em></span></span>
+        <span class="line"><span class="line-inner" data-i18n="hero.title.l1">Sua marca é lembrada</span></span>
+        <span class="line"><span class="line-inner" data-i18n="hero.title.l2">na Serra — ou só existe?</span></span>
       </h1>
-      <p class="hero-sub" style="font-weight:300;letter-spacing:-0.022em;line-height:1.5;max-width:620px;">Construímos posicionamento, conteúdo e estratégia para negócios que querem ser referência na Serra Gaúcha.</p>
+      <p class="hero-sub" data-i18n="hero.sub" style="font-weight:300;letter-spacing:-0.022em;line-height:1.5;max-width:620px;">Construímos posicionamento, conteúdo e estratégia para negócios que querem ser referência na Serra Gaúcha.</p>
       <div class="hero-cta-group">
         <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable">
-          Fale com a Vine
+          <span data-i18n="hero.cta.primary">Fale com a Vine</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#planos" class="btn-secondary magnetic hoverable">Conhecer os planos</a>
+        <a href="#planos" class="btn-secondary magnetic hoverable" data-i18n="hero.cta.secondary">Conhecer os planos</a>
       </div>
       <div class="hero-text-links">
         <a href="portfolio.html" class="hero-text-link hoverable" aria-label="Ver nosso portfólio">
-          <span>Ver nosso portfólio</span>
+          <span data-i18n="hero.cta.portfolio">Ver nosso portfólio</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -2859,7 +3241,7 @@
 
   <!-- MARQUEE SOCIAL PROOF -->
   <section class="marquee-section">
-    <div class="marquee-label">Segmentos que atendemos</div>
+    <div class="marquee-label" data-i18n="marquee.label">Segmentos que atendemos</div>
     <div style="overflow: hidden;">
       <div class="marquee-track">
         <span class="marquee-item"><span class="marquee-dot"></span>Comércio local</span>
@@ -2886,19 +3268,17 @@
   <!-- A SERRA — FRASE DE TRANSIÇÃO (fundo preto sólido) -->
   <section id="a-serra" class="serra-section">
     <div class="serra-inner">
-      <span class="serra-kicker">O nosso combinado</span>
-      <p class="serra-quote">
-        Você cuida do seu <strong>negócio</strong>. A gente cuida da sua <em>marca.</em>
-      </p>
-      <p class="serra-tagline">Foco no que você faz melhor — a gente cuida do que a marca precisa.</p>
+      <span class="serra-kicker" data-i18n="serra.kicker">O nosso combinado</span>
+      <p class="serra-quote" data-i18n="serra.quote">Você cuida do seu negócio. A gente cuida da sua marca.</p>
+      <p class="serra-tagline" data-i18n="serra.tagline">Foco no que você faz melhor — a gente cuida do que a marca precisa.</p>
     </div>
   </section>
 
   <!-- SERVICES -->
   <section class="services section" id="servicos">
     <div class="container">
-      <h2 class="reveal grad-text">O que fazemos</h2>
-      <p class="services-sub reveal">Cada serviço é uma camada do seu posicionamento. Juntos, constroem uma marca completa.</p>
+      <h2 class="reveal grad-text" data-i18n="services.title">O que fazemos</h2>
+      <p class="services-sub reveal" data-i18n="services.sub">Cada serviço é uma camada do seu posicionamento. Juntos, constroem uma marca completa.</p>
       <div class="services-grid">
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
@@ -2950,7 +3330,7 @@
   <section id="historia" style="padding: 120px 0; background: transparent;">
     <div class="container">
       <div style="margin-bottom:40px;">
-        <h2 class="reveal grad-text" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2.2rem,4.5vw,3.5rem);">Nossa História</h2>
+        <h2 class="reveal grad-text" data-i18n="historia.title" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2.2rem,4.5vw,3.5rem);">Nossa História</h2>
       </div>
       <div style="max-width: 760px; display:flex; flex-direction:column; gap: 24px;">
         <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">
@@ -2972,9 +3352,9 @@
     <div class="container">
       <div class="physical-grid">
         <div>
-          <div class="physical-label reveal">Além do digital</div>
-          <h2 class="reveal" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">Sua marca também vive fora da tela.</h2>
-          <p class="physical-text reveal" style="font-weight:300;letter-spacing:-0.022em;line-height:1.5;margin-bottom:24px;">Do cartão de visita à embalagem — cada ponto de contato é uma oportunidade de ser lembrado.</p>
+          <div class="physical-label reveal" data-i18n="physical.label">Além do digital</div>
+          <h2 class="reveal" data-i18n="physical.title" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">Sua marca também vive fora da tela.</h2>
+          <p class="physical-text reveal" data-i18n="physical.sub" style="font-weight:300;letter-spacing:-0.022em;line-height:1.5;margin-bottom:24px;">Do cartão de visita à embalagem — cada ponto de contato é uma oportunidade de ser lembrado.</p>
           <ul class="physical-list">
             <li class="reveal"><span class="physical-list-check">✓</span> Cartões de visita premium</li>
             <li class="reveal"><span class="physical-list-check">✓</span> Panfletos e materiais promocionais</li>
@@ -3023,8 +3403,8 @@
   <!-- PRICING — HORIZONTAL SCROLL -->
   <section class="hscroll-section" id="planos" style="background: transparent;">
     <div class="hscroll-header">
-      <h2 class="reveal">Carta de Vinhos</h2>
-      <p class="reveal" style="font-weight:200;letter-spacing:-0.022em;">Escolha o rótulo ideal para o seu momento.</p>
+      <h2 class="reveal" data-i18n="plans.title">Carta de Vinhos</h2>
+      <p class="reveal" data-i18n="plans.sub" style="font-weight:200;letter-spacing:-0.022em;">Escolha o rótulo ideal para o seu momento.</p>
     </div>
     <div class="hscroll-track" id="hscrollTrack">
       <div class="hscroll-card spotlight-card hoverable">
@@ -3090,8 +3470,8 @@
       </div>
     </div>
     <div class="hscroll-footer reveal">
-      <p>Ainda não sabe qual rótulo combina com seu negócio?</p>
-      <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable">Me ajude a escolher</a>
+      <p data-i18n="plans.help.q">Ainda não sabe qual rótulo combina com seu negócio?</p>
+      <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-secondary magnetic hoverable" data-i18n="plans.help.cta">Me ajude a escolher</a>
     </div>
   </section>
 
@@ -3101,24 +3481,24 @@
       <div class="stats-grid">
         <div class="stat-item">
           <div class="stat-number"><span class="counter" data-target="40">0</span><span class="stat-suffix">+</span></div>
-          <div class="stat-label">Marcas atendidas</div>
+          <div class="stat-label" data-i18n="stats.brands">Marcas atendidas</div>
         </div>
         <div class="stat-item">
           <div class="stat-number"><span class="counter" data-target="8">0</span></div>
-          <div class="stat-label">Segmentos atendidos</div>
+          <div class="stat-label" data-i18n="stats.segments">Segmentos atendidos</div>
         </div>
         <div class="stat-item">
           <div class="stat-number"><span class="counter" data-target="4">0</span></div>
-          <div class="stat-label">Anos de operação</div>
+          <div class="stat-label" data-i18n="stats.years">Anos de operação</div>
         </div>
         <div class="stat-item">
           <div class="stat-number"><span class="counter" data-target="360">0</span><span class="stat-suffix">°</span></div>
-          <div class="stat-label">Estratégia completa</div>
+          <div class="stat-label" data-i18n="stats.strategy">Estratégia completa</div>
         </div>
       </div>
       <div style="text-align: center; margin-top: 56px;">
         <a href="portfolio.html" class="btn-portfolio-cta magnetic hoverable">
-          Ver nosso portfólio
+          <span data-i18n="stats.cta">Ver nosso portfólio</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -3132,12 +3512,12 @@
     <div class="hub-section-overlay" aria-hidden="true"></div>
 
     <div class="container hub-section-content">
-      <div class="hub-label reveal">Infraestrutura digital</div>
-      <h2 class="reveal hub-title">Hub Tecnológico</h2>
-      <p class="reveal hub-lead">Não somos só marketing. Construímos o que sustenta seu crescimento.</p>
+      <div class="hub-label reveal" data-i18n="hub.label">Infraestrutura digital</div>
+      <h2 class="reveal hub-title" data-i18n="hub.title">Hub Tecnológico</h2>
+      <p class="reveal hub-lead" data-i18n="hub.lead">Não somos só marketing. Construímos o que sustenta seu crescimento.</p>
       <p class="reveal hub-body">A Vine desenvolve a infraestrutura digital que os negócios da Serra precisam para escalar: sites institucionais, landing pages, sistemas de gestão, automações e integrações — tudo pensado para conectar marketing, operação e resultado em uma única estrutura.</p>
       <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
-        Solicitar projeto tecnológico
+        <span data-i18n="hub.cta">Solicitar projeto tecnológico</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -3156,8 +3536,8 @@
       <div class="bella-3col" style="display:grid;grid-template-columns:1fr 340px 1fr;gap:64px;align-items:start;">
         <!-- Texto esquerda (alinhado à esquerda) -->
         <div style="padding-top:48px;">
-          <div class="physical-label reveal" style="margin-bottom:20px;">Inovação</div>
-          <h2 class="reveal grad-text" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:28px;">Bella IA — Inteligência com identidade.</h2>
+          <div class="physical-label reveal" data-i18n="bella.label" style="margin-bottom:20px;">Inovação</div>
+          <h2 class="reveal grad-text" data-i18n="bella.title" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:28px;">Bella IA — Inteligência com identidade.</h2>
           <p class="reveal" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);">A Bella é a primeira assistente de IA da Serra Gaúcha, desenvolvida pela Vine para apoiar negócios em decisões de marketing, análise de dados e criação de campanhas — com contexto local e visão estratégica.</p>
         </div>
         <!-- Foto central com marca d'água -->
@@ -3175,7 +3555,7 @@
         <div style="padding-top:160px;text-align:right;">
           <p class="reveal" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);margin-bottom:32px;">Conecta dados, criatividade e estratégia para tornar suas decisões de marketing mais rápidas, claras e fundamentadas.</p>
           <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable" style="display:inline-flex;">
-            Conhecer a Bella
+            <span data-i18n="bella.cta">Conhecer a Bella</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -3187,9 +3567,9 @@
   <section class="anchor-quote" aria-label="Frase \u00e2ncora">
     <div class="anchor-quote-inner">
       <p class="anchor-quote-text">
-        Seu negócio não precisa apenas <em>aparecer</em>. Precisa ser <em>percebido</em>.
+        <span data-i18n="anchor.text.before">Seu negócio não precisa apenas</span> <em data-i18n="anchor.text.aparecer">aparecer</em><span data-i18n="anchor.text.middle">. Precisa ser</span> <em data-i18n="anchor.text.percebido">percebido</em>.
       </p>
-      <p class="anchor-quote-sub">Vamos conversar sobre como posicionar sua marca com estratégia, identidade e resultado.</p>
+      <p class="anchor-quote-sub" data-i18n="anchor.sub">Vamos conversar sobre como posicionar sua marca com estratégia, identidade e resultado.</p>
     </div>
   </section>
 
@@ -3197,9 +3577,9 @@
   <section class="differentials-section" id="diferenciais">
     <div class="container">
       <div class="differentials-header">
-        <span class="differentials-eyebrow">Por que a Vine?</span>
-        <h2 class="reveal">Nossos diferenciais <span class="diff-h-accent">para quem leva marca a sério.</span></h2>
-        <p class="reveal">Quatro razões concretas para escolher quem conhece o território.</p>
+        <span class="differentials-eyebrow" data-i18n="diff.eyebrow">Por que a Vine?</span>
+        <h2 class="reveal"><span data-i18n="diff.title.main">Nossos diferenciais</span> <span class="diff-h-accent" data-i18n="diff.title.accent">para quem leva marca a sério.</span></h2>
+        <p class="reveal" data-i18n="diff.sub">Quatro razões concretas para escolher quem conhece o território.</p>
       </div>
     </div>
 
@@ -3326,10 +3706,12 @@
   <section class="cta-final section" id="contato">
     <div class="container">
       <div class="cta-final-content">
-        <h2 class="scrub-text scrub-reveal cta-primary" style="margin-bottom:28px; font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95;" aria-label="Pronto para ser a próxima referência da Serra?">Pronto para ser a <em style="font-style:normal; color:var(--green);">próxima referência da Serra?</em></h2>
-        <p class="reveal" style="margin-bottom:48px;">Vamos construir uma marca que as pessoas lembram — não só uma conta que as pessoas seguem.</p>
+        <h2 class="scrub-text cta-primary" style="margin-bottom:28px; font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95;">
+          <span data-i18n="cta.title.main">Pronto para ser a</span> <em data-i18n="cta.title.accent" style="font-style:normal;">próxima referência da Serra?</em>
+        </h2>
+        <p class="reveal" data-i18n="cta.sub" style="margin-bottom:48px;">Vamos construir uma marca que as pessoas lembram — não só uma conta que as pessoas seguem.</p>
         <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
-          Fale com a Vine
+          <span data-i18n="cta.button">Fale com a Vine</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -3337,6 +3719,24 @@
   </section>
 
   </main><!-- /#main-content -->
+
+  <!-- SETTINGS WIDGET — theme + language (discreto, inferior) -->
+  <div class="settings-widget" role="region" aria-label="Configurações">
+    <div class="settings-row" role="group" aria-label="Tema">
+      <button class="settings-btn" data-theme-btn="dark" aria-label="Tema escuro" title="Tema escuro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="settings-btn" data-theme-btn="light" aria-label="Tema claro" title="Tema claro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+    <span class="settings-sep" aria-hidden="true"></span>
+    <div class="settings-row" role="group" aria-label="Idioma">
+      <button class="settings-btn" data-lang-btn="pt" aria-label="Português">PT</button>
+      <button class="settings-btn" data-lang-btn="en" aria-label="English">EN</button>
+      <button class="settings-btn" data-lang-btn="es" aria-label="Español">ES</button>
+    </div>
+  </div>
 
   <!-- WHATSAPP FLOATING BUTTON -->
   <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="whatsapp-float hoverable" aria-label="Fale conosco pelo WhatsApp">
@@ -3431,6 +3831,231 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===== SETTINGS: theme + i18n ===== -->
+  <script>
+    (function() {
+      const I18N = {
+        pt: {
+          'nav.servicos': 'Serviços',
+          'nav.portfolio': 'Portfólio',
+          'nav.planos': 'Planos',
+          'nav.diferenciais': 'Diferenciais',
+          'nav.trabalhe': 'Trabalhe conosco',
+          'hero.badge': 'Serra Gaúcha, RS',
+          'hero.title.l1': 'Sua marca é lembrada',
+          'hero.title.l2': 'na Serra — ou só existe?',
+          'hero.sub': 'Construímos posicionamento, conteúdo e estratégia para negócios que querem ser referência na Serra Gaúcha.',
+          'hero.cta.primary': 'Fale com a Vine',
+          'hero.cta.secondary': 'Conhecer os planos',
+          'hero.cta.portfolio': 'Ver nosso portfólio',
+          'marquee.label': 'Segmentos que atendemos',
+          'serra.kicker': 'O nosso combinado',
+          'serra.quote': 'Você cuida do seu negócio. A gente cuida da sua marca.',
+          'serra.tagline': 'Foco no que você faz melhor — a gente cuida do que a marca precisa.',
+          'services.title': 'O que fazemos',
+          'services.sub': 'Cada serviço é uma camada do seu posicionamento. Juntos, constroem uma marca completa.',
+          'historia.title': 'Nossa História',
+          'physical.label': 'Além do digital',
+          'physical.title': 'Sua marca também vive fora da tela.',
+          'physical.sub': 'Do cartão de visita à embalagem — cada ponto de contato é uma oportunidade de ser lembrado.',
+          'physical.cta': 'Solicitar orçamento',
+          'plans.title': 'Carta de Vinhos',
+          'plans.sub': 'Escolha o rótulo ideal para o seu momento.',
+          'plans.help.q': 'Ainda não sabe qual rótulo combina com seu negócio?',
+          'plans.help.cta': 'Me ajude a escolher',
+          'stats.brands': 'Marcas atendidas',
+          'stats.segments': 'Segmentos atendidos',
+          'stats.years': 'Anos de operação',
+          'stats.strategy': 'Estratégia completa',
+          'stats.cta': 'Ver nosso portfólio',
+          'hub.label': 'Infraestrutura digital',
+          'hub.title': 'Hub Tecnológico',
+          'hub.lead': 'Não somos só marketing. Construímos o que sustenta seu crescimento.',
+          'hub.cta': 'Solicitar projeto tecnológico',
+          'bella.label': 'Inovação',
+          'bella.title': 'Bella IA — Inteligência com identidade.',
+          'bella.cta': 'Conhecer a Bella',
+          'anchor.text.before': 'Seu negócio não precisa apenas',
+          'anchor.text.aparecer': 'aparecer',
+          'anchor.text.middle': '. Precisa ser',
+          'anchor.text.percebido': 'percebido',
+          'anchor.sub': 'Vamos conversar sobre como posicionar sua marca com estratégia, identidade e resultado.',
+          'diff.eyebrow': 'Por que a Vine?',
+          'diff.title.main': 'Nossos diferenciais',
+          'diff.title.accent': 'para quem leva marca a sério.',
+          'diff.sub': 'Quatro razões concretas para escolher quem conhece o território.',
+          'cta.title.main': 'Pronto para ser a',
+          'cta.title.accent': 'próxima referência da Serra?',
+          'cta.sub': 'Vamos construir uma marca que as pessoas lembram — não só uma conta que as pessoas seguem.',
+          'cta.button': 'Fale com a Vine',
+          'footer.tagline': 'Construímos marcas que a Serra Gaúcha reconhece, indica e lembra.',
+          'footer.label.location': 'Localização',
+          'footer.label.contact': 'Contato',
+          'footer.col.nav': 'Navegação',
+          'footer.col.contact': 'Contato & Redes',
+        },
+        en: {
+          'nav.servicos': 'Services',
+          'nav.portfolio': 'Portfolio',
+          'nav.planos': 'Plans',
+          'nav.diferenciais': 'Differentials',
+          'nav.trabalhe': 'Careers',
+          'hero.badge': 'Serra Gaúcha, Brazil',
+          'hero.title.l1': 'Your brand is remembered',
+          'hero.title.l2': 'in the Serra — or just exists?',
+          'hero.sub': 'We build positioning, content and strategy for businesses that want to be a reference in the Serra Gaúcha region.',
+          'hero.cta.primary': 'Talk to Vine',
+          'hero.cta.secondary': 'See the plans',
+          'hero.cta.portfolio': 'See our portfolio',
+          'marquee.label': 'Segments we serve',
+          'serra.kicker': 'Our agreement',
+          'serra.quote': 'You take care of your business. We take care of your brand.',
+          'serra.tagline': 'Focus on what you do best — we take care of what your brand needs.',
+          'services.title': 'What we do',
+          'services.sub': 'Each service is a layer of your positioning. Together, they build a complete brand.',
+          'historia.title': 'Our Story',
+          'physical.label': 'Beyond digital',
+          'physical.title': 'Your brand lives outside the screen too.',
+          'physical.sub': 'From business cards to packaging — every touchpoint is an opportunity to be remembered.',
+          'physical.cta': 'Request a quote',
+          'plans.title': 'Wine List',
+          'plans.sub': 'Choose the right label for your moment.',
+          'plans.help.q': 'Not sure which label fits your business?',
+          'plans.help.cta': 'Help me choose',
+          'stats.brands': 'Brands served',
+          'stats.segments': 'Segments served',
+          'stats.years': 'Years operating',
+          'stats.strategy': 'Full strategy',
+          'stats.cta': 'See our portfolio',
+          'hub.label': 'Digital infrastructure',
+          'hub.title': 'Tech Hub',
+          'hub.lead': 'We\'re not just marketing. We build what sustains your growth.',
+          'hub.cta': 'Request a tech project',
+          'bella.label': 'Innovation',
+          'bella.title': 'Bella AI — Intelligence with identity.',
+          'bella.cta': 'Meet Bella',
+          'anchor.text.before': 'Your business doesn\'t just need to',
+          'anchor.text.aparecer': 'appear',
+          'anchor.text.middle': '. It needs to be',
+          'anchor.text.percebido': 'noticed',
+          'anchor.sub': 'Let\'s talk about how to position your brand with strategy, identity and results.',
+          'diff.eyebrow': 'Why Vine?',
+          'diff.title.main': 'Our differentials',
+          'diff.title.accent': 'for those who take brand seriously.',
+          'diff.sub': 'Four concrete reasons to choose who knows the territory.',
+          'cta.title.main': 'Ready to become the',
+          'cta.title.accent': 'next reference in the Serra?',
+          'cta.sub': 'Let\'s build a brand people remember — not just an account people follow.',
+          'cta.button': 'Talk to Vine',
+          'footer.tagline': 'We build brands that the Serra Gaúcha recognizes, recommends and remembers.',
+          'footer.label.location': 'Location',
+          'footer.label.contact': 'Contact',
+          'footer.col.nav': 'Navigation',
+          'footer.col.contact': 'Contact & Social',
+        },
+        es: {
+          'nav.servicos': 'Servicios',
+          'nav.portfolio': 'Portafolio',
+          'nav.planos': 'Planes',
+          'nav.diferenciais': 'Diferenciales',
+          'nav.trabalhe': 'Trabaja con nosotros',
+          'hero.badge': 'Serra Gaúcha, Brasil',
+          'hero.title.l1': 'Tu marca es recordada',
+          'hero.title.l2': 'en la Serra — ¿o solo existe?',
+          'hero.sub': 'Construimos posicionamiento, contenido y estrategia para negocios que quieren ser referencia en la Serra Gaúcha.',
+          'hero.cta.primary': 'Habla con Vine',
+          'hero.cta.secondary': 'Conocer los planes',
+          'hero.cta.portfolio': 'Ver nuestro portafolio',
+          'marquee.label': 'Segmentos que atendemos',
+          'serra.kicker': 'Nuestro acuerdo',
+          'serra.quote': 'Tú cuidas de tu negocio. Nosotros cuidamos de tu marca.',
+          'serra.tagline': 'Enfócate en lo que haces mejor — nosotros cuidamos de lo que tu marca necesita.',
+          'services.title': 'Lo que hacemos',
+          'services.sub': 'Cada servicio es una capa de tu posicionamiento. Juntos, construyen una marca completa.',
+          'historia.title': 'Nuestra Historia',
+          'physical.label': 'Más allá de lo digital',
+          'physical.title': 'Tu marca también vive fuera de la pantalla.',
+          'physical.sub': 'De la tarjeta al packaging — cada punto de contacto es una oportunidad de ser recordada.',
+          'physical.cta': 'Solicitar presupuesto',
+          'plans.title': 'Carta de Vinos',
+          'plans.sub': 'Elige la etiqueta ideal para tu momento.',
+          'plans.help.q': '¿Aún no sabes qué etiqueta combina con tu negocio?',
+          'plans.help.cta': 'Ayúdame a elegir',
+          'stats.brands': 'Marcas atendidas',
+          'stats.segments': 'Segmentos atendidos',
+          'stats.years': 'Años de operación',
+          'stats.strategy': 'Estrategia completa',
+          'stats.cta': 'Ver nuestro portafolio',
+          'hub.label': 'Infraestructura digital',
+          'hub.title': 'Hub Tecnológico',
+          'hub.lead': 'No somos solo marketing. Construimos lo que sostiene tu crecimiento.',
+          'hub.cta': 'Solicitar proyecto tecnológico',
+          'bella.label': 'Innovación',
+          'bella.title': 'Bella IA — Inteligencia con identidad.',
+          'bella.cta': 'Conocer a Bella',
+          'anchor.text.before': 'Tu negocio no necesita solo',
+          'anchor.text.aparecer': 'aparecer',
+          'anchor.text.middle': '. Necesita ser',
+          'anchor.text.percebido': 'percibido',
+          'anchor.sub': 'Hablemos sobre cómo posicionar tu marca con estrategia, identidad y resultado.',
+          'diff.eyebrow': '¿Por qué Vine?',
+          'diff.title.main': 'Nuestros diferenciales',
+          'diff.title.accent': 'para quien se toma la marca en serio.',
+          'diff.sub': 'Cuatro razones concretas para elegir a quien conoce el territorio.',
+          'cta.title.main': '¿Listo para ser la',
+          'cta.title.accent': 'próxima referencia de la Serra?',
+          'cta.sub': 'Construyamos una marca que la gente recuerde — no solo una cuenta que la gente siga.',
+          'cta.button': 'Habla con Vine',
+          'footer.tagline': 'Construimos marcas que la Serra Gaúcha reconoce, recomienda y recuerda.',
+          'footer.label.location': 'Ubicación',
+          'footer.label.contact': 'Contacto',
+          'footer.col.nav': 'Navegación',
+          'footer.col.contact': 'Contacto y Redes',
+        },
+      };
+
+      function applyI18n(lang) {
+        const dict = I18N[lang] || I18N.pt;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key] !== undefined) el.textContent = dict[key];
+        });
+        document.documentElement.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-BR' : (lang === 'en' ? 'en' : 'es'));
+        try { localStorage.setItem('vine_lang', lang); } catch(e) {}
+        document.querySelectorAll('[data-lang-btn]').forEach(b => {
+          b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang);
+        });
+      }
+
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        try { localStorage.setItem('vine_theme', theme); } catch(e) {}
+        document.querySelectorAll('[data-theme-btn]').forEach(b => {
+          b.classList.toggle('is-active', b.getAttribute('data-theme-btn') === theme);
+        });
+      }
+
+      // Initial state from localStorage or defaults
+      let savedLang = 'pt';
+      let savedTheme = 'dark';
+      try {
+        savedLang = localStorage.getItem('vine_lang') || 'pt';
+        savedTheme = localStorage.getItem('vine_theme') || 'dark';
+      } catch(e) {}
+      applyTheme(savedTheme);
+      applyI18n(savedLang);
+
+      // Wire up buttons
+      document.addEventListener('click', (e) => {
+        const tBtn = e.target.closest('[data-theme-btn]');
+        const lBtn = e.target.closest('[data-lang-btn]');
+        if (tBtn) applyTheme(tBtn.getAttribute('data-theme-btn'));
+        if (lBtn) applyI18n(lBtn.getAttribute('data-lang-btn'));
+      });
+    })();
+  </script>
 
   <!-- ===== SCRIPTS ===== -->
   <!-- Lenis -->

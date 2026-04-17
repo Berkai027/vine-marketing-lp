@@ -61,7 +61,79 @@
       background: #000000;
       z-index: -1;
       pointer-events: none;
+      transition: background 0.6s ease;
     }
+    [data-theme="light"] #site-bg {
+      background: linear-gradient(135deg, #ffffff 0%, #f4f0fb 35%, #d2b3eb 75%, #8305ad 100%);
+    }
+    [data-theme="light"] body { color: #1a1035; }
+    [data-theme="light"] #site-bg::after {
+      background:
+        radial-gradient(ellipse 70% 55% at 25% 35%, rgba(131,5,173,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(118,37,191,0.06) 0%, transparent 65%);
+    }
+    [data-theme="light"] body::after { display: none; }
+    [data-theme="light"] .brand-wordmark-main,
+    [data-theme="light"] .brand-wordmark-sub { color: #1a1035 !important; }
+    [data-theme="light"] .nav {
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom-color: rgba(26, 16, 53, 0.06);
+    }
+    [data-theme="light"] .nav-back { color: rgba(26, 16, 53, 0.7); }
+    [data-theme="light"] .nav-back:hover { color: var(--purple-main); }
+    [data-theme="light"] .portfolio-hero h1 { color: #1a1035; }
+    [data-theme="light"] .portfolio-hero p { color: rgba(26, 16, 53, 0.72); }
+    [data-theme="light"] .portfolio-hero-badge {
+      background: rgba(26, 16, 53, 0.06);
+      border-color: rgba(26, 16, 53, 0.15);
+      color: #1a1035;
+    }
+    [data-theme="light"] .portfolio-cta h2 { color: #1a1035; }
+    [data-theme="light"] .portfolio-cta p { color: rgba(26, 16, 53, 0.7); }
+    [data-theme="light"] .footer { border-top-color: rgba(26, 16, 53, 0.08); }
+    [data-theme="light"] .footer-copy { color: rgba(26, 16, 53, 0.6); }
+
+    /* SETTINGS WIDGET */
+    .settings-widget {
+      position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+      z-index: 95; display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 6px;
+      background: rgba(10, 5, 20, 0.55);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 100px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0.6; transition: opacity 0.3s ease;
+    }
+    .settings-widget:hover { opacity: 1; }
+    [data-theme="light"] .settings-widget {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(26, 16, 53, 0.08);
+      box-shadow: 0 6px 20px rgba(26, 16, 53, 0.08);
+    }
+    .settings-sep { width: 1px; height: 16px; background: rgba(255, 255, 255, 0.12); }
+    [data-theme="light"] .settings-sep { background: rgba(26, 16, 53, 0.12); }
+    .settings-row { display: inline-flex; align-items: center; gap: 2px; }
+    .settings-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 24px; padding: 0 8px; border: none;
+      background: transparent; color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.04em; border-radius: 100px;
+      cursor: pointer; transition: background 0.25s ease, color 0.25s ease;
+    }
+    [data-theme="light"] .settings-btn { color: rgba(26, 16, 53, 0.5); }
+    .settings-btn:hover { color: var(--green); }
+    .settings-btn.is-active {
+      background: var(--purple-main);
+      color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(131, 5, 173, 0.3);
+    }
+    .settings-btn svg { width: 12px; height: 12px; }
+    [data-lang="en"] .lang-pt, [data-lang="en"] .lang-es { display: none !important; }
+    [data-lang="es"] .lang-pt, [data-lang="es"] .lang-en { display: none !important; }
+    [data-lang="pt"] .lang-en, [data-lang="pt"] .lang-es { display: none !important; }
     #site-bg::after {
       content: '';
       position: absolute;
@@ -528,6 +600,20 @@
 <body>
   <div id="site-bg" aria-hidden="true"></div>
 
+  <!-- SETTINGS WIDGET -->
+  <div class="settings-widget" role="region" aria-label="Configurações">
+    <div class="settings-row">
+      <button class="settings-btn" data-theme-btn="dark" aria-label="Tema escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+      <button class="settings-btn" data-theme-btn="light" aria-label="Tema claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+    </div>
+    <span class="settings-sep"></span>
+    <div class="settings-row">
+      <button class="settings-btn" data-lang-btn="pt">PT</button>
+      <button class="settings-btn" data-lang-btn="en">EN</button>
+      <button class="settings-btn" data-lang-btn="es">ES</button>
+    </div>
+  </div>
+
   <nav class="nav" role="navigation" aria-label="Navegação">
     <div class="nav-inner">
       <a href="index.html" aria-label="Vine Marketing — voltar para a home" class="brand-wordmark brand-wordmark--nav">
@@ -535,7 +621,7 @@
       </a>
       <a href="index.html" class="nav-back" aria-label="Voltar para a home">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>Voltar</span>
+        <span data-i18n="back">Voltar</span>
       </a>
     </div>
   </nav>
@@ -544,10 +630,10 @@
     <section class="portfolio-hero">
       <div class="portfolio-hero-badge">
         <span class="portfolio-hero-badge-dot"></span>
-        Portfólio
+        <span data-i18n="portfolio.badge">Portfólio</span>
       </div>
-      <h1>Projetos que a Vine <em>construiu</em>.</h1>
-      <p>Uma seleção dos sites, landing pages e sistemas que desenvolvemos para negócios que querem escalar com identidade e estratégia.</p>
+      <h1><span data-i18n="portfolio.title.main">Projetos que a Vine</span> <em data-i18n="portfolio.title.accent">construiu</em>.</h1>
+      <p data-i18n="portfolio.sub">Uma seleção dos sites, landing pages e sistemas que desenvolvemos para negócios que querem escalar com identidade e estratégia.</p>
     </section>
 
     <section class="portfolio-section">
@@ -666,10 +752,10 @@
       </div>
 
       <div class="portfolio-cta">
-        <h2>Quer que a Vine construa o próximo?</h2>
-        <p>Converse com a gente sobre seu projeto — seja um site, uma LP ou uma plataforma sob medida.</p>
+        <h2 data-i18n="portfolio.cta.title">Quer que a Vine construa o próximo?</h2>
+        <p data-i18n="portfolio.cta.sub">Converse com a gente sobre seu projeto — seja um site, uma LP ou uma plataforma sob medida.</p>
         <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          Fale com a Vine
+          <span data-i18n="portfolio.cta.button">Fale com a Vine</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -684,6 +770,37 @@
       <span class="footer-copy">&copy; 2026 Vine Marketing — Caxias do Sul, RS.</span>
     </div>
   </footer>
+
+  <!-- SETTINGS: theme + i18n -->
+  <script>
+    (function() {
+      const I18N = {
+        pt: { 'back': 'Voltar', 'portfolio.badge': 'Portfólio', 'portfolio.title.main': 'Projetos que a Vine', 'portfolio.title.accent': 'construiu', 'portfolio.sub': 'Uma seleção dos sites, landing pages e sistemas que desenvolvemos para negócios que querem escalar com identidade e estratégia.', 'portfolio.cta.title': 'Quer que a Vine construa o próximo?', 'portfolio.cta.sub': 'Converse com a gente sobre seu projeto — seja um site, uma LP ou uma plataforma sob medida.', 'portfolio.cta.button': 'Fale com a Vine' },
+        en: { 'back': 'Back', 'portfolio.badge': 'Portfolio', 'portfolio.title.main': 'Projects that Vine', 'portfolio.title.accent': 'built', 'portfolio.sub': 'A selection of sites, landing pages and systems we built for businesses that want to scale with identity and strategy.', 'portfolio.cta.title': 'Want Vine to build the next one?', 'portfolio.cta.sub': 'Let\'s talk about your project — a site, a landing page or a custom platform.', 'portfolio.cta.button': 'Talk to Vine' },
+        es: { 'back': 'Volver', 'portfolio.badge': 'Portafolio', 'portfolio.title.main': 'Proyectos que Vine', 'portfolio.title.accent': 'construyó', 'portfolio.sub': 'Una selección de sitios, landing pages y sistemas que desarrollamos para negocios que quieren escalar con identidad y estrategia.', 'portfolio.cta.title': '¿Quieres que Vine construya el próximo?', 'portfolio.cta.sub': 'Hablemos sobre tu proyecto — sea un sitio, una LP o una plataforma a medida.', 'portfolio.cta.button': 'Habla con Vine' },
+      };
+      function apply(lang) {
+        const d = I18N[lang] || I18N.pt;
+        document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (d[k] !== undefined) el.textContent = d[k]; });
+        document.documentElement.setAttribute('data-lang', lang);
+        try { localStorage.setItem('vine_lang', lang); } catch(e) {}
+        document.querySelectorAll('[data-lang-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-lang-btn') === lang));
+      }
+      function theme(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        try { localStorage.setItem('vine_theme', t); } catch(e) {}
+        document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-theme-btn') === t));
+      }
+      let sL = 'pt', sT = 'dark';
+      try { sL = localStorage.getItem('vine_lang') || 'pt'; sT = localStorage.getItem('vine_theme') || 'dark'; } catch(e) {}
+      theme(sT); apply(sL);
+      document.addEventListener('click', e => {
+        const t = e.target.closest('[data-theme-btn]'); const l = e.target.closest('[data-lang-btn]');
+        if (t) theme(t.getAttribute('data-theme-btn'));
+        if (l) apply(l.getAttribute('data-lang-btn'));
+      });
+    })();
+  </script>
 
   <script>
     // Scroll reveal com stagger
