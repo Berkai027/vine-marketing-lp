@@ -398,6 +398,35 @@
       position: relative;
       overflow: hidden;
     }
+    /* Screenshot real do site */
+    .portfolio-mockup-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 8s linear;
+    }
+    .portfolio-card:hover .portfolio-mockup-img {
+      transform: translateY(-40%);
+    }
+    /* Fallback quando imagem não carrega */
+    .portfolio-mockup-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a0a2e, #3d0d5c);
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     /* Mini nav interno do mockup */
     .pm-nav {
@@ -799,20 +828,12 @@
                 <span>moraiscapitalgroup.com</span>
               </div>
               <div class="portfolio-mockup-content">
-                <span class="pm-blob" style="width:120px;height:120px;background:#8305ad;top:-30px;right:-30px;"></span>
-                <div class="pm-nav">
-                  <span class="pm-logo"><span class="pm-logo-dot" style="background:#8305ad;"></span>MORAIS</span>
-                  <div class="pm-menu"><span class="pm-menu-item"></span><span class="pm-menu-item"></span><span class="pm-menu-item"></span></div>
-                </div>
-                <div class="pm-hero">
-                  <span class="pm-eyebrow" style="color:#94b9ff;">GRUPO DE INVESTIMENTOS</span>
-                  <div class="pm-headline">Capital que <em>transforma</em> negócios.</div>
-                  <div class="pm-cta pm-cta--white">FALE COM A EQUIPE →</div>
-                </div>
-                <div class="pm-stats">
-                  <div class="pm-stat"><span class="pm-stat-num">+120</span><span class="pm-stat-label">Operações</span></div>
-                  <div class="pm-stat"><span class="pm-stat-num" style="color:#2efb29;">R$ 500M</span><span class="pm-stat-label">em Capital</span></div>
-                </div>
+                <div class="portfolio-mockup-fallback">Morais Capital Group</div>
+                <img class="portfolio-mockup-img"
+                  src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://www.moraiscapitalgroup.com/"
+                  alt="Screenshot do site Morais Capital Group"
+                  loading="lazy" decoding="async"
+                  onerror="this.style.display='none';" />
               </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
@@ -836,17 +857,12 @@
                 <span>pvimperiale.com</span>
               </div>
               <div class="portfolio-mockup-content">
-                <span class="pm-blob" style="width:100px;height:100px;background:#94b9ff;bottom:-25px;left:-25px;opacity:0.45;"></span>
-                <div class="pm-nav">
-                  <span class="pm-logo"><span class="pm-logo-dot" style="background:#94b9ff;"></span>PV IMPERIALE</span>
-                  <div class="pm-menu"><span class="pm-menu-item"></span><span class="pm-menu-item"></span><span class="pm-menu-item"></span></div>
-                </div>
-                <div class="pm-hero">
-                  <span class="pm-eyebrow" style="color:#2efb29;">PATRIMÔNIO PREMIUM</span>
-                  <div class="pm-headline">Invista com <em>segurança</em>.</div>
-                  <div class="pm-sub">Antecipação imobiliária inteligente para quem busca rentabilidade.</div>
-                  <div class="pm-cta pm-cta--green">CONVERSAR COM CONSULTOR</div>
-                </div>
+                <div class="portfolio-mockup-fallback">PV Imperiale</div>
+                <img class="portfolio-mockup-img"
+                  src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvimperiale.com/"
+                  alt="Screenshot do site PV Imperiale"
+                  loading="lazy" decoding="async"
+                  onerror="this.style.display='none';" />
               </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
@@ -870,23 +886,12 @@
                 <span>pvcredit.com.br</span>
               </div>
               <div class="portfolio-mockup-content">
-                <span class="pm-blob" style="width:110px;height:110px;background:rgba(46,251,41,0.4);top:-25px;right:-25px;"></span>
-                <div class="pm-nav">
-                  <span class="pm-logo"><span class="pm-logo-dot" style="background:#2efb29;"></span>PV CREDIT</span>
-                  <div class="pm-menu"><span class="pm-menu-item"></span><span class="pm-menu-item"></span><span class="pm-menu-item"></span></div>
-                </div>
-                <div class="pm-hero">
-                  <span class="pm-eyebrow" style="color:#2efb29;">CRÉDITO PRODUTIVO</span>
-                  <div class="pm-headline">Fluxo de caixa <em>ágil</em>.</div>
-                  <div class="pm-simulator">
-                    <div class="pm-input">R$ 100.000,00</div>
-                    <div class="pm-cta pm-cta--green" style="padding:4px 10px;">SIMULAR</div>
-                  </div>
-                </div>
-                <div class="pm-stats">
-                  <div class="pm-stat"><span class="pm-stat-num" style="color:#2efb29;">24h</span><span class="pm-stat-label">Aprovação</span></div>
-                  <div class="pm-stat"><span class="pm-stat-num">1,2%</span><span class="pm-stat-label">a.m.</span></div>
-                </div>
+                <div class="portfolio-mockup-fallback">PV Credit</div>
+                <img class="portfolio-mockup-img"
+                  src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvcredit.com.br/"
+                  alt="Screenshot do site PV Credit"
+                  loading="lazy" decoding="async"
+                  onerror="this.style.display='none';" />
               </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
@@ -910,20 +915,12 @@
                 <span>pvfomento.com</span>
               </div>
               <div class="portfolio-mockup-content">
-                <span class="pm-blob" style="width:130px;height:130px;background:#8305ad;bottom:-30px;right:-30px;"></span>
-                <div class="pm-nav">
-                  <span class="pm-logo"><span class="pm-logo-dot" style="background:#94b9ff;"></span>PV FOMENTO</span>
-                  <div class="pm-menu"><span class="pm-menu-item"></span><span class="pm-menu-item"></span><span class="pm-menu-item"></span></div>
-                </div>
-                <div class="pm-hero">
-                  <span class="pm-eyebrow" style="color:#94b9ff;">FOMENTO MERCANTIL</span>
-                  <div class="pm-headline">Antecipe seus <em>recebíveis</em>.</div>
-                  <div class="pm-cta pm-cta--purple">SOLICITAR PROPOSTA →</div>
-                </div>
-                <div class="pm-stats">
-                  <div class="pm-stat"><span class="pm-stat-num">+15</span><span class="pm-stat-label">Anos</span></div>
-                  <div class="pm-stat"><span class="pm-stat-num" style="color:#2efb29;">+850</span><span class="pm-stat-label">Clientes</span></div>
-                </div>
+                <div class="portfolio-mockup-fallback">PV Fomento</div>
+                <img class="portfolio-mockup-img"
+                  src="https://image.thum.io/get/width/1200/viewportWidth/1440/crop/1000/noanimate/https://pvfomento.com/"
+                  alt="Screenshot do site PV Fomento"
+                  loading="lazy" decoding="async"
+                  onerror="this.style.display='none';" />
               </div>
             </div>
             <div class="portfolio-external" aria-hidden="true">
