@@ -531,8 +531,8 @@
         try { localStorage.setItem('vine_theme', t); } catch(e) {}
         document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-theme-btn') === t));
       }
-      let sL = 'pt', sT = 'dark';
-      try { sL = localStorage.getItem('vine_lang') || 'pt'; sT = localStorage.getItem('vine_theme') || 'dark'; } catch(e) {}
+      let sL = 'pt', sT = 'light';
+      try { sL = localStorage.getItem('vine_lang') || 'pt'; sT = localStorage.getItem('vine_theme') || 'light'; } catch(e) {}
       theme(sT); apply(sL);
       document.addEventListener('click', e => {
         const t = e.target.closest('[data-theme-btn]'); const l = e.target.closest('[data-lang-btn]');
