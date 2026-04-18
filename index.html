@@ -13,7 +13,10 @@
   <meta property="og:url" content="https://vinemarketing.digital/">
   <meta property="og:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
   <meta property="og:description" content="Construímos posicionamento, conteúdo e estratégia para negócios que querem ser referência na Serra Gaúcha. Vine Marketing.">
-  <meta property="og:image" content="https://vinemarketing.digital/logo.png">
+  <meta property="og:image" content="https://vinemarketing.digital/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vine Marketing — Sua marca é lembrada na Serra Gaúcha">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Vine Marketing">
 
@@ -21,7 +24,37 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Vine Marketing — O Marketing da Serra Gaúcha">
   <meta name="twitter:description" content="Construímos posicionamento, conteúdo e estratégia para negócios que querem ser referência na Serra Gaúcha.">
-  <meta name="twitter:image" content="https://vinemarketing.digital/logo.png">
+  <meta name="twitter:image" content="https://vinemarketing.digital/og-image.jpg">
+
+  <!-- Structured Data — Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vine Marketing",
+    "url": "https://vinemarketing.digital",
+    "logo": "https://vinemarketing.digital/logo.png",
+    "description": "Agência de marketing da Serra Gaúcha. Branding, gestão de redes, produção de conteúdo, campanhas e tecnologia.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Caxias do Sul",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+55-54-99683-7209",
+      "contactType": "Sales",
+      "email": "comercial@vinemarketing.digital",
+      "areaServed": "BR",
+      "availableLanguage": ["pt-BR", "en", "es"]
+    },
+    "sameAs": [
+      "https://www.instagram.com/vinemarketing.digital",
+      "https://www.linkedin.com/company/vinemarketing"
+    ]
+  }
+  </script>
 
   <!-- Canonical + Keywords -->
   <link rel="canonical" href="https://vinemarketing.digital/">
@@ -168,10 +201,11 @@
     }
     /* Hero accent (palavras "lembrada" e "existe?") também seguem o contrário */
     .hero h1 .hero-accent {
-      background: var(--gradient-title);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      background: var(--gradient-title) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      color: transparent !important;
       font-weight: 800;
     }
     /* H2 final CTA tem "Serra?" em verde — trocar por gradiente roxo também */
@@ -1038,6 +1072,7 @@
       justify-content: center;
       overflow: hidden;
       background: #000000;
+      color: #ffffff;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
@@ -1471,16 +1506,28 @@
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       flex-direction: column; align-items: center; justify-content: center;
-      gap: 40px; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s;
+      gap: 28px; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, background 0.3s;
+      padding: 24px;
+    }
+    [data-theme="light"] .mobile-menu {
+      background: rgba(255, 255, 255, 0.98) !important;
     }
     .mobile-menu.open { opacity: 1; pointer-events: all; }
     .mobile-menu a {
       font-size: 1.6rem; font-weight: 700; color: #ffffff;
       font-family: 'Space Grotesk', sans-serif;
       transition: color 0.2s; cursor: auto;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+    }
+    [data-theme="light"] .mobile-menu a {
+      color: #1a1035 !important;
     }
     .mobile-menu a:hover { color: var(--purple-main); }
+    [data-theme="light"] .mobile-menu a:hover { color: var(--purple-main) !important; }
     .mobile-menu .mobile-cta {
       background: var(--purple-main); color: white !important;
       padding: 16px 40px; border-radius: var(--radius);
@@ -2701,6 +2748,13 @@
     .diff-row--tech .diff-row-link svg { stroke: #1a1035; }
     [data-theme="light"] .serra-quote,
     [data-theme="light"] .hub-title { color: #ffffff !important; }
+    [data-theme="light"] .serra-tagline { color: rgba(255,255,255,0.85) !important; }
+    [data-theme="light"] .serra-kicker {
+      background: linear-gradient(90deg, #c5a8f5 0%, #94b9ff 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
     [data-theme="light"] .hub-lead,
     [data-theme="light"] .hub-body { color: rgba(255,255,255,0.82) !important; }
     [data-theme="light"] .diff-row--purple h3,
@@ -3561,23 +3615,23 @@
     <div class="marquee-label" data-i18n="marquee.label">Segmentos que atendemos</div>
     <div style="overflow: hidden;">
       <div class="marquee-track">
-        <span class="marquee-item"><span class="marquee-dot"></span>Comércio local</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Empresas de serviços</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Clínicas e saúde</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Estética e bem-estar</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Turismo e hospitalidade</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Eventos e cultura</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Marcas e negócios locais</span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.1">Comércio local</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.2">Empresas de serviços</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.3">Clínicas e saúde</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.4">Estética e bem-estar</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.5">Gastronomia</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.6">Turismo e hospitalidade</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.7">Eventos e cultura</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.8">Marcas e negócios locais</span></span>
         <!-- Duplicate for seamless loop -->
-        <span class="marquee-item"><span class="marquee-dot"></span>Comércio local</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Empresas de serviços</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Clínicas e saúde</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Estética e bem-estar</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Gastronomia</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Turismo e hospitalidade</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Eventos e cultura</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Marcas e negócios locais</span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.1">Comércio local</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.2">Empresas de serviços</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.3">Clínicas e saúde</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.4">Estética e bem-estar</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.5">Gastronomia</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.6">Turismo e hospitalidade</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.7">Eventos e cultura</span></span>
+        <span class="marquee-item"><span class="marquee-dot"></span><span data-i18n="marquee.8">Marcas e negócios locais</span></span>
       </div>
     </div>
   </section>
@@ -3601,43 +3655,43 @@
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3>Estratégia de marca</h3>
-          <p class="service-card-desc">Posicionamento, tom de voz, arquitetura de marca. Antes de criar qualquer peça, a gente pensa.</p>
+          <h3 data-i18n="sv.1.t">Estratégia de marca</h3>
+          <p class="service-card-desc" data-i18n="sv.1.d">Posicionamento, tom de voz, arquitetura de marca. Antes de criar qualquer peça, a gente pensa.</p>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3>Gestão de redes sociais</h3>
-          <p class="service-card-desc">Feed, stories, reels — com calendário editorial estratégico. Nada vai pro ar sem propósito.</p>
+          <h3 data-i18n="sv.2.t">Gestão de redes sociais</h3>
+          <p class="service-card-desc" data-i18n="sv.2.d">Feed, stories, reels — com calendário editorial estratégico. Nada vai pro ar sem propósito.</p>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
           </div>
-          <h3>Produção de conteúdo</h3>
-          <p class="service-card-desc">Fotografia, vídeo, copy. Conteúdo que parece caro — porque é bem pensado.</p>
+          <h3 data-i18n="sv.3.t">Produção de conteúdo</h3>
+          <p class="service-card-desc" data-i18n="sv.3.d">Fotografia, vídeo, copy. Conteúdo que parece caro — porque é bem pensado.</p>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Campanhas e lançamentos</h3>
-          <p class="service-card-desc">Festa da Uva, Natal Luz, datas sazonais. Planejamento + mídia paga com objetivo claro.</p>
+          <h3 data-i18n="sv.4.t">Campanhas e lançamentos</h3>
+          <p class="service-card-desc" data-i18n="sv.4.d">Festa da Uva, Natal Luz, datas sazonais. Planejamento + mídia paga com objetivo claro.</p>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
-          <h3>Bella IA</h3>
-          <p class="service-card-desc">Consultoria de marketing com inteligência artificial. Dados, insights e análise para decisões mais rápidas.</p>
+          <h3 data-i18n="sv.5.t">Bella IA</h3>
+          <p class="service-card-desc" data-i18n="sv.5.d">Consultoria de marketing com inteligência artificial. Dados, insights e análise para decisões mais rápidas.</p>
         </div>
         <div class="service-card spotlight-card hoverable">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
           </div>
-          <h3>Tecnologia &amp; Automação</h3>
-          <p class="service-card-desc">Sites, sistemas, integrações. A infraestrutura digital que sustenta o crescimento do seu negócio.</p>
+          <h3 data-i18n="sv.6.t">Tecnologia &amp; Automação</h3>
+          <p class="service-card-desc" data-i18n="sv.6.d">Sites, sistemas, integrações. A infraestrutura digital que sustenta o crescimento do seu negócio.</p>
         </div>
       </div>
     </div>
@@ -3650,15 +3704,9 @@
         <h2 class="reveal grad-text" data-i18n="historia.title" style="font-family:'Inter',sans-serif; font-weight:400; letter-spacing:-0.07em; line-height:0.95; font-size: clamp(2.2rem,4.5vw,3.5rem);">Nossa História</h2>
       </div>
       <div style="max-width: 760px; display:flex; flex-direction:column; gap: 24px;">
-        <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">
-          A <strong style="font-weight:600;">Vine</strong> nasceu em 2021, na Serra Gaúcha, com uma convicção simples: os negócios daqui merecem o mesmo nível de estratégia que grandes marcas recebem.
-        </p>
-        <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">
-          Não somos uma agência que chegou de fora tentando entender o território. <em style="font-style:italic;">Nascemos aqui, crescemos aqui</em> e conhecemos cada detalhe — da sazonalidade do turismo ao ritmo do comércio local.
-        </p>
-        <p class="reveal" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">
-          Hoje, atendemos negócios em toda a Serra Gaúcha, transformando empresas em <strong style="font-weight:600;">marcas que as pessoas reconhecem, indicam e lembram</strong>.
-        </p>
+        <p class="reveal" data-i18n="hist.p1" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">A <strong style="font-weight:600;">Vine</strong> nasceu em 2021, na Serra Gaúcha, com uma convicção simples: os negócios daqui merecem o mesmo nível de estratégia que grandes marcas recebem.</p>
+        <p class="reveal" data-i18n="hist.p2" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">Não somos uma agência que chegou de fora tentando entender o território. <em style="font-style:italic;">Nascemos aqui, crescemos aqui</em> e conhecemos cada detalhe — da sazonalidade do turismo ao ritmo do comércio local.</p>
+        <p class="reveal" data-i18n="hist.p3" style="font-family:'Inter',sans-serif; font-weight:300; letter-spacing:-0.022em; line-height:1.6; font-size: clamp(1rem,1.8vw,1.15rem); color: rgba(255,255,255,0.78);">Hoje, atendemos negócios em toda a Serra Gaúcha, transformando empresas em <strong style="font-weight:600;">marcas que as pessoas reconhecem, indicam e lembram</strong>.</p>
       </div>
     </div>
   </section>
@@ -3673,16 +3721,16 @@
           <h2 class="reveal" data-i18n="physical.title" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;">Sua marca também vive fora da tela.</h2>
           <p class="physical-text reveal" data-i18n="physical.sub" style="font-weight:300;letter-spacing:-0.022em;line-height:1.5;margin-bottom:24px;">Do cartão de visita à embalagem — cada ponto de contato é uma oportunidade de ser lembrado.</p>
           <ul class="physical-list">
-            <li class="reveal"><span class="physical-list-check">✓</span> Cartões de visita premium</li>
-            <li class="reveal"><span class="physical-list-check">✓</span> Panfletos e materiais promocionais</li>
-            <li class="reveal"><span class="physical-list-check">✓</span> Cardápios e papelaria corporativa</li>
-            <li class="reveal"><span class="physical-list-check">✓</span> Embalagens personalizadas</li>
-            <li class="reveal"><span class="physical-list-check">✓</span> Banners e materiais de ponto de venda</li>
+            <li class="reveal"><span class="physical-list-check">✓</span> <span data-i18n="phys.li.1">Cartões de visita premium</span></li>
+            <li class="reveal"><span class="physical-list-check">✓</span> <span data-i18n="phys.li.2">Panfletos e materiais promocionais</span></li>
+            <li class="reveal"><span class="physical-list-check">✓</span> <span data-i18n="phys.li.3">Cardápios e papelaria corporativa</span></li>
+            <li class="reveal"><span class="physical-list-check">✓</span> <span data-i18n="phys.li.4">Embalagens personalizadas</span></li>
+            <li class="reveal"><span class="physical-list-check">✓</span> <span data-i18n="phys.li.5">Banners e materiais de ponto de venda</span></li>
           </ul>
-          <p class="physical-quote reveal">Identidade consistente, do digital ao físico.</p>
+          <p class="physical-quote reveal" data-i18n="phys.quote">Identidade consistente, do digital ao físico.</p>
           <div style="margin-top: 8px;">
             <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
-              Solicitar orçamento
+              <span data-i18n="phys.cta">Solicitar orçamento</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -3692,25 +3740,25 @@
             <div class="icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8305ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
             </div>
-            <span>Cartões de visita</span>
+            <span data-i18n="phys.c.1">Cartões de visita</span>
           </div>
           <div class="physical-visual-card hoverable reveal">
             <div class="icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7625bf" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
             </div>
-            <span>Cardápios</span>
+            <span data-i18n="phys.c.2">Cardápios</span>
           </div>
           <div class="physical-visual-card hoverable reveal">
             <div class="icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94b9ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
             </div>
-            <span>Embalagens</span>
+            <span data-i18n="phys.c.3">Embalagens</span>
           </div>
           <div class="physical-visual-card hoverable reveal">
             <div class="icon">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2efb29" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
             </div>
-            <span>Banners &amp; PDV</span>
+            <span data-i18n="phys.c.4">Banners &amp; PDV</span>
           </div>
         </div>
       </div>
@@ -3727,64 +3775,64 @@
     <div class="hscroll-track" id="hscrollTrack">
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Carménère</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Leve, versátil e certeiro.</h3>
-        <p class="price-card-desc">Para quem está dando os primeiros passos no digital e precisa de presença profissional desde o início.</p>
+        <h3 data-i18n="pl.1.t" style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Leve, versátil e certeiro.</h3>
+        <p class="price-card-desc" data-i18n="pl.1.d">Para quem está dando os primeiros passos no digital e precisa de presença profissional desde o início.</p>
         <ul class="price-card-features">
-          <li>Gestão de até 2 plataformas</li>
-          <li>4 posts semanais (imagem ou carrossel)</li>
-          <li>Identidade visual ou capa e destaques</li>
-          <li>1 vídeo editado/mês</li>
-          <li>Relatório bimestral de desempenho</li>
-          <li>Suporte leve de design</li>
+          <li data-i18n="pl.1.f1">Gestão de até 2 plataformas</li>
+          <li data-i18n="pl.1.f2">4 posts semanais (imagem ou carrossel)</li>
+          <li data-i18n="pl.1.f3">Identidade visual ou capa e destaques</li>
+          <li data-i18n="pl.1.f4">1 vídeo editado/mês</li>
+          <li data-i18n="pl.1.f5">Relatório bimestral de desempenho</li>
+          <li data-i18n="pl.1.f6">Suporte leve de design</li>
         </ul>
-        <div class="price-card-price">A partir de R$ 1.500 <small>/mês</small></div>
-        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Começar agora</a>
+        <div class="price-card-price" data-i18n="pl.1.p">A partir de R$ 1.500 <small>/mês</small></div>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable" data-i18n="pl.1.cta">Começar agora</a>
       </div>
       <div class="hscroll-card featured plan-merlot spotlight-card hoverable">
-        <div class="price-badge">Mais escolhido</div>
+        <div class="price-badge" data-i18n="pl.badge">Mais escolhido</div>
         <div class="price-card-name">Merlot</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Equilibrado, criativo e estratégico.</h3>
-        <p class="price-card-desc">Para marcas que já estão no digital e querem sair do básico — com estratégia, consistência e conteúdo de verdade.</p>
+        <h3 data-i18n="pl.2.t" style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Equilibrado, criativo e estratégico.</h3>
+        <p class="price-card-desc" data-i18n="pl.2.d">Para marcas que já estão no digital e querem sair do básico — com estratégia, consistência e conteúdo de verdade.</p>
         <ul class="price-card-features">
-          <li>Gestão completa de até 3 redes</li>
-          <li>6 posts semanais (feed, reels, stories)</li>
-          <li>Calendário temático e estratégico</li>
-          <li>1 vídeo captado ou 2 editados/mês</li>
-          <li>Cardápio digital ou arte personalizada</li>
-          <li>Relatório mensal + reuniões</li>
+          <li data-i18n="pl.2.f1">Gestão completa de até 3 redes</li>
+          <li data-i18n="pl.2.f2">6 posts semanais (feed, reels, stories)</li>
+          <li data-i18n="pl.2.f3">Calendário temático e estratégico</li>
+          <li data-i18n="pl.2.f4">1 vídeo captado ou 2 editados/mês</li>
+          <li data-i18n="pl.2.f5">Cardápio digital ou arte personalizada</li>
+          <li data-i18n="pl.2.f6">Relatório mensal + reuniões</li>
         </ul>
-        <div class="price-card-price">A partir de R$ 2.500 <small>/mês</small></div>
-        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--fill hoverable">Quero o Merlot</a>
+        <div class="price-card-price" data-i18n="pl.2.p">A partir de R$ 2.500 <small>/mês</small></div>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--fill hoverable" data-i18n="pl.2.cta">Quero o Merlot</a>
       </div>
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Cabernet Sauvignon</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Encorpado, estratégico e diferenciador.</h3>
-        <p class="price-card-desc">Para negócios que já entenderam que marketing não é só postar — é construir marca com planejamento e profundidade.</p>
+        <h3 data-i18n="pl.3.t" style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Encorpado, estratégico e diferenciador.</h3>
+        <p class="price-card-desc" data-i18n="pl.3.d">Para negócios que já entenderam que marketing não é só postar — é construir marca com planejamento e profundidade.</p>
         <ul class="price-card-features">
-          <li>Gestão completa + planejamento de marca</li>
-          <li>Produção audiovisual mensal profissional</li>
-          <li>Campanhas e lançamentos sazonais</li>
-          <li>Business Plan personalizado</li>
-          <li>Copywriting e storytelling de marca</li>
-          <li>Relatórios detalhados + reuniões quinzenais</li>
+          <li data-i18n="pl.3.f1">Gestão completa + planejamento de marca</li>
+          <li data-i18n="pl.3.f2">Produção audiovisual mensal profissional</li>
+          <li data-i18n="pl.3.f3">Campanhas e lançamentos sazonais</li>
+          <li data-i18n="pl.3.f4">Business Plan personalizado</li>
+          <li data-i18n="pl.3.f5">Copywriting e storytelling de marca</li>
+          <li data-i18n="pl.3.f6">Relatórios detalhados + reuniões quinzenais</li>
         </ul>
-        <div class="price-card-price">A partir de R$ 4.200 <small>/mês</small></div>
-        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Falar com estrategista</a>
+        <div class="price-card-price" data-i18n="pl.3.p">A partir de R$ 4.200 <small>/mês</small></div>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable" data-i18n="pl.3.cta">Falar com estrategista</a>
       </div>
       <div class="hscroll-card spotlight-card hoverable">
         <div class="price-card-name">Tannat</div>
-        <h3 style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Intenso, exclusivo e sob medida.</h3>
-        <p class="price-card-desc">O rótulo reserva da Vine. Marketing autoral, 360°, com acompanhamento próximo e execução de alto impacto.</p>
+        <h3 data-i18n="pl.4.t" style="font-size:1.4rem;font-weight:700;color:#ffffff;margin-bottom:12px;">Intenso, exclusivo e sob medida.</h3>
+        <p class="price-card-desc" data-i18n="pl.4.d">O rótulo reserva da Vine. Marketing autoral, 360°, com acompanhamento próximo e execução de alto impacto.</p>
         <ul class="price-card-features">
-          <li>Estratégia 360° (branding + AV + mídia paga)</li>
-          <li>Vídeos institucionais e campanhas completas</li>
-          <li>Consultoria de posicionamento + SEO local</li>
-          <li>Identidade visual completa</li>
-          <li>Acesso à Bella IA Premium</li>
-          <li>Coordenação de eventos (Festa da Uva, feiras)</li>
+          <li data-i18n="pl.4.f1">Estratégia 360° (branding + AV + mídia paga)</li>
+          <li data-i18n="pl.4.f2">Vídeos institucionais e campanhas completas</li>
+          <li data-i18n="pl.4.f3">Consultoria de posicionamento + SEO local</li>
+          <li data-i18n="pl.4.f4">Identidade visual completa</li>
+          <li data-i18n="pl.4.f5">Acesso à Bella IA Premium</li>
+          <li data-i18n="pl.4.f6">Coordenação de eventos (Festa da Uva, feiras)</li>
         </ul>
-        <div class="price-card-price">Projeto sob medida</div>
-        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable">Solicitar proposta</a>
+        <div class="price-card-price" data-i18n="pl.4.p">Projeto sob medida</div>
+        <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="price-card-btn price-card-btn--outline hoverable" data-i18n="pl.4.cta">Solicitar proposta</a>
       </div>
     </div>
     </div>
@@ -3834,7 +3882,7 @@
       <div class="hub-label reveal" data-i18n="hub.label">Infraestrutura digital</div>
       <h2 class="reveal hub-title" data-i18n="hub.title">Hub Tecnológico</h2>
       <p class="reveal hub-lead" data-i18n="hub.lead">Não somos só marketing. Construímos o que sustenta seu crescimento.</p>
-      <p class="reveal hub-body">A Vine desenvolve a infraestrutura digital que os negócios da Serra precisam para escalar: sites institucionais, landing pages, sistemas de gestão, automações e integrações — tudo pensado para conectar marketing, operação e resultado em uma única estrutura.</p>
+      <p class="reveal hub-body" data-i18n="hub.body">A Vine desenvolve a infraestrutura digital que os negócios da Serra precisam para escalar: sites institucionais, landing pages, sistemas de gestão, automações e integrações — tudo pensado para conectar marketing, operação e resultado em uma única estrutura.</p>
       <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable reveal">
         <span data-i18n="hub.cta">Solicitar projeto tecnológico</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -3857,7 +3905,7 @@
         <div style="padding-top:48px;">
           <div class="physical-label reveal" data-i18n="bella.label" style="margin-bottom:20px;">Inovação</div>
           <h2 class="reveal grad-text" data-i18n="bella.title" style="font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.07em;line-height:0.95;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:28px;">Bella IA — Inteligência com identidade.</h2>
-          <p class="reveal" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);">A Bella é a primeira assistente de IA da Serra Gaúcha, desenvolvida pela Vine para apoiar negócios em decisões de marketing, análise de dados e criação de campanhas — com contexto local e visão estratégica.</p>
+          <p class="reveal" data-i18n="bella.p1" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);">A Bella é a primeira assistente de IA da Serra Gaúcha, desenvolvida pela Vine para apoiar negócios em decisões de marketing, análise de dados e criação de campanhas — com contexto local e visão estratégica.</p>
         </div>
         <!-- Foto central com marca d'água -->
         <div style="display:flex;flex-direction:column;align-items:center;">
@@ -3872,7 +3920,7 @@
         </div>
         <!-- Texto direita (alinhado à direita, um pouco abaixo) -->
         <div style="padding-top:160px;text-align:right;">
-          <p class="reveal" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);margin-bottom:32px;">Conecta dados, criatividade e estratégia para tornar suas decisões de marketing mais rápidas, claras e fundamentadas.</p>
+          <p class="reveal" data-i18n="bella.p2" style="font-family:'Inter',sans-serif;font-weight:300;letter-spacing:-0.022em;line-height:1.55;font-size:1rem;color:rgba(255,255,255,0.72);margin-bottom:32px;">Conecta dados, criatividade e estratégia para tornar suas decisões de marketing mais rápidas, claras e fundamentadas.</p>
           <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic hoverable" style="display:inline-flex;">
             <span data-i18n="bella.cta">Conhecer a Bella</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -3908,10 +3956,10 @@
         <div class="diff-row-inner">
           <div class="diff-row-text">
             <span class="diff-row-num">01</span>
-            <h3>Identidade territorial</h3>
-            <p>Não somos de fora tentando entender a Serra. Nascemos aqui — e criamos para quem vive e trabalha na Serra Gaúcha. Cada peça que sai daqui tem a leitura local de quem conhece o ritmo do território.</p>
+            <h3 data-i18n="dif.1.t">Identidade territorial</h3>
+            <p data-i18n="dif.1.d">Não somos de fora tentando entender a Serra. Nascemos aqui — e criamos para quem vive e trabalha na Serra Gaúcha. Cada peça que sai daqui tem a leitura local de quem conhece o ritmo do território.</p>
             <a href="#planos" class="diff-row-link hoverable">
-              Ver os planos
+              <span data-i18n="dif.1.cta">Ver os planos</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
@@ -3939,10 +3987,10 @@
         <div class="diff-row-inner">
           <div class="diff-row-text">
             <span class="diff-row-num">02</span>
-            <h3>Estratégia antes de execução</h3>
-            <p>Nada vai pro ar sem plano. Business plan personalizado, relatórios detalhados e reuniões de acompanhamento fazem parte de todo projeto. A gente quer que você entenda o porquê de cada decisão.</p>
+            <h3 data-i18n="dif.2.t">Estratégia antes de execução</h3>
+            <p data-i18n="dif.2.d">Nada vai pro ar sem plano. Business plan personalizado, relatórios detalhados e reuniões de acompanhamento fazem parte de todo projeto. A gente quer que você entenda o porquê de cada decisão.</p>
             <a href="https://wa.me/5554996837209" target="_blank" rel="noopener noreferrer" class="diff-row-link hoverable">
-              Conversar com estrategista
+              <span data-i18n="dif.2.cta">Conversar com estrategista</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
@@ -3965,10 +4013,10 @@
         <div class="diff-row-inner">
           <div class="diff-row-text">
             <span class="diff-row-num">03</span>
-            <h3>Do digital ao físico</h3>
-            <p>Cardápio, cartão, embalagem, campanha de Festa da Uva. Sua marca é consistente em cada ponto de contato — online e offline. A pessoa que viu seu post no Instagram precisa reconhecer sua marca quando entra na loja.</p>
+            <h3 data-i18n="dif.3.t">Do digital ao físico</h3>
+            <p data-i18n="dif.3.d">Cardápio, cartão, embalagem, campanha de Festa da Uva. Sua marca é consistente em cada ponto de contato — online e offline. A pessoa que viu seu post no Instagram precisa reconhecer sua marca quando entra na loja.</p>
             <a href="#fisico" class="diff-row-link hoverable">
-              Ver materiais gráficos
+              <span data-i18n="dif.3.cta">Ver materiais gráficos</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
@@ -3992,10 +4040,10 @@
         <div class="diff-row-inner">
           <div class="diff-row-text">
             <span class="diff-row-num">04</span>
-            <h3>Tecnologia própria</h3>
-            <p>IA consultiva, sistemas sob medida, automações. Não dependemos de ferramentas genéricas — construímos as nossas. Por isso conseguimos integrar marketing, operação e dados de um jeito que poucos conseguem.</p>
+            <h3 data-i18n="dif.4.t">Tecnologia própria</h3>
+            <p data-i18n="dif.4.d">IA consultiva, sistemas sob medida, automações. Não dependemos de ferramentas genéricas — construímos as nossas. Por isso conseguimos integrar marketing, operação e dados de um jeito que poucos conseguem.</p>
             <a href="#hub-tecnologico" class="diff-row-link hoverable">
-              Conhecer o Hub Tecnológico
+              <span data-i18n="dif.4.cta">Conhecer o Hub Tecnológico</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
           </div>
@@ -4085,14 +4133,14 @@
           <span class="brand-wordmark brand-wordmark--footer" aria-label="Vine Marketing">
             <span class="brand-wordmark-main">Vine</span><span class="brand-wordmark-sub">Marketing</span>
           </span>
-          <p class="site-footer-tagline">Construímos marcas que a Serra Gaúcha reconhece, indica e lembra.</p>
+          <p class="site-footer-tagline" data-i18n="footer.tagline">Construímos marcas que a Serra Gaúcha reconhece, indica e lembra.</p>
           <div class="site-footer-contact">
             <div class="site-footer-contact-item">
-              <span class="site-footer-label">Localização</span>
+              <span class="site-footer-label" data-i18n="footer.label.location">Localização</span>
               <span class="site-footer-value">Caxias do Sul, RS</span>
             </div>
             <div class="site-footer-contact-item">
-              <span class="site-footer-label">Contato</span>
+              <span class="site-footer-label" data-i18n="footer.label.contact">Contato</span>
               <a href="tel:+5554996837209" class="site-footer-value site-footer-link hoverable">+55 (54) 9 9683-7209</a>
             </div>
           </div>
@@ -4100,20 +4148,20 @@
 
         <!-- Coluna navegação -->
         <div class="site-footer-col">
-          <p class="site-footer-col-title">Navegação</p>
+          <p class="site-footer-col-title" data-i18n="footer.col.nav">Navegação</p>
           <ul class="site-footer-list">
-            <li><a href="#servicos" class="site-footer-link hoverable">Serviços</a></li>
-            <li><a href="portfolio.html" class="site-footer-link hoverable">Portfólio</a></li>
-            <li><a href="#planos" class="site-footer-link hoverable">Planos</a></li>
-            <li><a href="#diferenciais" class="site-footer-link hoverable">Diferenciais</a></li>
+            <li><a href="#servicos" class="site-footer-link hoverable" data-i18n="nav.servicos">Serviços</a></li>
+            <li><a href="portfolio.html" class="site-footer-link hoverable" data-i18n="nav.portfolio">Portfólio</a></li>
+            <li><a href="#planos" class="site-footer-link hoverable" data-i18n="nav.planos">Planos</a></li>
+            <li><a href="#diferenciais" class="site-footer-link hoverable" data-i18n="nav.diferenciais">Diferenciais</a></li>
             <li><a href="#bella" class="site-footer-link hoverable">Bella IA</a></li>
-            <li><a href="trabalhe-conosco.html" class="site-footer-link hoverable">Trabalhe conosco</a></li>
+            <li><a href="trabalhe-conosco.html" class="site-footer-link hoverable" data-i18n="nav.trabalhe">Trabalhe conosco</a></li>
           </ul>
         </div>
 
         <!-- Coluna contato -->
         <div class="site-footer-col">
-          <p class="site-footer-col-title">Contato &amp; Redes</p>
+          <p class="site-footer-col-title" data-i18n="footer.col.contact">Contato &amp; Redes</p>
           <ul class="site-footer-list">
             <li>
               <a href="mailto:comercial@vinemarketing.digital" class="site-footer-link hoverable">
@@ -4213,6 +4261,66 @@
           'footer.label.contact': 'Contato',
           'footer.col.nav': 'Navegação',
           'footer.col.contact': 'Contato & Redes',
+          // Marquee
+          'marquee.1': 'Comércio local', 'marquee.2': 'Empresas de serviços', 'marquee.3': 'Clínicas e saúde', 'marquee.4': 'Estética e bem-estar',
+          'marquee.5': 'Gastronomia', 'marquee.6': 'Turismo e hospitalidade', 'marquee.7': 'Eventos e cultura', 'marquee.8': 'Marcas e negócios locais',
+          // Services
+          'sv.1.t': 'Estratégia de marca', 'sv.1.d': 'Posicionamento, tom de voz, arquitetura de marca. Antes de criar qualquer peça, a gente pensa.',
+          'sv.2.t': 'Gestão de redes sociais', 'sv.2.d': 'Feed, stories, reels — com calendário editorial estratégico. Nada vai pro ar sem propósito.',
+          'sv.3.t': 'Produção de conteúdo', 'sv.3.d': 'Fotografia, vídeo, copy. Conteúdo que parece caro — porque é bem pensado.',
+          'sv.4.t': 'Campanhas e lançamentos', 'sv.4.d': 'Festa da Uva, Natal Luz, datas sazonais. Planejamento + mídia paga com objetivo claro.',
+          'sv.5.t': 'Bella IA', 'sv.5.d': 'Consultoria de marketing com inteligência artificial. Dados, insights e análise para decisões mais rápidas.',
+          'sv.6.t': 'Tecnologia & Automação', 'sv.6.d': 'Sites, sistemas, integrações. A infraestrutura digital que sustenta o crescimento do seu negócio.',
+          // História
+          'hist.p1': 'A <strong>Vine</strong> nasceu em 2021, na Serra Gaúcha, com uma convicção simples: os negócios daqui merecem o mesmo nível de estratégia que grandes marcas recebem.',
+          'hist.p2': 'Não somos uma agência que chegou de fora tentando entender o território. <em>Nascemos aqui, crescemos aqui</em> e conhecemos cada detalhe — da sazonalidade do turismo ao ritmo do comércio local.',
+          'hist.p3': 'Hoje, atendemos negócios em toda a Serra Gaúcha, transformando empresas em <strong>marcas que as pessoas reconhecem, indicam e lembram</strong>.',
+          // Physical
+          'phys.li.1': 'Cartões de visita premium', 'phys.li.2': 'Panfletos e materiais promocionais', 'phys.li.3': 'Cardápios e papelaria corporativa',
+          'phys.li.4': 'Embalagens personalizadas', 'phys.li.5': 'Banners e materiais de ponto de venda',
+          'phys.quote': 'Identidade consistente, do digital ao físico.',
+          'phys.cta': 'Solicitar orçamento',
+          'phys.c.1': 'Cartões de visita', 'phys.c.2': 'Cardápios', 'phys.c.3': 'Embalagens', 'phys.c.4': 'Banners & PDV',
+          // Pricing
+          'pl.badge': 'Mais escolhido',
+          'pl.1.t': 'Leve, versátil e certeiro.',
+          'pl.1.d': 'Para quem está dando os primeiros passos no digital e precisa de presença profissional desde o início.',
+          'pl.1.f1': 'Gestão de até 2 plataformas', 'pl.1.f2': '4 posts semanais (imagem ou carrossel)', 'pl.1.f3': 'Identidade visual ou capa e destaques',
+          'pl.1.f4': '1 vídeo editado/mês', 'pl.1.f5': 'Relatório bimestral de desempenho', 'pl.1.f6': 'Suporte leve de design',
+          'pl.1.p': 'A partir de R$ 1.500 <small>/mês</small>', 'pl.1.cta': 'Começar agora',
+          'pl.2.t': 'Equilibrado, criativo e estratégico.',
+          'pl.2.d': 'Para marcas que já estão no digital e querem sair do básico — com estratégia, consistência e conteúdo de verdade.',
+          'pl.2.f1': 'Gestão completa de até 3 redes', 'pl.2.f2': '6 posts semanais (feed, reels, stories)', 'pl.2.f3': 'Calendário temático e estratégico',
+          'pl.2.f4': '1 vídeo captado ou 2 editados/mês', 'pl.2.f5': 'Cardápio digital ou arte personalizada', 'pl.2.f6': 'Relatório mensal + reuniões',
+          'pl.2.p': 'A partir de R$ 2.500 <small>/mês</small>', 'pl.2.cta': 'Quero o Merlot',
+          'pl.3.t': 'Encorpado, estratégico e diferenciador.',
+          'pl.3.d': 'Para negócios que já entenderam que marketing não é só postar — é construir marca com planejamento e profundidade.',
+          'pl.3.f1': 'Gestão completa + planejamento de marca', 'pl.3.f2': 'Produção audiovisual mensal profissional', 'pl.3.f3': 'Campanhas e lançamentos sazonais',
+          'pl.3.f4': 'Business Plan personalizado', 'pl.3.f5': 'Copywriting e storytelling de marca', 'pl.3.f6': 'Relatórios detalhados + reuniões quinzenais',
+          'pl.3.p': 'A partir de R$ 4.200 <small>/mês</small>', 'pl.3.cta': 'Falar com estrategista',
+          'pl.4.t': 'Intenso, exclusivo e sob medida.',
+          'pl.4.d': 'O rótulo reserva da Vine. Marketing autoral, 360°, com acompanhamento próximo e execução de alto impacto.',
+          'pl.4.f1': 'Estratégia 360° (branding + AV + mídia paga)', 'pl.4.f2': 'Vídeos institucionais e campanhas completas', 'pl.4.f3': 'Consultoria de posicionamento + SEO local',
+          'pl.4.f4': 'Identidade visual completa', 'pl.4.f5': 'Acesso à Bella IA Premium', 'pl.4.f6': 'Coordenação de eventos (Festa da Uva, feiras)',
+          'pl.4.p': 'Projeto sob medida', 'pl.4.cta': 'Solicitar proposta',
+          // Hub body
+          'hub.body': 'A Vine desenvolve a infraestrutura digital que os negócios da Serra precisam para escalar: sites institucionais, landing pages, sistemas de gestão, automações e integrações — tudo pensado para conectar marketing, operação e resultado em uma única estrutura.',
+          // Bella
+          'bella.p1': 'A Bella é a primeira assistente de IA da Serra Gaúcha, desenvolvida pela Vine para apoiar negócios em decisões de marketing, análise de dados e criação de campanhas — com contexto local e visão estratégica.',
+          'bella.p2': 'Conecta dados, criatividade e estratégia para tornar suas decisões de marketing mais rápidas, claras e fundamentadas.',
+          // Diferenciais
+          'dif.1.t': 'Identidade territorial',
+          'dif.1.d': 'Não somos de fora tentando entender a Serra. Nascemos aqui — e criamos para quem vive e trabalha na Serra Gaúcha. Cada peça que sai daqui tem a leitura local de quem conhece o ritmo do território.',
+          'dif.1.cta': 'Ver os planos',
+          'dif.2.t': 'Estratégia antes de execução',
+          'dif.2.d': 'Nada vai pro ar sem plano. Business plan personalizado, relatórios detalhados e reuniões de acompanhamento fazem parte de todo projeto. A gente quer que você entenda o porquê de cada decisão.',
+          'dif.2.cta': 'Conversar com estrategista',
+          'dif.3.t': 'Do digital ao físico',
+          'dif.3.d': 'Cardápio, cartão, embalagem, campanha de Festa da Uva. Sua marca é consistente em cada ponto de contato — online e offline. A pessoa que viu seu post no Instagram precisa reconhecer sua marca quando entra na loja.',
+          'dif.3.cta': 'Ver materiais gráficos',
+          'dif.4.t': 'Tecnologia própria',
+          'dif.4.d': 'IA consultiva, sistemas sob medida, automações. Não dependemos de ferramentas genéricas — construímos as nossas. Por isso conseguimos integrar marketing, operação e dados de um jeito que poucos conseguem.',
+          'dif.4.cta': 'Conhecer o Hub Tecnológico',
         },
         en: {
           'nav.servicos': 'Services',
@@ -4272,6 +4380,66 @@
           'footer.label.contact': 'Contact',
           'footer.col.nav': 'Navigation',
           'footer.col.contact': 'Contact & Social',
+          // Marquee
+          'marquee.1': 'Local retail', 'marquee.2': 'Service businesses', 'marquee.3': 'Clinics & healthcare', 'marquee.4': 'Beauty & wellness',
+          'marquee.5': 'Restaurants & food', 'marquee.6': 'Tourism & hospitality', 'marquee.7': 'Events & culture', 'marquee.8': 'Local brands',
+          // Services
+          'sv.1.t': 'Brand strategy', 'sv.1.d': 'Positioning, tone of voice, brand architecture. Before we create anything, we think.',
+          'sv.2.t': 'Social media management', 'sv.2.d': 'Feed, stories, reels — with a strategic editorial calendar. Nothing goes live without purpose.',
+          'sv.3.t': 'Content production', 'sv.3.d': 'Photography, video, copy. Content that looks expensive — because it\'s well thought out.',
+          'sv.4.t': 'Campaigns & launches', 'sv.4.d': 'Seasonal campaigns, product launches, high-impact activations. Planning + paid media with clear goals.',
+          'sv.5.t': 'Bella AI', 'sv.5.d': 'Marketing consulting with artificial intelligence. Data, insights and analysis for faster decisions.',
+          'sv.6.t': 'Technology & Automation', 'sv.6.d': 'Websites, systems, integrations. The digital infrastructure that sustains your business growth.',
+          // História
+          'hist.p1': '<strong>Vine</strong> was born in 2021, in the Serra Gaúcha, with a simple conviction: businesses from here deserve the same level of strategy that big brands get.',
+          'hist.p2': 'We\'re not an agency that came from outside trying to understand the territory. <em>We were born here, we grew up here</em> and we know every detail — from tourism seasonality to the rhythm of local commerce.',
+          'hist.p3': 'Today, we serve businesses throughout the Serra Gaúcha, turning companies into <strong>brands that people recognize, recommend and remember</strong>.',
+          // Physical
+          'phys.li.1': 'Premium business cards', 'phys.li.2': 'Flyers & promotional materials', 'phys.li.3': 'Menus & corporate stationery',
+          'phys.li.4': 'Custom packaging', 'phys.li.5': 'Banners & point-of-sale materials',
+          'phys.quote': 'Consistent identity, from digital to physical.',
+          'phys.cta': 'Request a quote',
+          'phys.c.1': 'Business cards', 'phys.c.2': 'Menus', 'phys.c.3': 'Packaging', 'phys.c.4': 'Banners & POS',
+          // Pricing
+          'pl.badge': 'Most chosen',
+          'pl.1.t': 'Light, versatile and precise.',
+          'pl.1.d': 'For those taking their first steps online and need professional presence from the start.',
+          'pl.1.f1': 'Up to 2 platforms managed', 'pl.1.f2': '4 weekly posts (image or carousel)', 'pl.1.f3': 'Visual identity or cover and highlights',
+          'pl.1.f4': '1 edited video/month', 'pl.1.f5': 'Bi-monthly performance report', 'pl.1.f6': 'Light design support',
+          'pl.1.p': 'From $ 300 <small>/mo</small>', 'pl.1.cta': 'Get started',
+          'pl.2.t': 'Balanced, creative and strategic.',
+          'pl.2.d': 'For brands already online that want to break out of the basic — with strategy, consistency and real content.',
+          'pl.2.f1': 'Full management of up to 3 networks', 'pl.2.f2': '6 weekly posts (feed, reels, stories)', 'pl.2.f3': 'Thematic and strategic calendar',
+          'pl.2.f4': '1 shot video or 2 edited/month', 'pl.2.f5': 'Digital menu or custom artwork', 'pl.2.f6': 'Monthly report + meetings',
+          'pl.2.p': 'From $ 500 <small>/mo</small>', 'pl.2.cta': 'I want Merlot',
+          'pl.3.t': 'Full-bodied, strategic and distinctive.',
+          'pl.3.d': 'For businesses that already know marketing isn\'t just posting — it\'s building a brand with planning and depth.',
+          'pl.3.f1': 'Full management + brand planning', 'pl.3.f2': 'Monthly professional audiovisual production', 'pl.3.f3': 'Seasonal campaigns and launches',
+          'pl.3.f4': 'Custom business plan', 'pl.3.f5': 'Brand copywriting & storytelling', 'pl.3.f6': 'Detailed reports + bi-weekly meetings',
+          'pl.3.p': 'From $ 840 <small>/mo</small>', 'pl.3.cta': 'Talk to strategist',
+          'pl.4.t': 'Intense, exclusive and tailor-made.',
+          'pl.4.d': 'Vine\'s reserve label. Signature marketing, 360°, with close follow-up and high-impact execution.',
+          'pl.4.f1': '360° strategy (branding + AV + paid media)', 'pl.4.f2': 'Institutional videos and full campaigns', 'pl.4.f3': 'Positioning consulting + local SEO',
+          'pl.4.f4': 'Complete visual identity', 'pl.4.f5': 'Access to Bella AI Premium', 'pl.4.f6': 'Event coordination',
+          'pl.4.p': 'Custom project', 'pl.4.cta': 'Request proposal',
+          // Hub body
+          'hub.body': 'Vine develops the digital infrastructure that businesses need to scale: institutional websites, landing pages, management systems, automation and integrations — all designed to connect marketing, operations and results in a single structure.',
+          // Bella
+          'bella.p1': 'Bella is the first AI assistant from the Serra Gaúcha, developed by Vine to support businesses in marketing decisions, data analysis and campaign creation — with local context and strategic vision.',
+          'bella.p2': 'Connects data, creativity and strategy to make your marketing decisions faster, clearer and more informed.',
+          // Diferenciais
+          'dif.1.t': 'Territorial identity',
+          'dif.1.d': 'We\'re not outsiders trying to understand the Serra. We were born here — and we create for those who live and work in the Serra Gaúcha. Every piece we deliver has the local reading of someone who knows the rhythm of the territory.',
+          'dif.1.cta': 'See the plans',
+          'dif.2.t': 'Strategy before execution',
+          'dif.2.d': 'Nothing goes live without a plan. Custom business plan, detailed reports and follow-up meetings are part of every project. We want you to understand the why of each decision.',
+          'dif.2.cta': 'Talk to a strategist',
+          'dif.3.t': 'From digital to physical',
+          'dif.3.d': 'Menu, business card, packaging, seasonal campaign. Your brand is consistent at every touchpoint — online and offline. The person who saw your Instagram post needs to recognize your brand when they walk into the store.',
+          'dif.3.cta': 'See print materials',
+          'dif.4.t': 'Proprietary technology',
+          'dif.4.d': 'Consultative AI, custom systems, automation. We don\'t rely on generic tools — we build our own. That\'s why we integrate marketing, operations and data in ways few others can.',
+          'dif.4.cta': 'Explore the Tech Hub',
         },
         es: {
           'nav.servicos': 'Servicios',
@@ -4331,6 +4499,66 @@
           'footer.label.contact': 'Contacto',
           'footer.col.nav': 'Navegación',
           'footer.col.contact': 'Contacto y Redes',
+          // Marquee
+          'marquee.1': 'Comercio local', 'marquee.2': 'Empresas de servicios', 'marquee.3': 'Clínicas y salud', 'marquee.4': 'Estética y bienestar',
+          'marquee.5': 'Gastronomía', 'marquee.6': 'Turismo y hospitalidad', 'marquee.7': 'Eventos y cultura', 'marquee.8': 'Marcas locales',
+          // Services
+          'sv.1.t': 'Estrategia de marca', 'sv.1.d': 'Posicionamiento, tono de voz, arquitectura de marca. Antes de crear cualquier pieza, pensamos.',
+          'sv.2.t': 'Gestión de redes sociales', 'sv.2.d': 'Feed, stories, reels — con calendario editorial estratégico. Nada sale al aire sin propósito.',
+          'sv.3.t': 'Producción de contenido', 'sv.3.d': 'Fotografía, video, copy. Contenido que parece caro — porque está bien pensado.',
+          'sv.4.t': 'Campañas y lanzamientos', 'sv.4.d': 'Campañas estacionales, lanzamientos, activaciones. Planificación + medios pagados con objetivo claro.',
+          'sv.5.t': 'Bella IA', 'sv.5.d': 'Consultoría de marketing con inteligencia artificial. Datos, insights y análisis para decisiones más rápidas.',
+          'sv.6.t': 'Tecnología y Automatización', 'sv.6.d': 'Sitios, sistemas, integraciones. La infraestructura digital que sostiene el crecimiento de tu negocio.',
+          // História
+          'hist.p1': 'La <strong>Vine</strong> nació en 2021, en la Serra Gaúcha, con una convicción simple: los negocios de aquí merecen el mismo nivel de estrategia que reciben las grandes marcas.',
+          'hist.p2': 'No somos una agencia que vino de afuera intentando entender el territorio. <em>Nacimos aquí, crecimos aquí</em> y conocemos cada detalle — desde la estacionalidad del turismo al ritmo del comercio local.',
+          'hist.p3': 'Hoy atendemos a negocios en toda la Serra Gaúcha, transformando empresas en <strong>marcas que la gente reconoce, recomienda y recuerda</strong>.',
+          // Physical
+          'phys.li.1': 'Tarjetas de visita premium', 'phys.li.2': 'Folletos y materiales promocionales', 'phys.li.3': 'Menús y papelería corporativa',
+          'phys.li.4': 'Packaging personalizado', 'phys.li.5': 'Banners y materiales de punto de venta',
+          'phys.quote': 'Identidad consistente, del digital al físico.',
+          'phys.cta': 'Solicitar presupuesto',
+          'phys.c.1': 'Tarjetas', 'phys.c.2': 'Menús', 'phys.c.3': 'Packaging', 'phys.c.4': 'Banners y PDV',
+          // Pricing
+          'pl.badge': 'Más elegido',
+          'pl.1.t': 'Ligero, versátil y certero.',
+          'pl.1.d': 'Para quien da los primeros pasos en lo digital y necesita presencia profesional desde el inicio.',
+          'pl.1.f1': 'Gestión de hasta 2 plataformas', 'pl.1.f2': '4 posts semanales (imagen o carrusel)', 'pl.1.f3': 'Identidad visual o portada y destacados',
+          'pl.1.f4': '1 video editado/mes', 'pl.1.f5': 'Informe bimestral de desempeño', 'pl.1.f6': 'Soporte ligero de diseño',
+          'pl.1.p': 'Desde $ 300 <small>/mes</small>', 'pl.1.cta': 'Empezar ahora',
+          'pl.2.t': 'Equilibrado, creativo y estratégico.',
+          'pl.2.d': 'Para marcas que ya están en lo digital y quieren salir de lo básico — con estrategia, consistencia y contenido de verdad.',
+          'pl.2.f1': 'Gestión completa de hasta 3 redes', 'pl.2.f2': '6 posts semanales (feed, reels, stories)', 'pl.2.f3': 'Calendario temático y estratégico',
+          'pl.2.f4': '1 video captado o 2 editados/mes', 'pl.2.f5': 'Menú digital o arte personalizado', 'pl.2.f6': 'Informe mensual + reuniones',
+          'pl.2.p': 'Desde $ 500 <small>/mes</small>', 'pl.2.cta': 'Quiero el Merlot',
+          'pl.3.t': 'Con cuerpo, estratégico y diferenciador.',
+          'pl.3.d': 'Para negocios que ya entendieron que marketing no es solo publicar — es construir marca con planificación y profundidad.',
+          'pl.3.f1': 'Gestión completa + planificación de marca', 'pl.3.f2': 'Producción audiovisual mensual profesional', 'pl.3.f3': 'Campañas y lanzamientos estacionales',
+          'pl.3.f4': 'Business Plan personalizado', 'pl.3.f5': 'Copywriting y storytelling de marca', 'pl.3.f6': 'Informes detallados + reuniones quincenales',
+          'pl.3.p': 'Desde $ 840 <small>/mes</small>', 'pl.3.cta': 'Hablar con estratega',
+          'pl.4.t': 'Intenso, exclusivo y a medida.',
+          'pl.4.d': 'La etiqueta reserva de Vine. Marketing autoral, 360°, con acompañamiento cercano y ejecución de alto impacto.',
+          'pl.4.f1': 'Estrategia 360° (branding + AV + medios)', 'pl.4.f2': 'Videos institucionales y campañas completas', 'pl.4.f3': 'Consultoría de posicionamiento + SEO local',
+          'pl.4.f4': 'Identidad visual completa', 'pl.4.f5': 'Acceso a Bella IA Premium', 'pl.4.f6': 'Coordinación de eventos',
+          'pl.4.p': 'Proyecto a medida', 'pl.4.cta': 'Solicitar propuesta',
+          // Hub body
+          'hub.body': 'Vine desarrolla la infraestructura digital que los negocios necesitan para escalar: sitios institucionales, landing pages, sistemas de gestión, automatizaciones e integraciones — todo pensado para conectar marketing, operación y resultado en una única estructura.',
+          // Bella
+          'bella.p1': 'Bella es la primera asistente de IA de la Serra Gaúcha, desarrollada por Vine para apoyar a los negocios en decisiones de marketing, análisis de datos y creación de campañas — con contexto local y visión estratégica.',
+          'bella.p2': 'Conecta datos, creatividad y estrategia para tomar tus decisiones de marketing más rápidas, claras y fundamentadas.',
+          // Diferenciais
+          'dif.1.t': 'Identidad territorial',
+          'dif.1.d': 'No somos de afuera intentando entender la Serra. Nacimos aquí — y creamos para quien vive y trabaja en la Serra Gaúcha. Cada pieza que sale de aquí tiene la lectura local de quien conoce el ritmo del territorio.',
+          'dif.1.cta': 'Ver los planes',
+          'dif.2.t': 'Estrategia antes de ejecución',
+          'dif.2.d': 'Nada sale al aire sin plan. Business plan personalizado, informes detallados y reuniones de seguimiento forman parte de todo proyecto. Queremos que entiendas el porqué de cada decisión.',
+          'dif.2.cta': 'Hablar con estratega',
+          'dif.3.t': 'Del digital al físico',
+          'dif.3.d': 'Menú, tarjeta, packaging, campaña estacional. Tu marca es consistente en cada punto de contacto — online y offline. La persona que vio tu post en Instagram necesita reconocer tu marca cuando entra en la tienda.',
+          'dif.3.cta': 'Ver materiales gráficos',
+          'dif.4.t': 'Tecnología propia',
+          'dif.4.d': 'IA consultiva, sistemas a medida, automatizaciones. No dependemos de herramientas genéricas — construimos las nuestras. Por eso integramos marketing, operación y datos de una manera que pocos logran.',
+          'dif.4.cta': 'Conocer el Hub Tecnológico',
         },
       };
 

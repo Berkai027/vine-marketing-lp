@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#050208"/>
+      <stop offset="0.5" stop-color="#1a0a2e"/>
+      <stop offset="1" stop-color="#7625bf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8305ad" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#8305ad" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#c5a8f5"/>
+      <stop offset="1" stop-color="#94b9ff"/>
+    </linearGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.04"/>
+      </feComponentTransfer>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative glow -->
+  <ellipse cx="300" cy="200" rx="420" ry="340" fill="url(#glow)"/>
+  <ellipse cx="950" cy="500" rx="320" ry="260" fill="url(#glow)" opacity="0.6"/>
+
+  <!-- Grid subtle -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1" fill="none">
+    <line x1="0" y1="158" x2="1200" y2="158"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- Badge top -->
+  <g transform="translate(80, 90)">
+    <rect x="0" y="0" width="210" height="44" rx="22" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.18)"/>
+    <circle cx="22" cy="22" r="5" fill="#2efb29"/>
+    <text x="42" y="28" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="500" fill="rgba(255,255,255,0.9)" letter-spacing="0.02em">Serra Gaúcha, RS</text>
+  </g>
+
+  <!-- Main headline -->
+  <g transform="translate(80, 200)">
+    <text font-family="Inter, -apple-system, sans-serif" font-size="78" font-weight="800" letter-spacing="-0.04em" fill="#ffffff">
+      <tspan x="0" y="0">Sua marca é</tspan>
+      <tspan x="0" y="95" fill="url(#textGrad)">lembrada na Serra</tspan>
+    </text>
+    <text font-family="Inter, -apple-system, sans-serif" font-size="78" font-weight="800" letter-spacing="-0.04em" fill="rgba(255,255,255,0.4)">
+      <tspan x="0" y="190">— ou só existe?</tspan>
+    </text>
+  </g>
+
+  <!-- Wordmark bottom left -->
+  <g transform="translate(80, 530)">
+    <text font-family="Inter, -apple-system, sans-serif" font-size="32" font-weight="800" letter-spacing="-0.035em">
+      <tspan fill="url(#textGrad)">Vine</tspan>
+      <tspan fill="#ffffff" font-weight="300" dx="8">Marketing</tspan>
+    </text>
+    <text x="0" y="28" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="500" letter-spacing="0.14em" fill="rgba(255,255,255,0.5)">VINEMARKETING.DIGITAL</text>
+  </g>
+
+  <!-- Accent pill bottom right -->
+  <g transform="translate(920, 540)">
+    <rect x="0" y="0" width="200" height="54" rx="27" fill="#2efb29"/>
+    <text x="100" y="34" font-family="Inter, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#14091f" text-anchor="middle" letter-spacing="0.01em">Fale com a Vine →</text>
+  </g>
+</svg>
